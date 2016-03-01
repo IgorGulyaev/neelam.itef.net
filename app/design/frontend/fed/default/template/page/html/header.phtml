@@ -1,0 +1,55 @@
+<link href='http://fonts.googleapis.com/css?family=Alegreya+Sans' rel='stylesheet' type='text/css'>
+
+<div class="head-top">
+	<div class="topbar">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3">
+					<?php echo $this->getChildHtml('topSearch') ?>
+				</div>
+				<div class="col-sm-9">
+					<div class="banner">
+						<?php echo $this->getChildHtml('topLinks')?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="brand">
+		<div class="row">
+			<div class="container">
+				<div class="logo-head">
+					<div class="col-sm-4">
+					</div>
+
+					<div class="col-sm-4">
+						<div class="logo">
+							<a href="<?php echo $this->getUrl(''); ?>">
+								<img src="<?php echo $this->getLogoSrc(); ?>"/>
+							</a>
+						</div>
+					</div>
+
+					<div class="col-sm-4">
+						<div class="account-cart-wrapper">
+							<div class="header-minicart">
+								<?php echo $this->getChildHtml('minicart_head'); ?>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--Menu Section -->
+<div class="main-menu">
+	<div class="row">
+		<div class="container">
+			<?php echo $this->getChildHtml('topMenu'); ?>
+			<?php /*echo $this->getChildHtml('megaMenu');*/?>
+		</div>
+	</div>
+</div>
