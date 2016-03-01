@@ -24,7 +24,7 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<?php if (($_products = $this->getProductCollection()) && $_products->getSize()): ?>
+<?php if (($_products = Mage::getResourceModel('catalog/product_collection')) && $_products->getSize()): ?>
 <h2 class="subtitle"><?php echo $this->__('New Products') ?></h2>
 <?php $_columnCount = $this->getColumnCount(); ?>
     <?php $i=0; foreach ($_products->getItems() as $_product): ?>
