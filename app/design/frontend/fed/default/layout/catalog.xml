@@ -18,7 +18,7 @@ Default layout, loads most of the pages
 	
 	 <reference name="left">
          <block type="catalog/navigation" name="catalog.leftnav" template="catalog/navigation/left.phtml" before="-" />
-         <block type="catalog/product_compare_sidebar" before="cart_sidebar" name="catalog.compare.sidebar" template="catalog/product/compare/sidebar.phtml"/>
+         <!--<block type="catalog/product_compare_sidebar" before="cart_sidebar" name="catalog.compare.sidebar" template="catalog/product/compare/sidebar.phtml"/>-->
         </reference>
 
 
@@ -55,15 +55,9 @@ Default layout, loads most of the pages
 
 	<reference name="content">
 
-		<block type="catalog/category_view" name="category.products" template="catalog/category/view.phtml">
-
-		
-
-		<block type="catalog/product_list" name="product_list" template="catalog/product/list.phtml" />
-
-			
-
-		</block>	
+		<block type="catalog/category_view" name="category.products" template="catalog/category/view.phtml" />
+        <block type="catalog/navigation" name="subcategory.listing" template="catalog/navigation/subcategory_listing.phtml" />
+        <block type="catalog/product_list" name="product_list" template="catalog/product/list.phtml" />
 
 	</reference>
 
