@@ -19,11 +19,13 @@
                     else{
                         $class = "";
                     }
-                    
+
                     ?>
                     <div class="item <?=$class?> col-xs-6 col-sm-4">
-                        <a href="<?php echo $_category->getURL() ?>" title="<?php echo $this->htmlEscape($_category->getName()) ?>"><img src="<?php echo $_category->getImageUrl() ?>" width="283" alt="<?php echo $this->htmlEscape($_category->getName()) ?>" /></a>
-                        <h2><a href="<?php echo $_category->getURL() ?>" title="<?php echo $this->htmlEscape($_category->getName()) ?>"><?php echo $this->htmlEscape($_category->getName()) ?></a></h2>
+                        <a href="<?php echo $_category->getURL() ?>" title="<?php echo $this->htmlEscape($_category->getName()) ?>">
+                            <img src="<?php echo $_category->getImageUrl() ?>" width="283" height="240" alt="<?php echo $this->htmlEscape($_category->getName()) ?>" />
+                            <h2><?php echo $this->htmlEscape($_category->getName()) ?></h2>
+                        </a>
                     </div>
                     <?php
                 endif;

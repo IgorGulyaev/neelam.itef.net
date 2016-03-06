@@ -91,8 +91,8 @@ if(empty($_cartQty)) {
             </a>
             <?php if($_cartQty && $this->isPossibleOnepageCheckout()): ?>
                 <?php echo $this->getChildHtml('extra_actions') ?>
-                <a title="<?php echo $this->quoteEscape($this->__('Сделать заказ')) ?>" class="form-control input-text btn checkout-button pull-right" href="<?php echo $this->getCheckoutUrl() ?>">
-                    <?php echo $this->__('Сделать заказ') ?>
+                <a title="<?php echo $this->quoteEscape($this->__('Перейти к оплате')) ?>" class="form-control input-text btn checkout-button pull-right" href="<?php echo $this->getCheckoutUrl() ?>">
+                    <?php echo $this->__('Перейти к оплате') ?>
                 </a>
             <?php endif ?>
         </div>
