@@ -37,6 +37,28 @@ body {
   }
 }
 
+.skip-cart {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  .icon {
+    position: absolute;
+    top: 0;
+    left: 105%;
+    display: block;
+    height: 80px;
+    width: 60px;
+    background: url("@{path}images/cart.png") no-repeat;
+  }
+}
+
+.dropdown-menu {
+  &.open {
+    display: block;
+  }
+}
+
 .foot_pipe {
   ul {
     text-align: center;

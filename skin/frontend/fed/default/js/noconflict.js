@@ -1,1 +1,2 @@
-$j = jQuery.noConflict();
+/*$j = jQuery.noConflict();*/
+jQuery.noConflict();

@@ -1,5 +1,5 @@
 <div class="category-products">
-    <ul class="products-grid">
+    <div class="products-grid row">
         <?php
         $_categories=$this->getCurrentChildCategories();
         if($_categories->count()):
@@ -19,11 +19,12 @@
                     else{
                         $class = "";
                     }
+                    
                     ?>
-                    <li class="item <?=$class?>">
-                        <a href="<?php echo $_category->getURL() ?>" title="<?php echo $this->htmlEscape($_category->getName()) ?>"><img src="<?php echo $_category->getImageUrl() ?>" width="100" alt="<?php echo $this->htmlEscape($_category->getName()) ?>" /></a>
+                    <div class="item <?=$class?> col-xs-6 col-sm-4">
+                        <a href="<?php echo $_category->getURL() ?>" title="<?php echo $this->htmlEscape($_category->getName()) ?>"><img src="<?php echo $_category->getImageUrl() ?>" width="283" alt="<?php echo $this->htmlEscape($_category->getName()) ?>" /></a>
                         <h2><a href="<?php echo $_category->getURL() ?>" title="<?php echo $this->htmlEscape($_category->getName()) ?>"><?php echo $this->htmlEscape($_category->getName()) ?></a></h2>
-                    </li>
+                    </div>
                     <?php
                 endif;
                 if($categorycount == 3){
@@ -36,5 +37,5 @@
             endforeach;
         endif;
         ?>
-    </ul>
+    </div>
 </div>

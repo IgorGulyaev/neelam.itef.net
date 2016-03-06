@@ -28,7 +28,7 @@ $newproducts = $this->getNewProducts($limit);
                             <div class="item">
                                 <a href="<?php echo $this->getUrl($_product->getUrlPath()) ?>" >
                                     <span>
-                                        <img class="lazyOwl" data-src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(260) ?>" alt="<?php echo $this->htmlEscape($_product->getName()) ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>" />
+                                        <img class="lazyOwl" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(260) ?>" alt="<?php echo $this->htmlEscape($_product->getName()) ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>" />
                                     </span>
                                 </a>
                                 <h3 class="product-name">

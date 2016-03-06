@@ -87,18 +87,18 @@ if(empty($_cartQty)) {
 
         <div class="minicart-actions">
             <a class="cart-link pull-left" href="<?php echo $this->getUrl('checkout/cart'); ?>">
-                <?php echo $this->__('View Cart'); ?>
+                <?php echo $this->__('Корзина'); ?>
             </a>
             <?php if($_cartQty && $this->isPossibleOnepageCheckout()): ?>
                 <?php echo $this->getChildHtml('extra_actions') ?>
-                <a title="<?php echo $this->quoteEscape($this->__('Checkout')) ?>" class="form-control input-text btn checkout-button pull-right" href="<?php echo $this->getCheckoutUrl() ?>">
-                    <?php echo $this->__('Checkout') ?>
+                <a title="<?php echo $this->quoteEscape($this->__('Сделать заказ')) ?>" class="form-control input-text btn checkout-button pull-right" href="<?php echo $this->getCheckoutUrl() ?>">
+                    <?php echo $this->__('Сделать заказ') ?>
                 </a>
             <?php endif ?>
         </div>
 
     <?php else: ?>
-        <p class="empty"><?php echo $this->__('You have no items in your shopping cart.') ?></p>
+        <p class="empty"><?php echo $this->__('Нет товаров') ?></p>
 
     <?php endif ?>
 </div>

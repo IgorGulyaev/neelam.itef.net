@@ -4,8 +4,10 @@
 
         <reference name="root">
             <reference name="head">
-                <action method="addItem" name="jquery" as="jquery"><type>skin_js</type><name>js/jquery-1.11.3.min.js</name></action>
-                <action method="addItem"><type>skin_js</type><name>js/noconflict.js</name></action>
+                <!--<action method="addItem" name="jquery" as="jquery"><name>js/jquery/jquery-1.11.3.min.js</name></action>-->
+                <!--<action method="addItem"><type>skin_js</type><name>js/jquery-1.11.3.min.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>js/noconflict.js</name></action>-->
+                <action method="addItem"><type>skin_js</type><name>js/bootstrap.min.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/html5shiv.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/wow.min.js</name></action>
 
@@ -14,6 +16,7 @@
             <reference name="content">
                 <block type="customblocks/customblock" name="customblock" as="customblock" template="customblocks/customblock.phtml" before="-"/>
             </reference>
+            <remove name="left.newsletter"/>
         </reference>
 
         <reference name="header">
