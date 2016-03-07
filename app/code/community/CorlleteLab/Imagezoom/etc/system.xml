@@ -1,0 +1,317 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * CorlleteLab
+ *
+ * Imagezoom extension
+ *
+ * @category   CorlleteLab
+ * @package    CorlleteLab_Imagezoom
+ * @copyright  Copyright (c) 2011 Corllete Ltd. (http://www.clabteam.com/)
+ * @author     CorlleteLab Dev Team <office@clabteam.com>
+ */
+-->
+<config>
+    <tabs>
+        <corlletetab translate="label" module="imagezoom">
+            <label>CorlleteLab Plugins</label>
+            <sort_order>0</sort_order>
+        </corlletetab>
+    </tabs> 
+	<sections>
+		<imagezoomconfig translate="label" module="imagezoom">
+			<label>Image Zoom Configuration</label>
+			<tab>corlletetab</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>1000</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<moduleoptions translate="label">
+					<label>Module Options</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>100</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<moduleenable translate="label comment">
+							<label>Enable Module</label>
+							<comment></comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</moduleenable>
+						<jquery translate="label comment">
+							<label>Load jQuery</label>
+							<comment>This will load the jQuery library.</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</jquery>
+						<jqueryexternal translate="label comment">
+							<label>Load External jQuery</label>
+							<comment>
+								<![CDATA[This will load the jQuery library from the Google Content Network.
+								<span class="notice">Probably better than from your own server. </span>
+								]]>
+							</comment>
+							<depends>
+								 <jquery>1</jquery>
+							</depends>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>30</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</jqueryexternal>
+					</fields>
+		  		</moduleoptions>
+				<imagezoom_style_css translate="label">
+					<label>Image Zoom Style</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>200</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<img_size translate="label comment">
+							<label>Image Size (pixel)</label>
+							<comment>Leave empty for default (265px)</comment>
+							<backend_model>imagezoom/adminhtml_system_size</backend_model>
+							<validate>validate-number</validate>
+							<frontend_type>text</frontend_type>
+							<sort_order>9</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</img_size>
+						<lens_border translate="label comment">
+							<label>Moving Lens Border Thickness</label>
+							<comment></comment>
+							<validate>validate-number</validate>
+							<frontend_type>text</frontend_type>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</lens_border>
+						<lens_border_color translate="label comment">
+							<label>Moving Lens Border Color</label>
+							<comment>e.g. 77CC99</comment>
+							<backend_model>imagezoom/adminhtml_system_color</backend_model>
+							<frontend_type>text</frontend_type>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</lens_border_color>
+						<lens_background_color translate="label comment">
+							<label>Moving Lens Background Color</label>
+							<comment>e.g. 77CC99</comment>
+							<backend_model>imagezoom/adminhtml_system_color</backend_model>
+							<frontend_type>text</frontend_type>
+							<sort_order>30</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</lens_background_color>
+						<zoom_window_border translate="label comment">
+							<label>Zoom Window Border Thickness</label>
+							<comment></comment>
+							<validate>validate-number</validate>
+							<frontend_type>text</frontend_type>
+							<sort_order>40</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</zoom_window_border>
+						<zoom_window_border_color translate="label comment">
+							<label>Zoom Window Border Color</label>
+							<comment>e.g. 77CC99</comment>
+							<backend_model>imagezoom/adminhtml_system_color</backend_model>
+							<frontend_type>text</frontend_type>
+							<sort_order>50</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</zoom_window_border_color>
+					</fields>
+				</imagezoom_style_css>
+				<imagezoom_options translate="label">
+					<label>Image Zoom Options</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>300</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<zoomWidth translate="label comment">
+							<label>Zoom Width</label>
+							<comment>Leave empty for default (same as imge size)</comment>
+							<validate>validate-number</validate>
+							<frontend_type>text</frontend_type>
+							<sort_order>50</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</zoomWidth>
+
+						<zoomHeight translate="label comment">
+							<label>Zoom Height</label>
+							<comment>Leave empty for default (same as imge size)</comment>
+							<validate>validate-number</validate>
+							<frontend_type>text</frontend_type>
+							<sort_order>51</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</zoomHeight>
+						<position translate="label comment">
+							<label>Position</label>
+							<comment>Specifies the position of the zoom window relative to the small image.</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>imagezoom/adminhtml_system_config_source_position</source_model>
+							<sort_order>52</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</position>
+						<adjustX translate="label comment">
+							<label>Adjust X (pixel)</label>
+							<validate>validate-number</validate>
+							<comment>Leave empty for default (default: 0). Negative values are allowed</comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>53</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</adjustX>
+						<adjustY translate="label comment">
+							<label>Adjust Y (pixel)</label>
+							<validate>validate-number</validate>
+							<comment>Leave empty for default (default: -3). Negative values are allowed</comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>54</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</adjustY>
+						
+						<zoomeffect translate="label comment">
+							<label>Zoom Effect</label>
+							<comment></comment>
+							
+							<frontend_type>select</frontend_type>
+							<source_model>imagezoom/adminhtml_system_config_source_zoomeffect</source_model>
+							<sort_order>55</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</zoomeffect>
+						
+						<tintColor translate="label comment">
+							<label>Tint Color</label>
+							<comment>e.g. 77CC99</comment>
+							<backend_model>imagezoom/adminhtml_system_color</backend_model>						
+							<frontend_type>text</frontend_type>
+							<validate>required-entry validate-number</validate>
+							<sort_order>56</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends>
+								 <zoomeffect>1</zoomeffect>
+							</depends>
+						</tintColor>
+						<tintOpacity translate="label comment">
+							<label>Tint Opacity</label>
+							<comment>Number between 0 and 1, where 0 is fully transparent and 1 is fully opaque.</comment>
+							<frontend_type>text</frontend_type>
+							<validate>validate-number</validate>
+							<sort_order>57</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends>
+								 <zoomeffect>1</zoomeffect>
+							</depends>
+						</tintOpacity>
+						
+						<lensOpacity translate="label comment">
+							<label>Lens Opacity</label>
+							<comment>Opacity of the lens mouse pointer, where 0 is fully transparent, and 1 is fully opaque. In tint and soft-focus modes, it will always be transparent.</comment>
+							<validate>validate-number</validate>
+							<frontend_type>text</frontend_type>
+							<sort_order>58</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</lensOpacity>						
+						<smoothMove translate="label comment">
+							<label>Smooth Move</label>
+							<validate>validate-number</validate>
+							<comment>Amount of smoothness/drift of the zoom image as it moves. The higher the number, the smoother/more drifty the movement will be. 1 = no smoothing.</comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>60</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</smoothMove>
+						<showTitle translate="label comment">
+							<label>Show Title</label>
+							<comment>Shows the title tag of the image</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>61</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</showTitle>
+						<titleOpacity translate="label comment">
+							<label>Title Opacity</label>
+							<comment>Specifies the opacity of the title if displayed, where 0 is fully transparent, and 1 is fully opaque.</comment>
+							<validate>validate-number</validate>
+							<frontend_type>text</frontend_type>
+							<sort_order>62</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends>
+								 <showTitle>1</showTitle>
+							</depends>
+						</titleOpacity>
+					</fields>
+				</imagezoom_options>
+				<imagezoom_images translate="label">
+					<label>Image Zoom Additional Images (Configurable Products Only)</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>400</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<imagesToShow translate="label comment">
+							<label>Images To Show</label>
+							<comment>Leave empty to show all images. If you enter a number ImageZoom will display this number of additional images. All other images will be hidden and a link "Show All" will be displayed.</comment>
+							<validate>validate-number</validate>
+							<frontend_type>text</frontend_type>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</imagesToShow>
+					</fields>
+				</imagezoom_images>
+			</groups>
+		</imagezoomconfig>
+	</sections>
+</config>

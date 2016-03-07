@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * CorlleteLab
+ *
+ * Imagezoom extension
+ *
+ * @category   CorlleteLab
+ * @package    CorlleteLab_Imagezoom
+ * @copyright  Copyright (c) 2011 Corllete Ltd. (http://www.clabteam.com/)
+ * @author     CorlleteLab Dev Team <office@clabteam.com>
+ */
+-->
+<config>
+    <modules>
+        <CorlleteLab_Imagezoom>
+            <active>true</active>
+            <codePool>community</codePool>
+        </CorlleteLab_Imagezoom>
+    </modules>
+</config>

@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * CorlleteLab
+ *
+ * Imagezoom extension
+ *
+ * @category   CorlleteLab
+ * @package    CorlleteLab_Imagezoom
+ * @copyright  Copyright (c) 2011 Corllete Ltd. (http://www.clabteam.com/)
+ * @author     CorlleteLab Dev Team <office@clabteam.com>
+ */
+-->
+
+<layout>    
+	<catalog_product_view>
+		<reference name="product.info.media">
+			<action method="setTemplate" ifconfig="imagezoomconfig/moduleoptions/moduleenable">
+				<template>corlletelab/imagezoom/media.phtml</template>
+			</action>
+		</reference>
+	</catalog_product_view>
+	<review_product_list>
+		<reference name="product.info.media">
+			<action method="setTemplate" ifconfig="imagezoomconfig/moduleoptions/moduleenable">
+				<template>corlletelab/imagezoom/media.phtml</template>
+			</action>
+		</reference>
+	</review_product_list>
+	<catalog_product_view translate="label">
+        <reference name="head">
+			<action method="addJs" ifconfig="imagezoomconfig/moduleoptions/moduleenable"><script>corlletelab/imagezoom/product_override.js</script></action>
+        </reference>
+    </catalog_product_view>
+    <PRODUCT_TYPE_grouped translate="label" module="catalog">
+        <label>Catalog Product View (Grouped)</label>
+        <reference name="product.info">
+            <block type="catalog/product_view_type_grouped" name="product.info.grouped" as="product_type_data" template="catalog/product/view/type/grouped.phtml">
+				<action method="setTemplate" ifconfig="imagezoomconfig/moduleoptions/moduleenable">
+					<template>corlletelab/imagezoom/grouped.phtml</template>
+				</action>
+				<block type="core/text_list" name="product.info.grouped.extra" as="product_type_data_extra" translate="label">
+                    <label>Product Extra Info</label>
+                </block>
+            </block>
+        </reference>
+    </PRODUCT_TYPE_grouped>
+</layout>
