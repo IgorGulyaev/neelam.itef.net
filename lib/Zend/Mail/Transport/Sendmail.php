@@ -99,6 +99,10 @@ class Zend_Mail_Transport_Sendmail extends Zend_Mail_Transport_Abstract
     {
         if ($this->parameters === null) {
             set_error_handler(array($this, '_handleMailErrors'));
+
+            Mage::log("MAIL RECIPIENTS: " : $this->recipients, null, 'mail.log', true);
+            Mage::log("MAIL SUBJECT: " : $this->_mail->getSubject(), null, 'mail.log', true);
+
             $result = mail(
                 $this->recipients,
                 $this->_mail->getSubject(),
