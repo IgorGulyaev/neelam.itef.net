@@ -36,25 +36,39 @@
 </form>
 
 <div class="row">
-	<div class="col-sm-3"></div>
-	<div class="col-sm-6">
-		 <div class="row">
-			<div class="pull-right">
-		 		<?php echo $this->getChildHtml('totals'); ?>
-				<div class="row">
-					<?php if(!$this->hasError()): ?>
-						<ul class="checkout-types list-unstyled">
-							<?php foreach ($this->getMethods('methods') as $method): ?>
-								<?php if ($methodHtml = $this->getMethodHtml($method)): ?>
-								<li><?php echo $methodHtml; ?></li>
-								<?php endif; ?>
-							<?php endforeach; ?>
-						</ul>
-					<?php endif; ?>
-				</div>
+			<div class="col-md-4">			
+				<?php if($_crosssell = $this->getChildHtml('crosssell')): ?>
+			                    <?php echo $_crosssell; ?>
+			                <?php else: ?>
+			                <div class="no-crosssell">
+			                    
+			                </div>
+			                <?php endif; ?>
+							<?php echo $this->getChildHtml('coupon') ?>
 			</div>
-		 </div>
-	</div>
-	<div class="col-sm-3"></div>
+			<div class="col-md-4">				 
+			          <?php if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>      
+			</div>
+			<div class="col-md-4">
+				 <div class="row">
+				 	<div class="pull-right">
+					<br/>
+				 <?php echo $this->getChildHtml('totals'); ?>
+				 <div class="row">
+				 <?php if(!$this->hasError()): ?>
+			                    <ul class="checkout-types list-unstyled">
+			                    <?php foreach ($this->getMethods('methods') as $method): ?>
+			                        <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
+			                        <li><?php echo $methodHtml; ?></li>
+			                        <?php endif; ?>
+			                    <?php endforeach; ?>
+			                    </ul>
+			                    <?php endif; ?>
+								</div>
+				 	</div>
+				 </div>
+			                    
+				
+			</div>
 
 </div>

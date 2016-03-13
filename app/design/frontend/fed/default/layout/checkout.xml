@@ -41,7 +41,8 @@ Default layout, loads most of the pages
                 <action method="addCheckoutLink"></action>
             </block>
         </reference>
-        <reference name="right">
+        <remove name="right"/>
+        <!--<reference name="right">
             <block type="checkout/cart_sidebar" name="cart_sidebar" template="checkout/cart/sidebar.phtml" before="-">
                 <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/sidebar/default.phtml</template></action>
                 <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/sidebar/default.phtml</template></action>
@@ -50,7 +51,7 @@ Default layout, loads most of the pages
                     <label>Shopping Cart Sidebar Extra Actions</label>
                 </block>
             </block>
-        </reference>
+        </reference>-->
     </default>
 
     <checkout_cart_index translate="label">
@@ -302,9 +303,10 @@ One page checkout main layout
         <label>One Page Checkout</label>
         <!-- Mage_Checkout -->
         <remove name="left"/>
+        <remove name="right"/>
 
         <reference name="root">
-            <action method="setTemplate"><template>page/page_right.phtml</template></action>
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
 		
         <reference name="right">
@@ -323,7 +325,7 @@ One page checkout main layout
 		
         <reference name="content">
             <block type="checkout/onepage" name="checkout.onepage" template="checkout/onepage.phtml">
-                <block type="checkout/onepage_login" name="checkout.onepage.login" as="login" template="checkout/onepage/login.phtml">
+                <!--<block type="checkout/onepage_login" name="checkout.onepage.login" as="login" template="checkout/onepage/login.phtml">
                     <block type="page/html_wrapper" name="checkout.onepage.login.before" as="login_before" translate="label">
                         <label>Login/Registration Before</label>
                         <action method="setMayBeInvisible"><value>1</value></action>
@@ -339,7 +341,7 @@ One page checkout main layout
                     <block type="checkout/onepage_payment_methods" name="checkout.payment.methods" as="methods" template="checkout/onepage/payment/info.phtml">
                         <action method="setMethodFormTemplate"><method>purchaseorder</method><template>payment/form/purchaseorder.phtml</template></action>
                     </block>
-                </block>
+                </block>-->
                 <block type="checkout/onepage_review" name="checkout.onepage.review" as="review" template="checkout/onepage/review.phtml"/>
             </block>
         </reference>

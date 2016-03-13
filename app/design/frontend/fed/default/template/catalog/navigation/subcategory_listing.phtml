@@ -10,18 +10,18 @@
                     $layer = Mage::getSingleton('catalog/layer');
                     $layer->setCurrentCategory($cur_category);
                     $catName = $this->getCurrentCategory()->getName();
-                    if ($categorycount == 0){
+                    /*if ($categorycount == 0){
                         $class = "first";
-                    }
-                    elseif ($categorycount == 3){
+                    }*/
+                    /*elseif ($categorycount == 3){
                         $class = "last";
                     }
                     else{
                         $class = "";
-                    }
+                    }*/
 
                     ?>
-                    <div class="item <?=$class?> col-xs-6 col-sm-4">
+                    <div class="item col-xs-6 col-sm-4">
                         <a href="<?php echo $_category->getURL() ?>" title="<?php echo $this->htmlEscape($_category->getName()) ?>">
                             <img src="<?php echo $_category->getImageUrl() ?>" width="283" height="240" alt="<?php echo $this->htmlEscape($_category->getName()) ?>" />
                             <h2><?php echo $this->htmlEscape($_category->getName()) ?></h2>
@@ -29,13 +29,7 @@
                     </div>
                     <?php
                 endif;
-                if($categorycount == 3){
-                    $categorycount = 0;
-                    echo "</ul>\n\n<ul class=\"products-grid\">";
-                }
-                else{
-                    $categorycount++;
-                }
+                $categorycount++;
             endforeach;
         endif;
         ?>
