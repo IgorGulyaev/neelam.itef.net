@@ -102,7 +102,7 @@ Compare products page
 
         <reference name="root">
 
-            <action method="setTemplate"><template>page/page_left.phtml</template></action>
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
 
         </reference>
 
@@ -144,7 +144,7 @@ Compare products page
 
                 </block>
 
-
+                <block type="catalog/product_view_additional" name="product.info.additional" as="product_additional_data" />
 
                 <action method="setTierPriceTemplate"><template>catalog/product/view/tierprices.phtml</template></action>
 
@@ -211,8 +211,6 @@ Compare products page
              </block>
 
 
-
-                <block type="catalog/product_view_additional" name="product.info.additional" as="product_additional_data" />
 
                 <block type="catalog/product_view" name="product.info.addto" as="addto" template="catalog/product/view/addto.phtml"/>
 
