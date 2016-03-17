@@ -1,0 +1,67 @@
+#qtyswitcher-oneless{
+    border:none;
+    background:transparent url("../images/less.gif") 50% 50% no-repeat;
+    width:15px; 
+    height:20px;
+    cursor:pointer;
+}
+#qtyswitcher-onemore{
+    border:none;
+    background:transparent url("../images/more.gif") 50% 50% no-repeat;
+    width:15px; 
+    height:20px;
+    cursor:pointer;
+}
+.qtyswitcher-qty .clone-qty{
+    background:none repeat scroll 0 0 transparent;
+    border:medium none;
+    color:#000000;
+    font-size:16px;
+    font-weight:bold;
+    text-align:center;
+    width:28px;
+}
+
+#qtyswitcher-btn-picto{
+    float:right;
+    margin-top:5px;
+}
+#qtyswitcher-form-btn-products{
+    cursor:pointer;
+    margin:10px 0 0;
+    border:none;
+    padding:0;
+}
+#qtyswitcher-qty-box LABEL{
+    color:#000000;
+    display:block;
+    float:left;
+    font-weight:bold;
+    margin-right:10px;
+    margin-top:3px;
+}
+.qtyswitcher-add-to-cart-box {
+    float:left;
+    margin:0;
+}
+
+.qtyswitcher-qty {
+    -float:right;
+    margin:0 7px 0 0;
+}
+.option-grouped{
+
+    background-color:#FFEAB0!important;
+}
+.option-grouped *{
+    display:inline;
+}
+.option-grouped dl{
+    display:block
+}
+.option-grouped dt{
+    float:left
+}
+.option-grouped dd{
+    float:right
+}
