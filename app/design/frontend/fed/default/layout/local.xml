@@ -10,6 +10,8 @@
                 <action method="addItem"><type>skin_js</type><name>js/bootstrap.min.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/html5shiv.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/wow.min.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>js/minicart.js</name></action>
+                <action method="addItem"><type>skin_css</type><name>qtyswitcher/css/qtyswitcher.css</name></action>
 
                 <action method="addCss"><stylesheet>less/style.less</stylesheet></action>
             </reference>

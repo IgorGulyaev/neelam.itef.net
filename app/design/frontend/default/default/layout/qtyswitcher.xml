@@ -6,7 +6,7 @@
 			<action method="addItem"><type>skin_js</type><name>qtyswitcher/js/qtyswitcher.js</name></action>
 			<action method="addItem"><type>skin_css</type><name>qtyswitcher/css/qtyswitcher.css</name></action>
 		</reference>
-		
+
 		<reference name="content">
 			<reference name="product.info">
 				<block type="catalog/product_view" name="product.info.addtocart" as="addtocart" template="qtyswitcher/qtyswitcher.phtml"/>
