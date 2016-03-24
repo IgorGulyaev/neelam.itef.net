@@ -30,9 +30,6 @@
 
 <?php if ($categories = $this->getCategoriesNavMenu()): ?>
 <div id="sidebar-nav" class="block sidebar-nav-left <?php echo $this->getBlockAlias() ?>">
-    <div class="block-title">
-    	<strong><span><?php echo $this->__($this->getTitle()) ?></span></strong> 
-    </div>
     <div class="block-content">
         <ul id="sidebar-nav-menu">
         <?php if ($this->showHome()): ?>

@@ -99,16 +99,38 @@ $_helper = $this->helper('catalog/output');
                                         </div>
                                         <div class="text-danger lead"><?php echo $this->getPriceHtml($_product, true) ?></div>
                                         <?php if ($_product->isSaleable()): ?>
-                                            <p>
-                                                <button type="button" title="<?php echo $this->__('Add to Cart') ?>"
-                                                        class="btn btn-success btn-xs"
-                                                        onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')">
-                                                    <span><span><?php echo $this->__('Add to Cart') ?></span></span>
-                                                </button>
-                                            </p>
+                                            <form action="<?php echo $this->getAddToCartUrl($_product) ?>" method="post" class="add-to-cart-form" id="product_addtocart_form_<?php echo $_product->getId()?>"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?> data-qty="<?php echo $_product->getId() ?>" >
+                                                <?php if($_product->isSaleable()): ?>
+                                                    <fieldset class="qtyswitcher-add-to-cart-box table">
+                                                        <div id="qtyswitcher-btn-picto-<?php echo $_product->getId() ?>" class="table-cell">
+                                                            <button type="button" class="btn btn-success" onclick="this.form.submit()"><?php echo $this->__('Add to Cart') ?></button>
+                                                        </div>
+                                                        <div class="qtyswitcher-qty table-cell">
+                                                            <?php if(!$_product->isGrouped()): ?>
+                                                            <?php if(!is_numeric($this->getMinimalQty($_product))) : $qty= 1; ?>
+                                                            <?php else : $qty=$this->getMinimalQty($_product);?>
+                                                            <?php endif; ?>
+
+                                                            <div class="table">
+                                                                <div class="input-box">
+                                                                    <input type="text" class="input-text clone-qty" id="qtyswitcher-clone-qty-<?php echo $_product->getId() ?>" maxlength="12" value="<?php echo $qty;?>" disabled='true' />
+                                                                    <input type="hidden"  name="qty" id="qtyswitcher-qty-<?php echo $_product->getId() ?>" value="<?php echo $qty;?>"/>
+                                                                </div>
+                                                                <div class="input-box">
+                                                                    <input type='button' id="qtyswitcher-onemore-<?php echo $_product->getId() ?>" class='qtyswitcher btn' onclick="qtyswitcher.addOne('qtyswitcher-qty-<?php echo $_product->getId() ?>','qtyswitcher-clone-qty-<?php echo $_product->getId() ?>');"/>
+                                                                    <input type='button' id="qtyswitcher-oneless-<?php echo $_product->getId() ?>" class='qtyswitcher btn' onclick="qtyswitcher.removeOne('qtyswitcher-qty-<?php echo $_product->getId() ?>','qtyswitcher-clone-qty-<?php echo $_product->getId() ?>')"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <?php else :?>
+
+                                                            <script language="javascript">qtyswitcher.groupedInit("<?php //echo $this->__("Quantity"); ?>")</script>
+                                                        <?php endif; ?>
+                                                    </fieldset>
+                                                <?php endif; ?>
+                                            </form>
                                         <?php else: ?>
-                                            <p class="availability out-of-stock">
-                                                <span><?php echo $this->__('Out of stock') ?></span></p>
+                                            <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
                                         <?php endif; ?>
                                         <ul class="add-to-links">
                                             <?php if ($this->helper('wishlist')->isAllow()) : ?>
@@ -139,10 +161,9 @@ $_helper = $this->helper('catalog/output');
         <?php $i = 0;
         foreach ($_productCollection as $_product): ?>
         <?php if ($i++ % $_columnCount == 0): ?>
-            <div class="row" style="padding-left:20px;">
-            <ul class="products-grid">
+            <ul class="products-grid row">
         <?php endif ?>
-            <li class="item<?php if (($i - 1) % $_columnCount == 0): ?> first<?php elseif ($i % $_columnCount == 0): ?> last<?php endif; ?>">
+            <li class="col-xs-6 col-sm-4 item<?php if (($i - 1) % $_columnCount == 0): ?> first<?php elseif ($i % $_columnCount == 0): ?> last<?php endif; ?>">
                 <a href="<?php echo $_product->getProductUrl() ?>"
                    title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
                    class="product-image"><img
@@ -170,42 +191,39 @@ $_helper = $this->helper('catalog/output');
                         <?php endif; ?>
                     </div>
                     <div class="col-md-3">
-                        <?php if ($_product->isSaleable()): ?>
-                            <form action="<?php echo $this->getAddToCartUrl($_product) ?>" method="post" class="add-to-cart-form" id="product_addtocart_form_<?php echo $_product->getId()?>"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?> data-qty="<?php echo $_product->getId() ?>" >
-                                <?php if($_product->isSaleable()): ?>
-                                    <fieldset class="qtyswitcher-add-to-cart-box ">
-                                        <div id="qtyswitcher-btn-picto-<?php echo $_product->getId() ?>">
-                                            <button type="button" class="btn btn-success" onclick="this.form.submit()"><span class="glyphicon glyphicon-shopping-cart"></span><?php echo $this->__('Add to Cart') ?></button>
-                                        </div>
-                                        <div class="qtyswitcher-qty">
-                                            <?php if(!$_product->isGrouped()): ?>
-                                            <span id="qtyswitcher-qty-box-<?php echo $_product->getId() ?>"><label for="qty-<?php echo $_product->getId() ?>"><?php //echo $this->__('Qty') ?></label></span>
-                                            <input type='button' id="qtyswitcher-oneless-<?php echo $_product->getId() ?>" class='qtyswitcher.btn' onclick="qtyswitcher.removeOne('qtyswitcher-qty-<?php echo $_product->getId() ?>','qtyswitcher-clone-qty-<?php echo $_product->getId() ?>')"/>
+                        <?php if($_product->isSaleable()): ?>
+                            <fieldset class="qtyswitcher-add-to-cart-box table">
+                                <div id="qtyswitcher-btn-picto-<?php echo $_product->getId() ?>" class="table-cell">
+                                    <button type="button" class="btn btn-success" onclick="this.form.submit()"><?php echo $this->__('Add to Cart') ?></button>
+                                </div>
+                                <div class="qtyswitcher-qty table-cell">
+                                    <?php if(!$_product->isGrouped()): ?>
+                                    <?php if(!is_numeric($this->getMinimalQty($_product))) : $qty= 1; ?>
+                                    <?php else : $qty=$this->getMinimalQty($_product);?>
+                                    <?php endif; ?>
 
-                                            <?php if(!is_numeric($this->getMinimalQty($_product))) : $qty= 1; ?>
-                                            <?php else : $qty=$this->getMinimalQty($_product);?>
-                                            <?php endif; ?>
-
+                                    <div class="table">
+                                        <div class="input-box">
                                             <input type="text" class="input-text clone-qty" id="qtyswitcher-clone-qty-<?php echo $_product->getId() ?>" maxlength="12" value="<?php echo $qty;?>" disabled='true' />
                                             <input type="hidden"  name="qty" id="qtyswitcher-qty-<?php echo $_product->getId() ?>" value="<?php echo $qty;?>"/>
-                                            <input type='button' id="qtyswitcher-onemore-<?php echo $_product->getId() ?>" class='qtyswitcher.btn' onclick="qtyswitcher.addOne('qtyswitcher-qty-<?php echo $_product->getId() ?>','qtyswitcher-clone-qty-<?php echo $_product->getId() ?>');"/>
                                         </div>
-                                        <?php else :?>
+                                        <div class="input-box">
+                                            <input type='button' id="qtyswitcher-onemore-<?php echo $_product->getId() ?>" class='qtyswitcher btn' onclick="qtyswitcher.addOne('qtyswitcher-qty-<?php echo $_product->getId() ?>','qtyswitcher-clone-qty-<?php echo $_product->getId() ?>');"/>
+                                            <input type='button' id="qtyswitcher-oneless-<?php echo $_product->getId() ?>" class='qtyswitcher btn' onclick="qtyswitcher.removeOne('qtyswitcher-qty-<?php echo $_product->getId() ?>','qtyswitcher-clone-qty-<?php echo $_product->getId() ?>')"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php else :?>
 
-                                            <script language="javascript">qtyswitcher.groupedInit("<?php //echo $this->__("Quantity"); ?>")</script>
-                                        <?php endif; ?>
-                                    </fieldset>
+                                    <script language="javascript">qtyswitcher.groupedInit("<?php //echo $this->__("Quantity"); ?>")</script>
                                 <?php endif; ?>
-                            </form>
-                        <?php else: ?>
-                            <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                            </fieldset>
                         <?php endif; ?>
                     </div>
                 </div>
             </li>
             <?php if ($i % $_columnCount == 0 || $i == $_collectionSize): ?>
             </ul>
-            </div>
         <br/>
         <?php endif ?>
         <?php endforeach ?>
@@ -229,14 +247,17 @@ $_helper = $this->helper('catalog/output');
                 name=e.name;
                 idVal = jQuery(this).parent('form').attr('data-qty');
                 html ="<div class='qtyswitcher-qty"+idVal+"'>";
-                html+=" <span id='qtyswitcher-qty-box"+idVal+"'><label for='qty'>"+quantity+"</label></span>";
-
-                html+="<input type='button' id='qtyswitcher-oneless"+idVal+"' class='qtyswitcher.btn' onclick='qtyswitcher.removeOne(\""+name+"\",\""+name+"-clone-qty\")'/>";
+                html+="<div class='table'>";
+                html+="<div class='input-box'>";
+                html+="<input type='button' id='qtyswitcher-oneless"+idVal+"' class='qtyswitcher btn' onclick='qtyswitcher.removeOne(\""+name+"\",\""+name+"-clone-qty\")'/>";
                 html+="<input type='text' class='input-text clone-qty' id='"+name+"-clone-qty' maxlength='12' value='"+qty+"' disabled='true' />";
+                html+="</div>";
+                html+="<div class='input-box'>";
                 html+="<input type='hidden'  name='"+name+"' id='"+name+"' value='"+qty+"'/>";
-                html+="<input type='button' id='qtyswitcher-onemore"+idVal+"' class='qtyswitcher.btn' onclick='qtyswitcher.addOne(\""+name+"\",\""+name+"-clone-qty\");'/>";
+                html+="<input type='button' id='qtyswitcher-onemore"+idVal+"' class='qtyswitcher btn' onclick='qtyswitcher.addOne(\""+name+"\",\""+name+"-clone-qty\");'/>";
+                html+="</div>";
                 //html+="<input type='image' id='qtyswitcher-form-btn-products"+idVal+"' src='' >"
-                html+="</div>"
+                html+="</div>";
                 e.replace(html);
 
             })
