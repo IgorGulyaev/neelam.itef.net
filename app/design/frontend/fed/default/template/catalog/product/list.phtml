@@ -237,7 +237,7 @@ $_helper = $this->helper('catalog/output');
     document.observe("dom:loaded", function() {
         qtyswitcher.init();
 
-    })
+    });
 
     qtyswitcher={
         groupedInit: function(quantity){
@@ -245,16 +245,16 @@ $_helper = $this->helper('catalog/output');
             $$('.qty').each(function(e){
                 qty=e.value;
                 name=e.name;
-                idVal = jQuery(this).parent('form').attr('data-qty');
+                idVal = jQuery(this).parents('form').attr('data-qty');
                 html ="<div class='qtyswitcher-qty"+idVal+"'>";
                 html+="<div class='table'>";
                 html+="<div class='input-box'>";
-                html+="<input type='button' id='qtyswitcher-oneless"+idVal+"' class='qtyswitcher btn' onclick='qtyswitcher.removeOne(\""+name+"\",\""+name+"-clone-qty\")'/>";
+                html+="<input type='hidden'  name='"+name+"' id='"+name+"' value='"+qty+"'/>";
                 html+="<input type='text' class='input-text clone-qty' id='"+name+"-clone-qty' maxlength='12' value='"+qty+"' disabled='true' />";
                 html+="</div>";
                 html+="<div class='input-box'>";
-                html+="<input type='hidden'  name='"+name+"' id='"+name+"' value='"+qty+"'/>";
                 html+="<input type='button' id='qtyswitcher-onemore"+idVal+"' class='qtyswitcher btn' onclick='qtyswitcher.addOne(\""+name+"\",\""+name+"-clone-qty\");'/>";
+                html+="<input type='button' id='qtyswitcher-oneless"+idVal+"' class='qtyswitcher btn' onclick='qtyswitcher.removeOne(\""+name+"\",\""+name+"-clone-qty\")'/>";
                 html+="</div>";
                 //html+="<input type='image' id='qtyswitcher-form-btn-products"+idVal+"' src='' >"
                 html+="</div>";
@@ -272,7 +272,7 @@ $_helper = $this->helper('catalog/output');
             var formAct = jQuery(this).parents('form').attr('action');
             var formActNew = formAct+'&qty=['+count+']';
             jQuery(this).parents('form').attr('action', formActNew);
-            $(idClone).writeAttribute('value',count);		if(count<1) jQuery(this).parents('fieldset').find('.btn-cart').disabled=true;		else jQuery(this).parents('fieldset').find('.btn-cart').disabled=false;
+            $(idClone).writeAttribute('value',count);		if(count<1) jQuery(this).parents('fieldset').find('.btn-success').disabled=true;		else jQuery(this).parents('fieldset').find('.btn-success').disabled=false;
         },
         removeOne: function(id,idClone){
             count=Math.round($(id).value)-1;
@@ -281,7 +281,7 @@ $_helper = $this->helper('catalog/output');
             var formAct = jQuery(this).parents('form').attr('action');
             var formActNew = formAct+'&qty=['+count+']';
             jQuery(this).parents('form').attr('action', formActNew);
-            $(idClone).writeAttribute('value',count);		if(count<1) jQuery(this).parents('fieldset').find('.btn-cart').disabled=true;		else jQuery(this).parents('fieldset').find('.btn-cart').disabled=false;
+            $(idClone).writeAttribute('value',count);		if(count<1) jQuery(this).parents('fieldset').find('.btn-success').disabled=true;		else jQuery(this).parents('fieldset').find('.btn-success').disabled=false;
         }
 
     };
