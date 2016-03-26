@@ -192,6 +192,7 @@ $_helper = $this->helper('catalog/output');
                     </div>
                     <div class="col-md-3">
                         <?php if($_product->isSaleable()): ?>
+                        <form action="<?php echo $this->getAddToCartUrl($_product) ?>" method="post" class="add-to-cart-form" id="product_addtocart_form_<?php echo $_product->getId()?>"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?> data-qty="<?php echo $_product->getId() ?>" >
                             <fieldset class="qtyswitcher-add-to-cart-box table">
                                 <div id="qtyswitcher-btn-picto-<?php echo $_product->getId() ?>" class="table-cell">
                                     <button type="button" class="btn btn-success" onclick="this.form.submit()"><?php echo $this->__('Add to Cart') ?></button>
@@ -218,6 +219,7 @@ $_helper = $this->helper('catalog/output');
                                     <script language="javascript">qtyswitcher.groupedInit("<?php //echo $this->__("Quantity"); ?>")</script>
                                 <?php endif; ?>
                             </fieldset>
+                        </form>
                         <?php endif; ?>
                     </div>
                 </div>
