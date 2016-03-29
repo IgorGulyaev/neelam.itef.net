@@ -144,7 +144,7 @@ Compare products page
 
                 </block>
 
-                <block type="catalog/product_view_additional" name="product.info.additional" as="product_additional_data" />
+                <block type="catalog/product_view_attributes" name="product.attributes.main" as="product_attributes_main" template="catalog/product/view/attributes_main.phtml" />
 
                 <action method="setTierPriceTemplate"><template>catalog/product/view/tierprices.phtml</template></action>
 
