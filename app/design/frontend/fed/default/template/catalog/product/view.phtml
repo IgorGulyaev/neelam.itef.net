@@ -116,7 +116,7 @@
 
 	<div class="col-md-7">
 
-		<div class="product-shop" style="border: 5px solid #ccc; padding: 15px;">
+		<div class="product-shop">
 
             <div class="product-name">
 
@@ -131,7 +131,7 @@
             <?php echo $this->getChildHtml('alert_urls') ?>
 
             <?php echo $this->getChildHtml('product_type_data') ?>
-            <?php echo $this->getChildHtml('product_attributes_main') ?>
+            <?php /*echo $this->getChildHtml('product_attributes_main') */?>
 
             <div class="text-danger lead">
 
@@ -141,85 +141,39 @@
                 <p class="email-friend" style="font-size: 14px">  <a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>" title="Email To Friend"><span class="glyphicon glyphicon-envelope"></span>&nbsp;Email to friend</a></p>
 <br/>
             <?php }?>
-
 			<?php echo $this->getPriceHtml($_product, true); ?>
-
 			</div>
-
             <?php echo $this->getChildHtml('extrahint') ?>
-
-
-
             <?php if (!$this->hasOptions()):?>
-
                 <div class="add-to-box">
-
                     <?php if($_product->isSaleable()): ?>
-
 						<?php $buttonTitle = $this->__('Add to Cart'); ?>
-
-
-
-    <div class="add-to-cart">
-
-        <?php if(!$_product->isGrouped()): ?>
-
-        <div class="quanitybox">
-
-            <div class="row">
-
-			<div class="col-md-4">
-
-			<div class="input-group">
-
-							  <span class="input-group-addon" onclick="qtyDown()" style="cursor:pointer">-</span>
-
-							  <input type="text" name="qty" id="qty" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="form-control qty"  />
-
-							  <span class="input-group-addon" onclick="qtyUp()" style="cursor:pointer">+</span>
-
-						</div>
-
-			</div>
-
-
-<div class="col-md-12" style="margin-top: 20px;">
-
-<button title="<?php echo $buttonTitle ?>" class="btn btn-success btn-lg" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle; ?></span></span></button>
-
-
-
-</div>
-
-			</div>
-
-
-        </div>
-
-        <?php endif; ?>
-
-
-
-
-
-    </div>
-
-				<!--<?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
-
-                            <span class="or"><?php echo $this->__('OR') ?></span>
-
+                    <div class="add-to-cart">
+                        <?php if(!$_product->isGrouped()): ?>
+                        <div class="quanitybox">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon" onclick="qtyDown()" style="cursor:pointer">-</span>
+                                        <input type="text" name="qty" id="qty" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="form-control qty"  />
+                                        <span class="input-group-addon" onclick="qtyUp()" style="cursor:pointer">+</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12" style="margin-top: 20px;">
+                                    <button title="<?php echo $buttonTitle ?>" class="btn btn-success btn-lg" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle; ?></span></span></button>
+                                </div>
+                            </div>
+                        </div>
                         <?php endif; ?>
-
+                    </div>
+				<!--<?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+                            <span class="or"><?php echo $this->__('OR') ?></span>
+                        <?php endif; ?>
                     <?php endif; ?>
-
                     <?php echo $this->getChildHtml('addto') ?>-->
-
                 </div>
-
             <?php endif; ?>
-
 <br/><br/>
-
             <?php if ($_product->getShortDescription()):?>
 
                 <div class="short-description">
