@@ -163,10 +163,12 @@ $_specialPriceStoreLabel = $this->getProductAttribute('special_price')->getStore
             <?php endif; ?>
         <?php else: ?>
             <?php if ($_weeeTaxAmount && $_weeeHelper->typeOfDisplay($_product, 0)): // including ?>
+                <span class="label"><?php echo $this->__('Цена ') ?></span>
                 <span class="regular-price" id="product-price-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
                     <?php echo $_coreHelper->currency($_price + $_weeeTaxAmount, true, true) ?>
                 </span>
             <?php elseif ($_weeeTaxAmount && $_weeeHelper->typeOfDisplay($_product, 1)): // incl. + weee ?>
+                <span class="label"><?php echo $this->__('Цена ') ?></span>
                 <span class="regular-price" id="product-price-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
                     <?php echo $_coreHelper->currency($_price + $_weeeTaxAmount, true, true) ?>
                 </span>
@@ -178,6 +180,7 @@ $_specialPriceStoreLabel = $this->getProductAttribute('special_price')->getStore
                     <?php endforeach; ?>
                     )</span>
             <?php elseif ($_weeeTaxAmount && $_weeeHelper->typeOfDisplay($_product, 4)): // incl. + weee ?>
+                <span class="label"><?php echo $this->__('Цена ') ?></span>
                 <span class="regular-price" id="product-price-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
                     <?php echo $_coreHelper->currency($_price + $_weeeTaxAmount, true, true) ?>
                 </span>
@@ -189,6 +192,7 @@ $_specialPriceStoreLabel = $this->getProductAttribute('special_price')->getStore
                     <?php endforeach; ?>
                     )</span>
             <?php elseif ($_weeeTaxAmount && $_weeeHelper->typeOfDisplay($_product, 2)): // excl. + weee + final ?>
+                <span class="label"><?php echo $this->__('Цена ') ?></span>
                 <span class="regular-price"><?php echo $_coreHelper->currency($_price,true,true) ?></span><br />
                 <?php foreach ($_weeeTaxAttributes as $_weeeTaxAttribute): ?>
                     <span class="weee">
@@ -199,6 +203,7 @@ $_specialPriceStoreLabel = $this->getProductAttribute('special_price')->getStore
                     <?php echo $_coreHelper->currency($_price + $_weeeTaxAmount, true, true) ?>
                 </span>
             <?php else: ?>
+                <span class="label"><?php echo $this->__('Цена ') ?></span>
                 <span class="regular-price" id="product-price-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
                     <?php if ($_finalPrice == $_price): ?>
                         <?php echo $_coreHelper->currency($_price, true, true) ?>
@@ -398,7 +403,7 @@ $_specialPriceStoreLabel = $this->getProductAttribute('special_price')->getStore
         <?php else:?>
         <span class="minimal-price-link">
         <?php endif?>
-            <span class="label"><?php echo $this->__('As low as:') ?></span>
+            <span class="label"><?php echo $this->__('Оптовая цена ') ?></span>
             <span class="price" id="product-minimal-price-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
                 <?php echo $_coreHelper->currency($_minimalPriceDisplayValue, true, false) ?>
             </span>

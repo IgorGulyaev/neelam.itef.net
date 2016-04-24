@@ -166,21 +166,34 @@ body {
   }
 }
 
+.product-view .quanitybox,
 .qtyswitcher-add-to-cart-box {
+  width: auto;
   background-color: #dfce94;
-  border: 1px solid #cdc094;
+  border: 1px solid #c9bb8b;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
+  .table-cell {
+    vertical-align: middle;
+  }
   .btn-success {
     height: 35px;
+    width: 83px;
     padding: 0 10px;
     background: none;
     border: none;
-    color: #6f5050;
+    color: #8b5c4c;
     font-size: 13px;
     line-height: 16px;
     white-space: normal;
+  }
+  .input-group-addon,
+  .qtyswitcher.btn {
+    display: block;
+    padding: 2px;
+    background-color: #dfce94;
+    color: #360e04;
   }
 }
 
@@ -195,6 +208,7 @@ body {
     }
     .input-box {
       display: table-cell;
+      vertical-align: middle;
       input {
         &.qtyswitcher.btn {
           display: block;

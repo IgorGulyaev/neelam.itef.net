@@ -117,8 +117,8 @@ $_helper = $this->helper('catalog/output');
                                                                     <input type="hidden"  name="qty" id="qtyswitcher-qty-<?php echo $_product->getId() ?>" value="<?php echo $qty;?>"/>
                                                                 </div>
                                                                 <div class="input-box">
-                                                                    <input type='button' id="qtyswitcher-onemore-<?php echo $_product->getId() ?>" class='qtyswitcher btn' onclick="qtyswitcher.addOne('qtyswitcher-qty-<?php echo $_product->getId() ?>','qtyswitcher-clone-qty-<?php echo $_product->getId() ?>');"/>
-                                                                    <input type='button' id="qtyswitcher-oneless-<?php echo $_product->getId() ?>" class='qtyswitcher btn' onclick="qtyswitcher.removeOne('qtyswitcher-qty-<?php echo $_product->getId() ?>','qtyswitcher-clone-qty-<?php echo $_product->getId() ?>')"/>
+                                                                    <input type='button' id="qtyswitcher-onemore-<?php echo $_product->getId() ?>" class='qtyswitcher btn' value="▲" onclick="qtyswitcher.addOne('qtyswitcher-qty-<?php echo $_product->getId() ?>','qtyswitcher-clone-qty-<?php echo $_product->getId() ?>');"/>
+                                                                    <input type='button' id="qtyswitcher-oneless-<?php echo $_product->getId() ?>" class='qtyswitcher btn' value="▼" onclick="qtyswitcher.removeOne('qtyswitcher-qty-<?php echo $_product->getId() ?>','qtyswitcher-clone-qty-<?php echo $_product->getId() ?>')"/>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -194,8 +194,8 @@ $_helper = $this->helper('catalog/output');
                                             <input type="hidden"  name="qty" id="qtyswitcher-qty-<?php echo $_product->getId() ?>" value="<?php echo $qty;?>"/>
                                         </div>
                                         <div class="input-box">
-                                            <input type='button' id="qtyswitcher-onemore-<?php echo $_product->getId() ?>" class='qtyswitcher btn' onclick="qtyswitcher.addOne('qtyswitcher-qty-<?php echo $_product->getId() ?>','qtyswitcher-clone-qty-<?php echo $_product->getId() ?>');"/>
-                                            <input type='button' id="qtyswitcher-oneless-<?php echo $_product->getId() ?>" class='qtyswitcher btn' onclick="qtyswitcher.removeOne('qtyswitcher-qty-<?php echo $_product->getId() ?>','qtyswitcher-clone-qty-<?php echo $_product->getId() ?>')"/>
+                                            <a id="qtyswitcher-onemore-<?php echo $_product->getId() ?>" class='qtyswitcher btn fa fa-caret-up' onclick="qtyswitcher.addOne('qtyswitcher-qty-<?php echo $_product->getId() ?>','qtyswitcher-clone-qty-<?php echo $_product->getId() ?>');"></a>
+                                            <a id="qtyswitcher-oneless-<?php echo $_product->getId() ?>" class='qtyswitcher btn fa fa-caret-down' onclick="qtyswitcher.removeOne('qtyswitcher-qty-<?php echo $_product->getId() ?>','qtyswitcher-clone-qty-<?php echo $_product->getId() ?>')"></a>
                                         </div>
                                     </div>
                                 </div>

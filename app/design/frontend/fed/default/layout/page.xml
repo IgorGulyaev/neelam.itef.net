@@ -120,6 +120,7 @@ Default layout, loads most of the pages
 
 				<action method="addCss"><stylesheet>css/bootstrap.css</stylesheet></action>
 
+				<action method="addCss"><stylesheet>css/font-awesome.min.css</stylesheet></action>
 				<action method="addCss"><stylesheet>css/custom.css</stylesheet></action>
 
 				<action method="addCss"><stylesheet>css/bootstrap-responsive.min.css</stylesheet></action>

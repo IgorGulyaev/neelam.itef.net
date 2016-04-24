@@ -125,6 +125,10 @@
 
             </div>
 
+            <div class="product-info">
+                <?php echo $_helper->productAttribute($_product, $_product->getDescription(), 'description'); ?>
+            </div>
+
 
             <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
 
@@ -150,20 +154,53 @@
 						<?php $buttonTitle = $this->__('Add to Cart'); ?>
                     <div class="add-to-cart">
                         <?php if(!$_product->isGrouped()): ?>
-                        <div class="quanitybox">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" onclick="qtyDown()" style="cursor:pointer">-</span>
-                                        <input type="text" name="qty" id="qty" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="form-control qty"  />
-                                        <span class="input-group-addon" onclick="qtyUp()" style="cursor:pointer">+</span>
+                            <div class="actions-box">
+                                <?php if($_product->isSaleable()): ?>
+                                    <form action="<?php echo $this->getAddToCartUrl($_product) ?>" method="post" class="add-to-cart-form" id="product_addtocart_form_<?php echo $_product->getId()?>"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?> data-qty="<?php echo $_product->getId() ?>" >
+                                        <fieldset class="qtyswitcher-add-to-cart-box table">
+                                            <div id="qtyswitcher-btn-picto-<?php echo $_product->getId() ?>" class="table-cell">
+                                                <button type="button" class="btn btn-success" onclick="this.form.submit()"><?php echo $this->__('Add to Cart') ?></button>
+                                            </div>
+                                            <div class="qtyswitcher-qty table-cell">
+                                                <?php if(!$_product->isGrouped()): ?>
+                                                <?php if(!is_numeric($this->getMinimalQty($_product))) : $qty= 1; ?>
+                                                <?php else : $qty=$this->getMinimalQty($_product);?>
+                                                <?php endif; ?>
+
+                                                <div class="table">
+                                                    <div class="input-box">
+                                                        <input type="text" name="qty" id="qty" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text clone-qty qty"  />
+                                                    </div>
+                                                    <div class="input-box">
+                                                        <a id="qtyswitcher-onemore-<?php echo $_product->getId() ?>" class='qtyswitcher btn fa fa-caret-up' onclick="qtyUp()"></a>
+                                                        <a id="qtyswitcher-oneless-<?php echo $_product->getId() ?>" class='qtyswitcher btn fa fa-caret-down' onclick="qtyDown()"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?php else :?>
+
+                                                <script language="javascript">qtyswitcher.groupedInit("<?php //echo $this->__("Quantity"); ?>")</script>
+                                            <?php endif; ?>
+                                        </fieldset>
+                                    </form>
+                                <?php endif; ?>
+                            </div>
+                            <!--<div class="quanitybox table">
+                            <div class="bnt-group table-cell">
+                                <button title="<?php /*echo $buttonTitle */?>" class="btn btn-success btn-lg" onclick="productAddToCartForm.submit(this)"><span><span><?php /*echo $buttonTitle; */?></span></span></button>
+                            </div>
+                            <div class="inputs-wrapper table-cell">
+                                <div class="input-group table">
+                                    <div class="table-cell">
+                                        <input type="text" name="qty" id="qty" value="<?php /*echo $this->getProductDefaultQty() * 1 */?>" title="<?php /*echo $this->__('Qty') */?>" class="form-control qty"  />
+                                    </div>
+                                    <div class="qty-group table-cell">
+                                        <span class="input-group-addon" onclick="qtyUp()" style="cursor:pointer"><i class="fa fa-caret-up"></i></span>
+                                        <span class="input-group-addon" onclick="qtyDown()" style="cursor:pointer"><i class="fa fa-caret-down"></i></span>
                                     </div>
                                 </div>
-                                <div class="col-md-12" style="margin-top: 20px;">
-                                    <button title="<?php echo $buttonTitle ?>" class="btn btn-success btn-lg" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle; ?></span></span></button>
-                                </div>
                             </div>
-                        </div>
+                        </div>-->
                         <?php endif; ?>
                     </div>
 				<!--<?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
@@ -173,19 +210,6 @@
                     <?php echo $this->getChildHtml('addto') ?>-->
                 </div>
             <?php endif; ?>
-<br/><br/>
-            <?php if ($_product->getShortDescription()):?>
-
-                <div class="short-description">
-
-                    <h4><?php echo $this->__('Quick Overview') ?></h4>
-
-                    <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
-
-                </div>
-
-            <?php endif;?>
-
 
 
             <?php echo $this->getChildHtml('other');?>

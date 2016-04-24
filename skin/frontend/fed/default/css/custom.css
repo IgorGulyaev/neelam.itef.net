@@ -75,18 +75,34 @@
     padding-left: 15px
 }
 
-.products-grid .ratings {
+.category-products .ratings {
     font-size: 10px;
     display: block
 }
 
-.products-grid .ratings a {
+.category-products .ratings a {
     color: #eb1414
 }
 
-.products-grid .price-box {
-    padding-top: 10px;
-    height: 65px
+.category-products .price-box {
+    min-height: 65px;
+}
+.category-products .price-box .label {
+    padding-left: 0;
+    color: #74544c;
+    font-size: 14px;
+    font-weight: normal;
+}
+.category-products .price-box .price {
+    color: #392119;
+    font-size: 14px;
+}
+
+.minimal-price-link {
+    display: block;
+}
+.minimal-price-link .label {
+    color: #9a0a0a !important;
 }
 
 .products-grid .price-box .regular-price, .products-grid .price-box .special-price {
@@ -697,8 +713,12 @@
 }
 
 .price-product, .title-product {
-    font-weight: 700;
-    text-align: center
+
+}
+.title-product a {
+    color: #74544c;
+    font-size: 14px;
+    text-decoration: underline;
 }
 
 #nav div, #nav ul {
@@ -756,7 +776,8 @@
 
 .title-product {
     font-size: 14px;
-    padding-top: 20px
+    padding-top: 20px;
+    margin-bottom: 5px;
 }
 
 .title-product a:hover {
@@ -765,7 +786,7 @@
 }
 
 .price-product {
-    font-size: 22px;
+    font-size: 14px;
     color: #6dab72
 }
 
