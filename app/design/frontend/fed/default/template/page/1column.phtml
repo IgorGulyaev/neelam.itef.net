@@ -10,9 +10,15 @@
 
 </head>
 
-<body>
-
-	
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.6";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
 
 	<!-- Header part -->
 
@@ -53,19 +59,10 @@ Mage::app()->getFrontController()->getRequest()->getRouteName() == 'cms' ) { /* 
 	
 
 	<!--Footer part-->
-
 	<div class="footer">
-
 		<div class="col-md-12">
-
 	  		<?php echo $this->getChildHtml('footer');?>
-
 	  	</div>
-
 	</div>
-
 </body>
-
-
-
 </html>

@@ -86,6 +86,58 @@ body {
   }
 }
 
+.home-newsletter-wrapper {
+  margin: 0 -300% 60px;
+  border-top: 2px solid #e8dec1;
+  border-bottom: 2px solid #e8dec1;
+  background: url("@{path}images/subscribe.jpg") no-repeat center center;
+  -webkit-background-size: 100vw 100%;
+  background-size: 100vw 100%;
+  .panel {
+    margin: 0;
+    border: 0;
+    background: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    .panel-body {
+      padding: 15px 0 10px;
+    }
+    .form-subscribe-header {
+      color: #61382c;
+      font-size: 16px;
+    }
+    .form-subscribe-body {
+      .table {
+        margin: 0;
+        border: 1px solid #d4c48d;
+        border-radius: 2px;
+        background-color: #fff;
+        &> * {
+          float: none;
+          height: 42px;
+          vertical-align: middle;
+          font-size: 16px;
+        }
+        input {
+          width: 65%;
+          border: 0;
+          border-top-left-radius: 2px;
+          border-bottom-left-radius: 2px;
+        }
+        button {
+          width: 35%;
+          border: 0;
+          border-left: 1px solid #d4c48d;
+          border-radius: 2px;
+          background-color: #dfce94;
+          color: #8b5c4c;
+        }
+      }
+    }
+  }
+}
+
 .skip-cart {
   position: relative;
   display: inline-block;

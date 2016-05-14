@@ -69,10 +69,8 @@
 
 }
 
-.products-grid .product-image {
-    height: 170px;
-    width: 170px;
-    padding-left: 15px
+.products-grid .product-image img {
+    border: 1px solid #bfa45f;
 }
 
 .category-products .ratings {
@@ -761,6 +759,18 @@
 
 #nav li .shown-sub li div.shown-sub, #nav li .shown-sub ul.shown-sub {
     left: 118px
+}
+
+.cms-index-index .slidercontainer {
+    margin-bottom: 143px;
+}
+
+.cms-index-index .page-title {
+    display: none !important;
+}
+
+#vk_groups {
+    margin-bottom: 20px;
 }
 
 .footer_first {

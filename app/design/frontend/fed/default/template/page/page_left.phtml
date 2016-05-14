@@ -4,7 +4,7 @@
 <!--<link href='http://fonts.googleapis.com/css?family=Bad+Script' rel='stylesheet' type='text/css'>-->
 <?php echo $this->getChildHtml('head');?>
 </head>
-<body>
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
 
 <!-- Header part -->
 

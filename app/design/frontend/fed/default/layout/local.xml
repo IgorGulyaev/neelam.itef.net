@@ -42,9 +42,35 @@
 
     <cms_index_index>
         <reference name="content">
-            <block type="catalog/product_new" name="home.catalog.product.new" alias="product_new" template="catalog/product/new.phtml" after="cms_page">
-                <action method="addPriceBlockType"><type>bundle</type><block>bundle/catalog_product_price</block><template>bundle/catalog/product/price.phtml</template></action>
-                <action method="setProductsCount"><count>8</count></action>
+            <action method="unsetChild"><name>product_list_toolbar</name></action>
+            <block type="core/template" name="category.products" template="ma2_featuredproducts/standalone.phtml">
+                <block type="featuredproducts/standalone_list" name="featured_product_list" as="featured_product_list" template="ma2_featuredproducts/standalone_list.phtml" />
+            </block>
+            <block type="core/template" name="home.newsletter.wrapper" template="page/template/block.phtml">
+                <action method="setElementClass"><value>home-newsletter-wrapper</value></action>
+                <block type="core/template" name="home.newsletter.container" template="page/template/block.phtml">
+                    <action method="setElementClass"><value>container</value></action>
+                    <block type="newsletter/subscribe" name="home.newsletter" template="newsletter/subscribe.phtml"/>
+                </block>
+            </block>
+            <block type="core/template" name="home.before.end.wrapper" template="page/template/block.phtml">
+                <action method="setElementClass"><value>home-before-end-wrapper row</value></action>
+                <block type="core/template" name="home.before.end.left" template="page/template/block.phtml">
+                    <action method="setElementClass"><value>col-sm-4</value></action>
+                    <block type="core/template" name="home.before.end.left.title" template="page/template/title.phtml">
+                        <action method="setTitleText"><value>Наши подписчики</value></action>
+                    </block>
+                    <block type="cms/block" name="vk.widget" as="vk_widget">
+                        <action method="setBlockId"><block_id>vk_widget</block_id></action>
+                    </block>
+                    <block type="cms/block" name="fb.widget" as="fb_widget">
+                        <action method="setBlockId"><block_id>fb_widget</block_id></action>
+                    </block>
+                </block>
+                <block type="core/template" name="home.before.end.right" template="page/template/block.phtml">
+                    <action method="setElementClass"><value>col-sm-8</value></action>
+
+                </block>
             </block>
         </reference>
     </cms_index_index>

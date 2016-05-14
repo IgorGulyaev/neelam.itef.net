@@ -3,7 +3,7 @@
 <head>
 <?php echo $this->getChildHtml('head');?>	
 </head>
-<body>
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
 <!-- Header part -->
 
 <header id="header" class="row">

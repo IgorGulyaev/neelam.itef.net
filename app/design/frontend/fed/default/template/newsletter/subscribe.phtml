@@ -25,20 +25,17 @@
  */
 ?>
 <div class="panel panel-info">
-    <div class="panel-heading">
-        <strong><span><?php echo $this->__('Newsletter') ?></span></strong>
-    </div>
     <form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="newsletter-validate-detail">
-        <div class="panel-body">
-            <div class="form-subscribe-header">
-                <label for="newsletter"><?php echo $this->__('Sign Up for Our Newsletter:') ?></label>
+        <div class="panel-body row">
+            <div class="form-subscribe-header col-sm-6">
+                <label for="newsletter"><?php echo $this->__('Новые поступления и новинки только для Вас!') ?><br/><?php echo $this->__('Подпишитесь и получите рассылку наших предложений.') ?></label>
             </div>
-            <div class="input-box">
-               <input type="text" name="email" id="newsletter" title="<?php echo $this->__('Sign up for our newsletter') ?>" class="input-text required-entry validate-email form-control" />
-            </div>
-<br/>
-            <div class="actions">
-               <button type="submit" title="<?php echo $this->__('Subscribe') ?>" class="btn btn-success btn-xs"><span><span><?php echo $this->__('Subscribe') ?></span></span></button>
+            <div class="col-sm-2 hidden-xs"></div>
+            <div class="form-subscribe-body col-sm-4">
+                <div class="table">
+                    <input type="text" name="email" id="newsletter" title="<?php echo $this->__('Sign up for our newsletter') ?>" placeholder="<?php echo $this->__('Введите Ваш email...') ?>" class="input-text required-entry validate-email form-control table-cell" />
+                    <button type="submit" title="<?php echo $this->__('Subscribe') ?>" class="btn btn-success btn-xs table-cell"><span><span><?php echo $this->__('Subscribe') ?></span></span></button>
+                </div>
             </div>
         </div>
     </form>
