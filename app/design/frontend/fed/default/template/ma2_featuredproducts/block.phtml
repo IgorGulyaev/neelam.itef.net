@@ -39,18 +39,17 @@
     <?php else: ?>
     
     <div class="product-items">
-      <div class="product-items-inner">
-        <?php 
-          $idx=0; 
+      <div class="product-items-inner row">
+        <?php
           $_collectionSize = $FeaturedProductCollection->count(); 
           $inlineStyle = ($list_type == 'grid') ? 'style="width:'.$item_width.'%;"' : '';
-          if ($list_type == 'grid' && ($column_count == null || (int)$column_count == 0)) $column_count = 3;
-          if ($list_type == 'list') $column_count = 1;
+          if ($list_type == 'grid') $column_count = 'col-xs-12 col-sm-3';
+          if ($list_type == 'list') $column_count = 'col-xs-12 col-sm-12';
           if (!intval($thumbnail_width)) $thumbnail_width = 135;
           if (!intval($thumbnail_height)) $thumbnail_height = 135;
         ?>
         <?php foreach ($FeaturedProductCollection->getItems() as $pid => $_product): ?>
-          <div class="product-item product-<?php echo $pid; ?> <?php echo ($idx == 0) ? 'first' : (($idx+1) == $_collectionSize ? 'last' : ''); ?>" <?php echo $inlineStyle ?>>
+          <div class="product-item product-<?php echo $pid; ?> <?php echo $column_count; ?> " <?php echo $inlineStyle ?>>
             <div class="product-item-inner">
               
               <a class="product-image" href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>">
@@ -103,7 +102,6 @@
               </div>
             </div>
           </div>
-          <?php if (($idx+1) % $column_count == 0 || ($idx+1) == $_collectionSize) echo '<div class="clear"></div>'; ?>
         <?php $idx++; ?>
         <?php endforeach; ?>
         

@@ -38,10 +38,8 @@
         <?php // Grid Mode ?>
         <?php $_collectionSize = $FeaturedProductCollection->count() ?>
         <?php $_columnCount = $this->getColumnCount(); ?>
+        <ul class="products-grid row">
         <?php $i = 0;foreach ($FeaturedProductCollection as $_product): ?>
-        <?php if ($i++ % $_columnCount == 0): ?>
-          <ul class="products-grid row">
-        <?php endif ?>
           <li class="col-xs-6 col-sm-3 item<?php if (($i - 1) % $_columnCount == 0): ?> first<?php elseif ($i % $_columnCount == 0): ?> last<?php endif; ?>">
             <a href="<?php echo $_product->getProductUrl() ?>"
                title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
@@ -56,10 +54,8 @@
             </div>
 
           </li>
-          <?php if ($i % $_columnCount == 0 || $i == $_collectionSize): ?>
-          </ul>
-        <?php endif ?>
         <?php endforeach ?>
+        </ul>
           <script
               type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd', 'even', 'first', 'last'])</script>
       </div>

@@ -50,7 +50,8 @@
    // $_specialPriceStoreLabel = $this->getProductAttribute('special_price')->getStoreLabel();
 	$_specialPriceStoreLabel = '';
 if ($this->getProductAttribute('special_price')) {
-$_specialPriceStoreLabel = $this->getProductAttribute('special_price')->getStoreLabel(); }?>
+$_specialPriceStoreLabel = 'Специальная цена:'; }?>
+<!--$_specialPriceStoreLabel = $this->getProductAttribute('special_price')->getStoreLabel(); }?>-->
 
 <?php if (!$_product->isGrouped()): ?>
     <?php $_weeeTaxAmount = $_weeeHelper->getAmountForDisplay($_product); ?>
@@ -282,7 +283,7 @@ $_specialPriceStoreLabel = $this->getProductAttribute('special_price')->getStore
                 </span>
             <?php else: ?>
                 <p class="special-price">
-                <span class="price-label"><?php echo $this->__('Special Price:') ?></span>
+                <span class="price-label"><?php echo $this->__('Специальная цена:') ?></span>
                 <span class="price" id="product-price-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
                     <?php echo $_coreHelper->currency($_finalPrice + $_weeeTaxAmountInclTaxes, true, false) ?>
                 </span>

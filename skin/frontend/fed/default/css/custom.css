@@ -108,6 +108,7 @@
 }
 
 .products-grid .price-box .old-price {
+    margin-bottom: 0;
     text-decoration: line-through;
     color: #c2c2c2
 }
