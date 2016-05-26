@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <mageplaza translate="label">
+            <label>Mageplaza Extensions</label>
+            <sort_order>100</sort_order>
+        </mageplaza>
+    </tabs>
+    <sections>
+        <bannerslider translate="label" module="bannerslider">
+            <class>separator-top</class>
+            <label>Banner Sliders</label>
+            <tab>mageplaza</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>299</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+
+                        <documentations translate="label comment">
+                            <label>Documentations</label>
+                            <frontend_type>label</frontend_type>
+                            <frontend_model>bannerslider/adminhtml_renderer_field</frontend_model>
+                            <margin_top>0px</margin_top>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[
+                                        <a href="https://mageplaza.freshdesk.com/support/solutions/folders/6000215834" target="_blank">User Guide</a> <br>
+                                        <a href="https://mageplaza.freshdesk.com/support/discussions/topics/new?forum_id=6000240993" target="_blank">Report a problem</a> <br>
+                                        ]]></comment>
+                        </documentations>
+
+
+                        <is_enabled translate="label">
+                            <label>Enable</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>2</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </is_enabled>
+                        <traffic_enabled translate="label">
+                            <label>Enable Traffic Tracking</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>It may slow down your site.</comment>
+                        </traffic_enabled>
+                        <!--<editor translate="label">-->
+                            <!--<label>Choose Editor</label>-->
+                            <!--<frontend_type>select</frontend_type>-->
+                            <!--<sort_order>20</sort_order>-->
+                            <!--<source_model>bannerslider/system_config_source_editor</source_model>-->
+                            <!--<show_in_default>1</show_in_default>-->
+                            <!--<show_in_website>1</show_in_website>-->
+                            <!--<show_in_store>1</show_in_store>-->
+                            <!--<comment>Html Editor for Advanced Sliders.</comment>-->
+                        <!--</editor>-->
+                    </fields>
+                </general>
+            </groups>
+        </bannerslider>
+    </sections>
+</config>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <!-- update layout for all frontend page -->
+        <!--<reference name="head">-->
+            <!--<action method="addJs"><script>mageplaza/bannerslider/jquery-2.1.4.min.js</script></action>-->
+        <!--</reference>-->
+    </default>
+    <bannerslider_index_index>
+        <reference name="content">
+            <block type="bannerslider/bannerslider" name="bannerslider" template="bannerslider/bannerslider.phtml" />
+        </reference>
+    </bannerslider_index_index>
+</layout>

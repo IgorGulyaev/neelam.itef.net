@@ -1,0 +1,51 @@
+<link rel="stylesheet" type="text/css"
+      href="<?php echo $this->getSkinUrl('css/mageplaza/bannerslider/editor/dialog/dialog.css') ?>" media="all"/>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/editor/mode/clike/clike.js') ?>"></script>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/editor/keymap/emacs.js') ?>"></script>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/editor/edit/matchbrackets.js') ?>"></script>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/editor/comment/comment.js') ?>"></script>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/editor/dialog/dialog.js') ?>"></script>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/editor/search/searchcursor.js') ?>"></script>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/editor/search/search.js') ?>"></script>
+<script>
+    var editorQueue = {};
+    var cntQueue = 0;
+    CodeMirror.commands.save = function () {
+        var elt = editor.getWrapperElement();
+        elt.style.background = "#def";
+        setTimeout(function () {
+            elt.style.background = "";
+        }, 300);
+    };
+    document.observe('dom:loaded', function () {
+        var prefix = $("prefix");
+        addEditor(prefix);
+        var suffix = $("suffix");
+        addEditor(suffix);
+        var htmlText = $("html_text");
+        addEditor(htmlText);
+
+    });
+    function refreshEditor(editor) {
+        editor.refresh();
+        editor.save();
+    }
+    function addEditor(el) {
+        var edt = CodeMirror.fromTextArea(el, {
+            lineNumbers: true,
+            mode: "text/x-csrc",
+            keyMap: "emacs"
+        });
+        editorQueue[el.id] = edt;
+        cntQueue++;
+        setTimeout(function () {
+            refreshEditor(edt);
+        }, 200)
+    }
+    function processEditorQueue(){
+        for(index in editorQueue){
+            refreshEditor(editorQueue[index]);
+        }
+
+    }
+</script>

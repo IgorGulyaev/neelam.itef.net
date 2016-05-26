@@ -1,0 +1,40 @@
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/editor/hint/show-hint.js') ?>"></script>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/editor/hint/javascript-hint.js') ?>"></script>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/editor/mode/javascript.js') ?>"></script>
+<link rel="stylesheet" type="text/css"
+      href="<?php echo $this->getSkinUrl('css/mageplaza/bannerslider/editor/hint/show-hint.css') ?>" media="all"/>
+<script>
+    var editorQueue = {};
+    var cntQueue = 0;
+    document.observe('dom:loaded', function () {
+        var prefix = $("prefix");
+        addEditor(prefix);
+        var suffix = $("suffix");
+        addEditor(suffix);
+        var htmlText = $("html_text");
+        addEditor(htmlText);
+
+    });
+    function refreshEditor(editor) {
+        editor.refresh();
+        editor.save();
+    }
+    function addEditor(el) {
+        var edt = CodeMirror.fromTextArea(el, {
+            lineNumbers: true,
+            extraKeys: {"Ctrl-Space": "autocomplete"},
+            mode: {name: "javascript", globalVars: true}
+        });
+        editorQueue[el.id] = edt;
+        cntQueue++;
+        setTimeout(function () {
+            refreshEditor(edt);
+        }, 200)
+    }
+    function processEditorQueue(){
+        for(index in editorQueue){
+            refreshEditor(editorQueue[index]);
+        }
+
+    }
+</script>

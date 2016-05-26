@@ -1,0 +1,40 @@
+<link rel="stylesheet" type="text/css"
+      href="<?php echo $this->getSkinUrl('css/mageplaza/bannerslider/editor/scroll/simplescrollbars.css') ?>"
+      media="all"/>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/editor/mode/markdown/markdown.js') ?>"></script>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/editor/mode/xml/xml.js') ?>"></script>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/editor/scroll/simplescrollbars.js') ?>"></script>
+<script>
+    var editorQueue = {};
+    var cntQueue = 0;
+    document.observe('dom:loaded', function () {
+        var prefix = $("prefix");
+        addEditor(prefix);
+        var suffix = $("suffix");
+        addEditor(suffix);
+        var htmlText = $("html_text");
+        addEditor(htmlText);
+
+    });
+    function refreshEditor(editor) {
+        editor.refresh();
+        editor.save();
+    }
+    function addEditor(el) {
+        var edt = CodeMirror.fromTextArea(el, {
+            lineNumbers: true,
+            scrollbarStyle: "simple"
+        });
+        editorQueue[el.id] = edt;
+        cntQueue++;
+        setTimeout(function () {
+            refreshEditor(edt);
+        }, 200)
+    }
+    function processEditorQueue(){
+        for(index in editorQueue){
+            refreshEditor(editorQueue[index]);
+        }
+
+    }
+</script>

@@ -1,0 +1,67 @@
+<?php
+$data         = $this->getSimpleSliderData();
+$simpleSlider = $data['simple_slider'];
+$banners      = $data['banners'];
+$sliderConfig = Mage::helper('core')->jsonDecode($simpleSlider->getSliderConfig());
+?>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/popupslider/jquery.fancybox.js') ?>"></script>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/popupslider/jquery.fancybox.pack.js') ?>"></script>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/popupslider/jquery.fancybox-buttons.js') ?>"></script>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/popupslider/jquery.fancybox-thumbs.js') ?>"></script>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/trafficbanner.js') ?>"></script>
+
+<link rel="stylesheet" type="text/css"
+      href="<?php echo $this->getSkinUrl('css/mageplaza/bannerslider/jquery.fancybox.css') ?>" media="all"/>
+<link rel="stylesheet" type="text/css"
+      href="<?php echo $this->getSkinUrl('css/mageplaza/bannerslider/jquery.fancybox-buttons.css') ?>" media="all"/>
+
+<script type="text/javascript">
+    var js = jQuery.noConflict();
+    js(document).ready(function () {
+        //js('.fancybox').fancybox().trigger('click');
+        js('.fancybox').fancybox({
+            <?php foreach($sliderConfig as $key=>$value){
+            echo "$key : $value,";
+            }
+            ?>
+            <?php if($sliderConfig['showNavigation']) {echo " helpers: {buttons: {}}," ;}?>
+            closeBtn: false,
+//            helpers: {
+//                title: {
+//                    type: 'inside'
+//                },
+//                buttons: {}
+//            },
+
+            afterLoad: function () {
+                <?php if($sliderConfig['showNavigation']):?>
+                this.title = 'Image ' + (this.index + 1) + ' of ' + this.group.length + (this.title ? ' - ' + this.title : '');
+                <?php endif?>
+            }
+        }).trigger('click');
+
+
+    });
+</script>
+<?php foreach ($banners as $banner): ?>
+    <div class="fancybox" data-fancybox-group="gallery">
+        <a href="<?php echo $banner['link'] ?>" class="mageplaza-banner-link" title="<?php echo $banner['title'] ?>"
+           storeurl="<?php echo $this->getUrl('bannerslider/banner/traffic', array('banner_id' => $banner['banner_id'])) ?>"
+           style="display:block"><img alt="mageplaza_bannerslider"
+                                      src="<?php echo $this->getBannerImage($banner['source_file']); ?>"/></a>
+    </div>
+<?php endforeach; ?>
+
+<script>
+    $$('.mageplaza-banner-link').each(function (el) {
+        el.observe('click', function (evt) {
+            var target = evt.target;
+            if (!target.href) {
+                target = target.up('a');
+            }
+            window.location.href = target.href;
+        })
+    })
+</script>
+
+
