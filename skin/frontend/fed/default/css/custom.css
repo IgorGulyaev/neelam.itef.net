@@ -297,10 +297,6 @@
     color: #999
 }
 
-.footer_first, .nav-container, .product-view {
-    font-family: 'Alegreya Sans', sans-serif
-}
-
 .opc .step-title a {
     display: none;
     float: right;
@@ -773,16 +769,31 @@
     margin-bottom: 20px;
 }
 
+
+footer {
+    overflow: hidden;
+    background-color: #846e4f;
+    color: #fff;
+}
+
+.cms-home footer {
+    margin-top: 140px;
+}
+
+.footer_first, .nav-container, .product-view {
+    font-family: 'Alegreya Sans', sans-serif
+}
+
 .footer_first {
-    background-color: #e3e3e3;
     font-size: 14px;
     padding-top: 20px
 }
 
 .footer_second {
-    color: #fff;
+    color: #b6aa8a;
     padding: 5px
 }
+    .footer_second a {color: #b6aa8a;}
 
 .title-product {
     font-size: 14px;
