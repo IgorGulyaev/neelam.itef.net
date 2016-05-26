@@ -77,6 +77,10 @@
 }
 
 .products-grid .product-image img {
+    display: block;
+    height: auto;
+    width: 100%;
+    max-width: 214px;
     border: 1px solid #bfa45f;
 }
 
