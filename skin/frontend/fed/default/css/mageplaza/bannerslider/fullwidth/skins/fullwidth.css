@@ -1,0 +1,44 @@
+.ls-layer,
+.ls-layer * {
+    font-family: Arial, sans-serif;
+    font-weight: normal;
+    text-shadow: none !important;
+}
+
+.ls-s-1 {
+    border-radius: 100px;
+    /*-moz- border-radius: 100px;*/
+    /*-webkit- border-radius: 100px;*/
+    font-weight: normal;
+}
+
+.plus,
+.plus2 {
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    font-size: 50px;
+    line-height: 50px;
+    background: #eee;
+}
+
+.plus {
+    color: #3b173d;
+}
+
+.plus2 {
+    color: #1e73be;
+}
+
+.text,
+.text2 {
+    font-size: 26px;
+}
+
+.text {
+    color: #eee;
+}
+
+.text2 {
+    color: #1e73be;
+}

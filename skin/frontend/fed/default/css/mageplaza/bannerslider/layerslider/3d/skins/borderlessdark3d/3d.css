@@ -1,0 +1,41 @@
+.ls-layer,
+.ls-layer * {
+    font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    white-space: nowrap;
+}
+
+.l3s1, .l3s2, .l3s3 {
+    text-shadow: 0px 0px 10px white;
+    color: white;
+}
+
+.l3s1 {
+    font-size: 30px;
+}
+
+.l3s2 {
+    font-size: 60px;
+}
+
+.l3s3 {
+    font-size: 20px;
+    font-style: italic;
+}
+
+.l4s1, .l4s2, .l4s3, .l4s4 {
+    box-shadow: 0px 3px 10px -3px #002c4b;
+    background: #02cef7;
+    background: -moz-linear-gradient(top, #02cef7 0%, #009bba 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#02cef7), color-stop(100%,#009bba));
+    background: -webkit-linear-gradient(top, #02cef7 0%,#009bba 100%);
+    background: -o-linear-gradient(top, #02cef7 0%,#009bba 100%);
+    background: -ms-linear-gradient(top, #02cef7 0%,#009bba 100%);
+    background: linear-gradient(to bottom, #02cef7 0%,#009bba 100%);
+    text-shadow: 0px -1px 1px #00819c;
+    padding: 10px 15px 10px 15px;
+    border-top: 4px solid white;
+    font-size: 20px;
+    color: white;
+    border-radius: 7px;
+}
