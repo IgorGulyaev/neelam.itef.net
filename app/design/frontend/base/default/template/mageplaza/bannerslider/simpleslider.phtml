@@ -1,0 +1,25 @@
+<?php
+$result  = $this->getSimpleData();
+$simpleSlider   = $result['simple_slider'];
+$banners = $result['banners'];
+
+?>
+<?php if (count($banners) && count($simpleSlider->getData())): ?>
+    <?php if ($simpleSlider->getEnableTitle() == 1 && $simpleSlider->getSimpleSliderType() != Mageplaza_BannerSlider_Model_Simpleslider::TYPE_POPUP): ?>
+
+        <div class="mageplaza-simpleslider-title"
+             style="font: bold 16px/15px Arial, Helvetica, sans-serif;text-transform: uppercase;color: #d96708;">
+            <strong><span><?php echo $simpleSlider['title']; ?></span></strong></div>
+    <?php endif; ?>
+    <?php if ($simpleSlider->getPosition() == 'pop-up'): ?>
+        <?php echo $this->getSliderTemplate(Mageplaza_BannerSlider_Model_Simpleslider::TYPE_POPUP, $result) ?>
+        <?php
+        ?>
+    <?php else: ?>
+        <div class="mageplaza-simpleslider">
+            <div class="mageplaza-simpleslider-standard">
+                <?php echo $this->getSliderTemplate($simpleSlider->getSimpleSliderType(), $result) ?>
+            </div>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>

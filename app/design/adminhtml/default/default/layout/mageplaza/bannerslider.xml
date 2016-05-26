@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <bannerslideradmin_adminhtml_bannerslider_index>
+        <reference name="content">
+            <block type="bannerslider/adminhtml_bannerslider" name="bannerslider"/>
+        </reference>
+    </bannerslideradmin_adminhtml_bannerslider_index>
+    <bannerslideradmin_adminhtml_banner_index>
+        <reference name="content">
+            <block type="bannerslider/adminhtml_banner" name="bannerslider.banner"/>
+        </reference>
+    </bannerslideradmin_adminhtml_banner_index>
+    <bannerslideradmin_adminhtml_banner_grid>
+        <block type="core/text_list" name="root">
+            <block type="bannerslider/adminhtml_banner_grid" name="bannerslider.banner"/>
+        </block>
+    </bannerslideradmin_adminhtml_banner_grid>
+
+    <!--simpleSlider Layout-->
+    <bannerslideradmin_adminhtml_simpleslider_carousel>
+        <reference name="content">
+            <block type="bannerslider/adminhtml_simpleslider" name="bannerslider.simpleslider.carousel"/>
+        </reference>
+    </bannerslideradmin_adminhtml_simpleslider_carousel>
+    <bannerslideradmin_adminhtml_simpleslider_popup>
+        <reference name="content">
+            <block type="bannerslider/adminhtml_simpleslider" name="bannerslider.simpleslider.popup"/>
+        </reference>
+    </bannerslideradmin_adminhtml_simpleslider_popup>
+    <bannerslideradmin_adminhtml_simpleslider_note>
+        <reference name="content">
+            <block type="bannerslider/adminhtml_simpleslider" name="bannerslider.simpleslider.note"/>
+        </reference>
+    </bannerslideradmin_adminhtml_simpleslider_note>
+    <bannerslideradmin_adminhtml_simpleslider_flex>
+        <reference name="content">
+            <block type="bannerslider/adminhtml_simpleslider" name="bannerslider.simpleslider.flex"/>
+        </reference>
+    </bannerslideradmin_adminhtml_simpleslider_flex>
+    <bannerslideradmin_adminhtml_simpleslider_grid>
+        <block type="core/text_list" name="root">
+            <block type="bannerslider/adminhtml_simpleslider_edit_tab_banner" name="bannerslider.simpleslider.grid"/>
+        </block>
+    </bannerslideradmin_adminhtml_simpleslider_grid>
+    <bannerslideradmin_adminhtml_simpleslider_preview>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>empty.phtml</template>
+            </action>
+        </reference>
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>css/mageplaza/bannerslider/style.css</stylesheet>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bannerslider/adminhtml_preview" name="bannerslider.simpleslider.preview" template="mageplaza/bannerslider/preview.phtml"/>
+        </reference>
+    </bannerslideradmin_adminhtml_simpleslider_preview>
+    <bannerslideradmin_adminhtml_advanceslider_preview>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>empty.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bannerslider/adminhtml_preview" name="bannerslider.advance.preview" template="mageplaza/bannerslider/preview.phtml"/>
+        </reference>
+    </bannerslideradmin_adminhtml_advanceslider_preview>
+    <!--End SimpleSlider Layout-->
+
+    <!-- AdvanceSlider Layout-->
+    <bannerslideradmin_adminhtml_advanceslider_index>
+        <reference name="head">
+            <action method="addJs">
+                <script>mageplaza/bannerslider/addmore.js</script>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bannerslider/adminhtml_advanceslider" name="advanceslider"/>
+        </reference>
+    </bannerslideradmin_adminhtml_advanceslider_index>
+
+    <bannerslideradmin_adminhtml_advanceslider_new>
+        <update handle="bannerslideradmin_adminhtml_advanceslider_js"/>
+        <update handle="bannerslideradmin_adminhtml_advanceslider_css"/>
+    </bannerslideradmin_adminhtml_advanceslider_new>
+    <bannerslideradmin_adminhtml_advanceslider_edit>
+        <update handle="bannerslideradmin_adminhtml_advanceslider_js"/>
+        <update handle="bannerslideradmin_adminhtml_advanceslider_css"/>
+    </bannerslideradmin_adminhtml_advanceslider_edit>
+    <bannerslideradmin_adminhtml_advanceslider_js>
+        <reference name="head">
+            <action method="addJs">
+                <script>mageplaza/bannerslider/addmore.js</script>
+            </action>
+            <action method="addJs">
+                <script>mageplaza/bannerslider/addnewslider.js</script>
+            </action>
+            <action method="addJs">
+                <script>mageplaza/bannerslider/codemirror.js</script>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bannerslider/adminhtml_advanceslider_option_editor" name="advanceslider.editor" after="-"
+            />
+        </reference>
+    </bannerslideradmin_adminhtml_advanceslider_js>
+    <bannerslideradmin_adminhtml_advanceslider_css>
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>css/mageplaza/bannerslider/codemirror.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/mageplaza/bannerslider/style.css</stylesheet>
+            </action>
+        </reference>
+    </bannerslideradmin_adminhtml_advanceslider_css>
+
+</layout>

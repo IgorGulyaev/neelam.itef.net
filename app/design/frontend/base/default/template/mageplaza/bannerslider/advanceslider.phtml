@@ -1,0 +1,21 @@
+<?php
+$result        = $this->getBlockData();
+$advanceSlider = $result['advanceslider'];
+$jsTexts       = explode("\r\n", $advanceSlider->getJsText());
+$cssTexts      = explode("\r\n", $advanceSlider->getCssText());
+$bannerHtmls   = Mage::helper('core')->jsonDecode($advanceSlider['banner_html']);
+?>
+<?php foreach ($jsTexts as $jsText) { ?>
+    <script src="<?php echo Mage::getBaseUrl('js') . $jsText ?>"></script>
+<?php } ?>
+
+<?php foreach ($cssTexts as $cssText) { ?>
+    <link rel="stylesheet" type="text/css"
+          href="<?php echo Mage::getBaseUrl('skin') . 'frontend/base/default/css/' . $cssText ?>" media="all"/>
+<?php } ?>
+<?php echo $advanceSlider->getPrefix() ?>
+<?php foreach ($bannerHtmls as $bannerHtml) { ?>
+    <?php echo $bannerHtml ?>
+<?php } ?>
+<?php echo $advanceSlider->getSuffix() ?>
+<?php echo $this->getHtmlText($advanceSlider->getHtmlText()) ?>

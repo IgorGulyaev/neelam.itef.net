@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <bannerslider module="bannerslider" translate="title">
+            <title>Banner Slider</title>
+            <sort_order>61</sort_order>
+            <children>
+                <banner module="bannerslider" translate="title">
+                    <title>Manage Banners</title>
+                    <sort_order>0</sort_order>
+                    <action>bannerslideradmin/adminhtml_banner</action>
+                </banner>
+                <simpleslider module="bannerslider" translate="title">
+                    <title>Simple Sliders</title>
+                    <sort_order>10</sort_order>
+                    <children>
+                        <carousel module="bannerslider" translate="title">
+                            <title>Carousel Sliders</title>
+                            <sort_order>10</sort_order>
+                            <action>bannerslideradmin/adminhtml_simpleslider/carousel</action>
+                        </carousel>
+                        <popup module="bannerslider" translate="title">
+                            <title>Popup Sliders</title>
+                            <sort_order>20</sort_order>
+                            <action>bannerslideradmin/adminhtml_simpleslider/popup</action>
+                        </popup>
+                        <flex module="bannerslider" translate="title">
+                            <title>Flex Sliders</title>
+                            <sort_order>40</sort_order>
+                            <action>bannerslideradmin/adminhtml_simpleslider/flex</action>
+                        </flex>
+                    </children>
+                </simpleslider>
+                <!--<advanceslider module="bannerslider" translate="title">-->
+                    <!--<title>Advanced Sliders</title>-->
+                    <!--<sort_order>20</sort_order>-->
+                    <!--<action>bannerslideradmin/adminhtml_advanceslider</action>-->
+                <!--</advanceslider>-->
+
+                <settings module="bannerslider" translate="title">
+                    <title>Settings</title>
+                    <sort_order>1000</sort_order>
+                    <action>adminhtml/system_config/edit/section/bannerslider</action>
+                </settings>
+            </children>
+        </bannerslider>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <bannerslider module="bannerslider" translate="title">
+                                        <title>BannerSlider</title>
+                                        <sort_order>71</sort_order>
+                                    </bannerslider>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <bannerslider module="bannerslider" translate="title">
+                        <title>Banner Sliders</title>
+                        <sort_order>71</sort_order>
+                        <children>
+                            <banner module="bannerslider" translate="title">
+                                <title>Manage Banners</title>
+                                <sort_order>0</sort_order>
+                                <action>bannerslideradmin/adminhtml_banner</action>
+                            </banner>
+                            <simpleslider module="bannerslider" translate="title">
+                                <title>Simple Sliders</title>
+                                <sort_order>10</sort_order>
+                                <children>
+                                    <carousel module="bannerslider" translate="title">
+                                        <title>Carousel Sliders</title>
+                                        <sort_order>10</sort_order>
+                                    </carousel>
+                                    <popup module="bannerslider" translate="title">
+                                        <title>Popup Sliders</title>
+                                        <sort_order>20</sort_order>
+                                    </popup>
+                                    <flex module="bannerslider" translate="title">
+                                        <title>Flex Sliders</title>
+                                        <sort_order>40</sort_order>
+                                    </flex>
+                                </children>
+                            </simpleslider>
+                            <advanceslider module="bannerslider" translate="title">
+                                <title>Advanced Sliders</title>
+                                <sort_order>20</sort_order>
+                            </advanceslider>
+
+                            <settings module="bannerslider" translate="title">
+                                <title>Settings</title>
+                                <sort_order>1000</sort_order>
+                            </settings>
+                        </children>
+                    </bannerslider>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>
