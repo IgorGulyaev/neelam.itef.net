@@ -679,7 +679,6 @@
 
 #nav a, #nav a:hover {
     display: block;
-    line-height: 1.3em;
     text-decoration: none
 }
 
@@ -697,18 +696,10 @@
     background-image: none
 }
 
-#nav li.active a {
-    color: #000
-}
-
 #nav a {
     float: left;
     color: #fff;
     padding: 14px 15px
-}
-
-#nav a:hover, #nav li.over a {
-    color: #000
 }
 
 #nav ul li, #nav ul li.active {
@@ -721,23 +712,16 @@
     background: #c82727;
     padding-bottom: 0
 }
-
-#nav ul a, #nav ul a:hover {
-    float: none;
-    padding: 0;
-    background: 0 0
-}
-
 #nav ul li a {
-    font-weight: 400 !important;
-    background: #d5e4eb;
-    margin-left: -40px;
-    padding: 3px 20px
+    display: block;
+    padding: 10px 8px 10px 15px;
+    background-color: #f3ecd4;
+    color: #98714f;
+    font-size: 16px;
+    line-height: 1;
+    width: 100%;
 }
 
-.price-product, .title-product {
-
-}
 .title-product a {
     color: #74544c;
     font-size: 14px;
@@ -746,11 +730,11 @@
 
 #nav div, #nav ul {
     position: absolute;
-    min-width: 160px;
+    min-width: 180px;
     top: 49px;
     left: -10000px;
+    padding: 0;
     border: 1px solid rgba(0, 0, 0, .15);
-    background-color: #c82727;
     color: #fff
 }
 
@@ -765,8 +749,7 @@
 }
 
 #nav ul li a:hover {
-    background: #c82727;
-    padding: 3px 20px
+    text-decoration: underline;
 }
 
 #nav ul li a, #nav ul li a:hover {
