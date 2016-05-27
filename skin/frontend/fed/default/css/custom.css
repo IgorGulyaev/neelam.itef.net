@@ -885,6 +885,10 @@ footer {
     text-transform: uppercase;
 }
 
+.header-minicart .mini-cart {
+    text-align: right;
+}
+
 @media (min-width: 1200px) {
     .row {
         margin-left: -15px !important;
