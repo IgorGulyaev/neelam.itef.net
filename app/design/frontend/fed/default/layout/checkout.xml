@@ -35,13 +35,6 @@ Default layout, loads most of the pages
     <default>
 
         <!-- Mage_Checkout -->
-        <reference name="top.links">
-            <block type="checkout/links" name="checkout_cart_link">
-                <action method="addCartLink"></action>
-                <action method="addCheckoutLink"></action>
-            </block>
-        </reference>
-
         <reference name="header">
             <block type="checkout/cart_minicart" name="minicart_head" template="checkout/cart/minicart.phtml" before="-">
                 <block type="checkout/cart_sidebar" name="minicart_content" template="checkout/cart/minicart/items.phtml">
@@ -76,6 +69,11 @@ Default layout, loads most of the pages
         <label>Shopping Cart</label>
         <remove name="right"/>
         <remove name="left"/>
+        <remove name="minicart_head"/>
+        <remove name="top.links"/>
+        <remove name="top.search"/>
+        <remove name="top.menu"/>
+
         <!-- Mage_Checkout -->
         <reference name="root">
             <action method="setTemplate"><template>page/1column.phtml</template></action>
@@ -345,6 +343,10 @@ One page checkout main layout
         <label>One Page Checkout</label>
         <!-- Mage_Checkout -->
         <remove name="left"/>
+        <remove name="minicart_head"/>
+        <remove name="top.links"/>
+        <remove name="top.search"/>
+        <remove name="top.menu"/>
 
         <reference name="root">
             <action method="setTemplate"><template>page/2columns-right.phtml</template></action>

@@ -21,6 +21,9 @@
             <remove name="left.newsletter"/>
         </reference>
 
+        <reference name="top.links">
+        </reference>
+
         <reference name="header">
             <block type="checkout/cart_minicart" name="minicart_head" template="checkout/cart/minicart.phtml" before="-">
                 <block type="checkout/cart_sidebar" name="minicart_content" template="checkout/cart/minicart/items.phtml">
