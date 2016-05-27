@@ -54,6 +54,9 @@
             }
             ?>
             <span><?php echo $_itemS; ?></span>
+            <div>
+                <?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()) ?>
+            </div>
         </a>
         <div id="header-cart" class="block block-cart dropdown-menu skip-content header-cart">
             <?php echo $this->getChildHtml('minicart_content');?>

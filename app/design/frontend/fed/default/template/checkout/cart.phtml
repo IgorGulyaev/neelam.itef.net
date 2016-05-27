@@ -1,60 +1,65 @@
-<br/><br/>
 <h3>
-<span class="glyphicon glyphicon-shopping-cart"></span><?php echo $this->__('Shopping Cart') ?></h3>
-<hr />
+    <span class="glyphicon glyphicon-shopping-cart"></span><?php echo $this->__('Shopping Cart') ?></h3>
+<hr/>
 
+<div class="container cart-checkout-button">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="pull-right">
+                <button type="button" title="<?php echo $this->__('Proceed to Checkout') ?>" class="button btn-proceed-checkout btn-checkout" onclick="window.location='<?php echo $this->getCheckoutUrl() ?>';"><span><span><?php echo $this->__('Proceed to Checkout') ?></span></span></button>
+            </div>
+        </div>
+    </div>
+</div>
 <form action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post">
-<div class="table-responsive product-cart">
-<table class="table table-bordered">
-	
-	<tr class="cart-heading">
-		<th width="10%"><?php echo $this->__('') ?></th>
-		<th ><?php echo $this->__('Product Name') ?></th>
-		<th><?php echo $this->__('Edit') ?></th>
-		<th width="5%"><?php echo $this->__('Unit Price') ?></th>
-		<th width="5%"><?php echo $this->__('Qty') ?></th>
-		<th width="5%"><?php echo $this->__('Subtotal') ?></th>
-		<th width="10%"><?php echo $this->__('Actions') ?></th>
-	</tr>
-	
-	 <tbody>
-          <?php foreach($this->getItems() as $_item): ?>
-            <?php echo $this->getItemHtml($_item) ?>
-          <?php endforeach ?>
-      </tbody>	 
-</table>
-</div>
-<div class="row">
-<div class="pull-right">
-  <?php if($this->getContinueShoppingUrl()): ?>
-                                <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="btn btn-success btn-continue btn-sm" onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+    <div class="table-responsive product-cart">
+        <table class="table table-bordered">
+
+            <tr class="cart-heading">
+                <th width="10%"><?php echo $this->__('') ?></th>
+                <th><?php echo $this->__('Product Name') ?></th>
+                <th><?php echo $this->__('Edit') ?></th>
+                <th width="5%"><?php echo $this->__('Unit Price') ?></th>
+                <th width="5%"><?php echo $this->__('Qty') ?></th>
+                <th width="5%"><?php echo $this->__('Subtotal') ?></th>
+                <th width="10%"><?php echo $this->__('Actions') ?></th>
+            </tr>
+
+            <tbody>
+            <?php foreach ($this->getItems() as $_item): ?>
+                <?php echo $this->getItemHtml($_item) ?>
+            <?php endforeach ?>
+            </tbody>
+        </table>
+    </div>
+    <div class="cart-total-bottom">
+        <div class="pull-right">
+            <?php echo $this->getChildHtml('totals'); ?>
+            <div class="">
+                <?php if (!$this->hasError()): ?>
+                    <ul class="checkout-types list-unstyled">
+                        <?php foreach ($this->getMethods('methods') as $method): ?>
+                            <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
+                                <li><?php echo $methodHtml; ?></li>
                             <?php endif; ?>
-                            <button type="submit" title="<?php echo $this->__('Update Shopping Cart') ?>" class="btn btn-danger btn-update btn-sm"><span><span><?php echo $this->__('Update Shopping Cart') ?></span></span></button>
-</div>
-</div>
-<br />
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+    <div class="cart-total-bottom">
+        <div class="pull-right">
+            <?php if ($this->getContinueShoppingUrl()): ?>
+                <button type="button" title="<?php echo $this->__('Вернуться') ?>"
+                        class="btn btn-success btn-continue btn-sm"
+                        onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')">
+                    <span><span><?php echo $this->__('Вернуться') ?></span></span></button>
+            <?php endif; ?>
+            <button type="submit" title="<?php echo $this->__('Update Shopping Cart') ?>"
+                    class="btn btn-danger btn-update btn-sm">
+                <span><span><?php echo $this->__('Update Shopping Cart') ?></span></span></button>
+        </div>
+    </div>
+    <br/>
 </form>
-
-<div class="row">
-	<div class="col-sm-3"></div>
-	<div class="col-sm-6">
-		 <div class="row">
-			<div class="pull-right">
-		 		<?php echo $this->getChildHtml('totals'); ?>
-				<div class="row">
-					<?php if(!$this->hasError()): ?>
-						<ul class="checkout-types list-unstyled">
-							<?php foreach ($this->getMethods('methods') as $method): ?>
-								<?php if ($methodHtml = $this->getMethodHtml($method)): ?>
-								<li><?php echo $methodHtml; ?></li>
-								<?php endif; ?>
-							<?php endforeach; ?>
-						</ul>
-					<?php endif; ?>
-				</div>
-			</div>
-		 </div>
-	</div>
-	<div class="col-sm-3"></div>
-
-</div>

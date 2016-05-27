@@ -76,7 +76,7 @@ if(empty($_cartQty)) {
                 <?php if ($this->canApplyMsrp()): ?>
                     <span class="map-cart-sidebar-total"><?php echo $this->__('ORDER TOTAL WILL BE DISPLAYED BEFORE YOU SUBMIT THE ORDER'); ?></span>
                 <?php else: ?>
-                    <span class="label"><?php echo $this->__('Estimated Subtotal:') ?></span> <?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()) ?>
+                    <span class="label"><?php echo $this->__('Сумма:') ?></span> <?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()) ?>
                     <?php if ($_subtotalInclTax = $this->getSubtotalInclTax()): ?>
                         <br />(<?php echo Mage::helper('checkout')->formatPrice($_subtotalInclTax) ?> <?php echo Mage::helper('tax')->getIncExcText(true) ?>)
                     <?php endif; ?>
@@ -86,12 +86,12 @@ if(empty($_cartQty)) {
 
 
         <div class="minicart-actions">
-            <a class="cart-link pull-left" href="<?php echo $this->getUrl('checkout/cart'); ?>">
+            <a class="cart-link btn" href="<?php echo $this->getUrl('checkout/cart'); ?>">
                 <?php echo $this->__('Корзина'); ?>
             </a>
             <?php if($_cartQty && $this->isPossibleOnepageCheckout()): ?>
                 <?php echo $this->getChildHtml('extra_actions') ?>
-                <a title="<?php echo $this->quoteEscape($this->__('Перейти к оплате')) ?>" class="form-control input-text btn checkout-button pull-right" href="<?php echo $this->getCheckoutUrl() ?>">
+                <a title="<?php echo $this->quoteEscape($this->__('Перейти к оплате')) ?>" class="cart-link btn checkout-button" href="<?php echo $this->getCheckoutUrl() ?>">
                     <?php echo $this->__('Перейти к оплате') ?>
                 </a>
             <?php endif ?>
