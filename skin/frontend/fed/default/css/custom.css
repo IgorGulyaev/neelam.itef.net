@@ -283,9 +283,23 @@
 }
 
 .opc {
-    position: relative
+    position: relative;
+    padding: 0;
 }
 
+.opc .step input[type="radio"], .opc .step input[type="checkbox"] {
+    display: inline-block;
+    margin: 0;
+    vertical-align: middle;
+}
+.opc .step ul,
+.opc .step ol {
+    padding: 0;
+}
+
+.opc .step .field {
+    margin-bottom: 15px;
+}
 .opc .step-title {
     border-width: 0 1px;
     border-style: solid;
@@ -886,4 +900,10 @@ footer {
     font-weight: bold;
     color: #fff;
     text-transform: uppercase;
+}
+
+@media (min-width: 1200px) {
+    .row {
+        margin-left: -15px !important;
+    }
 }

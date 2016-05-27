@@ -33,6 +33,7 @@
 ?>
 
 <?php
+    $total = $this->helper('checkout/cart')->getQuote()->getGrandTotal();
     $_cartQty = $this->getSummaryCount();
     if(empty($_cartQty)) {
         $_cartQty = 0;
@@ -55,7 +56,7 @@
             ?>
             <span><?php echo $_itemS; ?></span>
             <div>
-                <?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()) ?>
+                <?php echo $total; ?>
             </div>
         </a>
         <div id="header-cart" class="block block-cart dropdown-menu skip-content header-cart">
