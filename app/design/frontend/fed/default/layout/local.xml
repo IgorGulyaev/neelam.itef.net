@@ -16,8 +16,6 @@
                 <action method="addCss"><stylesheet>less/style.less</stylesheet></action>
             </reference>
             <reference name="content">
-                <action method="unsetChild"><name>bannerslider</name></action>
-                <remove name="bannerslider"/>
                 <block type="customblocks/customblock" name="customblock" as="customblock" template="customblocks/customblock.phtml" before="-"/>
             </reference>
             <remove name="left.newsletter"/>
@@ -48,7 +46,6 @@
     <cms_index_index>
         <reference name="content">
             <action method="unsetChild"><name>product_list_toolbar</name></action>
-            <block type="bannerslider/bannerslider" name="bannerslider" template="bannerslider/bannerslider.phtml" />
             <block type="core/template" name="category.products" template="ma2_featuredproducts/standalone.phtml">
                 <block type="featuredproducts/standalone_list" name="featured_product_list" as="featured_product_list" template="ma2_featuredproducts/standalone_list.phtml" />
             </block>
