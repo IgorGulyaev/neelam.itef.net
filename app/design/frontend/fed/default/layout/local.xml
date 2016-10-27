@@ -17,10 +17,10 @@
             </reference>
             <reference name="content">
                 <action method="unsetChild"><name>bannerslider</name></action>
+                <remove name="bannerslider"/>
                 <block type="customblocks/customblock" name="customblock" as="customblock" template="customblocks/customblock.phtml" before="-"/>
             </reference>
             <remove name="left.newsletter"/>
-            <remove name="bannerslider"/>
         </reference>
 
         <reference name="top.links">
