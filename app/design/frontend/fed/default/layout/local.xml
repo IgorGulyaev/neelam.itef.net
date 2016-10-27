@@ -20,6 +20,7 @@
                 <block type="customblocks/customblock" name="customblock" as="customblock" template="customblocks/customblock.phtml" before="-"/>
             </reference>
             <remove name="left.newsletter"/>
+            <remove name="bannerslider"/>
         </reference>
 
         <reference name="top.links">
