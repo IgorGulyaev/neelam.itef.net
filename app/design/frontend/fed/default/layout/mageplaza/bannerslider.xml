@@ -6,9 +6,11 @@
             <!--<action method="addJs"><script>mageplaza/bannerslider/jquery-2.1.4.min.js</script></action>-->
         <!--</reference>-->
     </default>
-    <bannerslider_cms_index_index>
+    <cms_index_index>
         <reference name="content">
-            <block type="bannerslider/bannerslider" name="bannerslider" template="bannerslider/bannerslider.phtml" />
+            <block type="bannerslider/simpleslider" name="simple.slider" template="mageplaza/bannerslider/simpleslider.phtml">
+                <action method="setSimpleSliderId"><simple_slider_id>1</simple_slider_id></action>
+            </block>
         </reference>
-    </bannerslider_cms_index_index>
+    </cms_index_index>
 </layout>
