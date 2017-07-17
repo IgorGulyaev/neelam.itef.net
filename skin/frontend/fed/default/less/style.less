@@ -1,5 +1,11 @@
 @path: "../../skin/frontend/fed/default/";
 
+.flex() {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 body {
   font-family: Arial, sans-serif;
 }
@@ -25,9 +31,7 @@ a {
 
 #header {
   .head-top {
-    background: rgba(0, 0, 0, 0) url("@{path}images/header-bg.png") no-repeat;
-    -webkit-background-size: 100% 100%;
-    background-size: 100% 100%;
+
   }
   .topbar {
     background-color: rgba(255,255,255,0.51);
@@ -35,9 +39,35 @@ a {
 }
 
 .brand {
+  background: rgba(0, 0, 0, 0) url("@{path}images/header-bg.png") no-repeat;
+  background-position: center center;
+  -webkit-background-size: cover;
+  background-size: cover;
   border-bottom: 1px solid #cbb988;
   text-align: center;
+  .store-info {
+    .flex();
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-align: left;
+    color: #75493b;
+    font-size: 28px;
+    i {
+      color: #a56652;
+      font-size: 20px;
+    }
+    &> div {
+      padding: 6px 0;
+    }
+  }
 }
+
+
 
 .logo {
   display: inline-block;
