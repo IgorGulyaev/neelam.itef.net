@@ -99,10 +99,6 @@ class Zend_Mail_Transport_Sendmail extends Zend_Mail_Transport_Abstract
     {
         if ($this->parameters === null) {
             set_error_handler(array($this, '_handleMailErrors'));
-
-            Mage::log("MAIL RECIPIENTS: " : $this->recipients, null, 'mail.log', true);
-            Mage::log("MAIL SUBJECT: " : $this->_mail->getSubject(), null, 'mail.log', true);
-
             $result = mail(
                 $this->recipients,
                 $this->_mail->getSubject(),
@@ -123,14 +119,19 @@ class Zend_Mail_Transport_Sendmail extends Zend_Mail_Transport_Abstract
                 );
             }
 
-            set_error_handler(array($this, '_handleMailErrors'));
-            $result = mail(
-                $this->recipients,
-                $this->_mail->getSubject(),
-                $this->body,
-                $this->header,
-                $this->parameters);
-            restore_error_handler();
+            // Sanitize the From header
+            if (!Zend_Validate::is(str_replace(' ', '', $this->parameters), 'EmailAddress')) {
+                throw new Zend_Mail_Transport_Exception('Potential code injection in From header');
+            } else {
+                set_error_handler(array($this, '_handleMailErrors'));
+                $result = mail(
+                    $this->recipients,
+                    $this->_mail->getSubject(),
+                    $this->body,
+                    $this->header,
+                    $this->parameters);
+                restore_error_handler();
+            }
         }
 
         if ($this->_errstr !== null || !$result) {
