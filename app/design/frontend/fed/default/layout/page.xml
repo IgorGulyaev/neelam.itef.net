@@ -163,6 +163,9 @@
                     <stylesheet>css/catalog.css</stylesheet>
                 </action>
                 <action method="addCss">
+                    <stylesheet>css/fonts.css</stylesheet>
+                </action>
+                <action method="addCss">
                     <stylesheet>less/style.less</stylesheet>
                 </action>
 

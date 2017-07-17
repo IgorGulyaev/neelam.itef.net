@@ -4,14 +4,17 @@
 	<div class="topbar">
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-3">
+                <div class="col-sm-6">
+                    <div class="banner">
+                        <?php echo $this->getChildHtml('topLinks')?>
+                    </div>
+                </div>
+                <div class="col-sm-4">
 					<?php echo $this->getChildHtml('topSearch') ?>
 				</div>
-				<div class="col-sm-9">
-					<div class="banner">
-						<?php echo $this->getChildHtml('topLinks')?>
-					</div>
-				</div>
+                <div class="col-sm-2">
+                    <?php echo $this->getChildHtml('topSocial') ?>
+                </div>
 			</div>
 		</div>
 	</div>
@@ -20,10 +23,11 @@
 		<div class="row">
 			<div class="container">
 				<div class="logo-head">
-					<div class="col-sm-4">
+					<div class="col-sm-5">
+                        <?php echo $this->getChildHtml('header_store_info') ?>
 					</div>
 
-					<div class="col-sm-4">
+					<div class="col-sm-3">
 						<div class="logo">
 							<a href="<?php echo $this->getUrl(''); ?>">
 								<img src="<?php echo $this->getLogoSrc(); ?>"/>

@@ -25,6 +25,11 @@
         </reference>
 
         <reference name="header">
+            <block type="cms/block" name="topSocial" as="topSocial">
+                <action method="setBlockId"><block_id>top_social</block_id></action>
+            </block>
+            <block type="core/template" name="header_store_info" template="page/template/header-store-info.phtml">
+            </block>
             <block type="checkout/cart_minicart" name="minicart_head" template="checkout/cart/minicart.phtml" before="-">
                 <block type="checkout/cart_sidebar" name="minicart_content" template="checkout/cart/minicart/items.phtml">
                     <action method="addItemRender"><type>default</type><block>checkout/cart_item_renderer</block><template>checkout/cart/minicart/default.phtml</template></action>
@@ -72,7 +77,6 @@
                 </block>
                 <block type="core/template" name="home.before.end.right" template="page/template/block.phtml">
                     <action method="setElementClass"><value>col-sm-8</value></action>
-
                 </block>
             </block>
         </reference>
