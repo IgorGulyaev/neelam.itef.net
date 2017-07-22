@@ -8,6 +8,7 @@
 
 body {
   font-family: Arial, sans-serif;
+  overflow-x: hidden;
 }
 
 a {
@@ -58,11 +59,10 @@ a {
     color: #75493b;
     font-size: 28px;
     i {
+      display: inline-block;
+      width: 30px;
       color: #a56652;
       font-size: 20px;
-    }
-    &> div {
-      padding: 6px 0;
     }
   }
 }
@@ -79,38 +79,52 @@ a {
 }
 
 .form-search {
-  width: 250px;
+  width: 173px;
   .inner {
+    position: relative;
     display: table;
     width: 100%;
+    &:after {
+      position: absolute;
+      left: 0;
+      bottom: 10px;
+      display: block;
+      content: '';
+      height: 1px;
+      width: 100%;
+      border-bottom: 1px solid #b9aca9;
+    }
     &> div {
       display: table-cell;
       float: none;
-      vertical-align: top;
+      vertical-align: middle;
     }
     input {
+      padding-left: 0;
       height: 42px;
-      opacity:0.7;
-      border: 1px solid #d0c5a9;
-      color: #61382d;
-      font-size: 18px;
+      border: none;
+      color: rgba(97,56,45,0.5);
+      font-size: 14px;
       -webkit-transition: all 300ms ease;
       -moz-transition: all 300ms ease;
       -ms-transition: all 300ms ease;
       -o-transition: all 300ms ease;
       transition: all 300ms ease;
+      -webkit-box-shadow: none !important;
+      -moz-box-shadow: none !important;
+      box-shadow: none !important;
       &:focus {
-        opacity: 1;
+        color: rgba(97,56,45,1);
       }
     }
     button {
-      margin: 0;
-      height: 42px;
-      width: 49px;
-      border: 1px solid #c5b683;
-      background: #dfce94 url("@{path}images/search.png") no-repeat center center;
-      -webkit-background-size:27px auto;
-      background-size:27px auto;
+      margin: -5px 0 0;
+      height: 23px;
+      width: 23px;
+      border: none;
+      background: transparent url("@{path}images/search.png") no-repeat center center;
+      -webkit-background-size: contain;
+      background-size: comtain;
     }
   }
 }
@@ -166,6 +180,10 @@ a {
   left: auto;
   right: 0;
   padding-bottom: 0;
+  font-family: 'Myriad Pro';
+  * {
+    font-family: 'Myriad Pro' !important;
+  }
   .minicart-wrapper {
     margin-top: 22px;
   }
@@ -271,12 +289,22 @@ a {
 }
 
 .home-newsletter-wrapper {
-  margin: 0 -300% 60px;
-  border-top: 2px solid #e8dec1;
-  border-bottom: 2px solid #e8dec1;
-  background: url("@{path}images/subscribe.jpg") no-repeat center center;
-  -webkit-background-size: 100vw 100%;
-  background-size: 100vw 100%;
+  position: relative;
+  margin-bottom: 60px;
+  &:before {
+    position: absolute;
+    top: 0;
+    left: -50vw;
+    display: block;
+    content: '';
+    height: 100%;
+    width: 200vw  ;
+    border-top: 2px solid #e8dec1;
+    border-bottom: 2px solid #e8dec1;
+    background: url("@{path}images/subscribe.jpg") no-repeat center center;
+    -webkit-background-size: cover;
+    background-size: cover;
+  }
   .panel {
     margin: 0;
     border: 0;
@@ -294,8 +322,6 @@ a {
     .form-subscribe-body {
       .table {
         margin: 0;
-        border: 1px solid #d4c48d;
-        border-radius: 2px;
         background-color: #fff;
         &> * {
           float: none;
@@ -306,31 +332,39 @@ a {
         input {
           width: 65%;
           border: 0;
-          border-top-left-radius: 2px;
-          border-bottom-left-radius: 2px;
         }
         button {
           width: 35%;
           border: 0;
-          border-left: 1px solid #d4c48d;
-          border-radius: 2px;
-          background-color: #dfce94;
-          color: #8b5c4c;
+          background-color: #75493b;
+          color: #fff;
         }
       }
     }
   }
 }
 
+.head-top {
+  font-family: 'Myriad Pro';
+}
+
+.mini-cart {
+  font-family: 'Myriad Pro';
+  * {
+    font-family: 'Myriad Pro' !important;
+    font-size: 17px;
+  }
+}
+
 .skip-cart {
   position: relative;
   display: inline-block;
-  padding-top: 5px;
+  padding-top: 15px;
   padding-right: 80px;
   height: 91px;
   cursor: pointer;
   color: #A94442!important;
-  text-align: left;
+  text-align: center;
   text-decoration: none !important;
   .icon {
     position: absolute;
@@ -340,6 +374,13 @@ a {
     height: 80px;
     width: 60px;
     background: url("@{path}images/cart.png") no-repeat;
+  }
+  h4 {
+    padding-bottom: 6px;
+    margin-top: 0;
+    margin-bottom: 1px;
+    border-bottom: 1px solid #a94442;
+    font-size: 28px;
   }
 }
 

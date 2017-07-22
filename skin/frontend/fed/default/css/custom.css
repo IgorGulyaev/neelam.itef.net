@@ -825,8 +825,13 @@ footer {
 }
 
 .logo-head {
-    /*width: 90%;*/
-    margin: auto
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: auto;
 }
 
 .slider-banner {
