@@ -30,12 +30,34 @@ a {
   display: table-cell;
 }
 
+
+.panel-info {
+  border-color: #75493b;
+  &> .panel-heading {
+    border-color: #75493b;
+    background-color: #75493b;
+    color: #fff;
+  }
+}
+
+.panel-body {
+  padding: 6px 15px 15px;
+}
+
 #header {
   .head-top {
 
   }
   .topbar {
     background-color: rgba(255,255,255,0.51);
+    .container {
+      &> .row {
+        .flex();
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+      }
+    }
     .social {
       .flex();
       -webkit-box-pack: end;
@@ -46,9 +68,20 @@ a {
       align-items: center;
       padding: 0;
       margin: 0;
-      a {
-        display: block;
+      li {
+        padding: 0 2px;
+        a {
+          display: block;
+        }
       }
+    }
+  }
+}
+
+.nav {
+  &> li {
+    &> a {
+      font-size: 14px;
     }
   }
 }
