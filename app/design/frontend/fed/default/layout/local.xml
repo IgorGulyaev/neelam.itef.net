@@ -26,7 +26,7 @@
 
         <reference name="header">
             <block type="cms/block" name="topSocial" as="topSocial">
-                <action method="setBlockId"><block_id>top_social</block_id></action>
+                <action method="setBlockId"><block_id>social_links</block_id></action>
             </block>
             <block type="core/template" name="header_store_info" template="page/template/header-store-info.phtml">
             </block>

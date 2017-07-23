@@ -36,6 +36,20 @@ a {
   }
   .topbar {
     background-color: rgba(255,255,255,0.51);
+    .social {
+      .flex();
+      -webkit-box-pack: end;
+      -ms-flex-pack: end;
+      justify-content: flex-end;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      padding: 0;
+      margin: 0;
+      a {
+        display: block;
+      }
+    }
   }
 }
 
@@ -44,7 +58,6 @@ a {
   background-position: center center;
   -webkit-background-size: cover;
   background-size: cover;
-  border-bottom: 1px solid #cbb988;
   text-align: center;
   .store-info {
     .flex();
@@ -57,7 +70,7 @@ a {
     justify-content: center;
     text-align: left;
     color: #75493b;
-    font-size: 28px;
+    font-size: 24px;
     i {
       display: inline-block;
       width: 30px;
