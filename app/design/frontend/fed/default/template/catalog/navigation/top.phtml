@@ -44,7 +44,9 @@
 <?php if($_menu): ?>
 <div class="nav-container">
     <ul id="nav">
+        <li><a href="sales"><?php echo $this->__('Акции'); ?></a></li>
         <?php echo $_menu ?>
+        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('additional_menu_links')->toHtml(); ?>
     </ul>
 </div>
 <?php endif ?>
