@@ -845,7 +845,7 @@ footer {
     padding: 8px 0;
     margin: auto;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
     .logo-head {
         display: block;
     }
