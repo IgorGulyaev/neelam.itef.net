@@ -34,6 +34,7 @@
 
 <?php
     $total = $this->helper('checkout/cart')->getQuote()->getGrandTotal();
+    $formattedPrice = Mage::helper('core')->currency($total, true, false);
     $_cartQty = $this->getSummaryCount();
     if(empty($_cartQty)) {
         $_cartQty = 0;
@@ -45,19 +46,9 @@
             <span class="icon"></span>
             <span><h4><?php echo $this->__('Корзина') ?></h4></span>
             <span class="count"><?php echo $_cartQty; ?></span>
-            <?php
-            if ($_cartQty == 1) {
-                $_itemS = 'товар';
-            } elseif ($_cartQty > 1 && $_cartQty < 5) {
-                $_itemS = 'товара';
-            } else {
-                $_itemS = 'товаров';
-            }
-            ?>
-            <span><?php echo $_itemS; ?></span>
-            <div>
-                <?php echo $total; ?>
-            </div>
+            <span><?php echo $this->__('тов.'); ?></span>
+            <span class="hidden-xs">/</span>
+            <span class="count"><?php echo $formattedPrice; ?></span>
         </a>
         <div id="header-cart" class="block block-cart dropdown-menu skip-content header-cart">
             <?php echo $this->getChildHtml('minicart_content');?>
