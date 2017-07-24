@@ -86,17 +86,17 @@
             </div>
 
             <div class="row">
-                <div class="col-sm-4 product-img-wrapper">
+                <div class="col-sm-7 col-md-4 product-img-wrapper">
                      <div class="product-img-box">
                         <?php echo $this->getChildHtml('media') ?>
                     </div>
                     <div class="clearer"></div>
                 </div>
 
-                <div class="col-sm-7">
+                <div class="col-sm-5 col-md-7 product-card-info">
                     <div class="product-shop">
                         <div class="row">
-                            <div class="col-sm-9">
+                            <div class="col-sm-8 col-md-9">
                                 <div class="product-name">
                                     <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
                                 </div>
@@ -155,7 +155,7 @@
                                     <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
                                 <?php endif;?>
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-4 col-md-3">
                                 <?php if ($this->displayProductStockStatus()): ?>
                                     <?php if ($_product->isAvailable()): ?>
                                         <?php echo $this->getPriceHtml($_product, true); ?>
