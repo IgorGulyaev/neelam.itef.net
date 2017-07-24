@@ -319,6 +319,10 @@ a {
   .col-info {
     padding: 0 10px 0 0;
     text-align: left;
+    a {
+      color: #000;
+      font-size: 14px;
+    }
     .product-name {
       font-size: 12px;
       font-weight: bold;
@@ -348,6 +352,12 @@ a {
     line-height: 1;
     font-weight: bold;
     text-decoration: none;
+  }
+}
+
+.banner {
+  a {
+    color: #763414;
   }
 }
 
@@ -399,7 +409,7 @@ a {
         button {
           width: 35%;
           border: 0;
-          background-color: #75493b;
+          background: #75493b !important;
           color: #fff;
         }
       }
@@ -919,6 +929,24 @@ a {
   }
   .itef {
     margin-top: 15px;
+  }
+
+  .home-newsletter-wrapper {
+    &> .container {
+      padding: 0;
+    }
+    .panel {
+      .form-subscribe-body {
+        .table {
+          input {
+            width: 62%;
+          }
+          button {
+            width: 38%;
+          }
+        }
+      }
+    }
   }
 
 }
