@@ -351,7 +351,7 @@ One page checkout main layout
         <reference name="root">
             <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
             <reference name="head">
-                <action method="addItem"><type>skin_js</type><name>js/modernizr.custom.min.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>js/lib/modernizr.custom.min.js</name></action>
             </reference>
         </reference>
         <reference name="right">
