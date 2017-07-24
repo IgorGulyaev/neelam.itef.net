@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * This file is part of Mbiz_ImageCrop for Magento.
+ *
+ * @license All rights reserved
+ * @author Jacques Bodin-Hullin <@jacquesbh> <j.bodinhullin@monsieurbiz.com>
+ * @category Mbiz
+ * @package Mbiz_ImageCrop
+ * @copyright Copyright (c) 2014 Monsieur Biz (http://monsieurbiz.com/)
+ */
+-->
+<config>
+    <modules>
+        <Mbiz_ImageCrop>
+            <version>0.1.0</version>
+        </Mbiz_ImageCrop>
+    </modules>
+    <global>
+        <helpers>
+            <mbiz_imagecrop>
+                <class>Mbiz_ImageCrop_Helper</class>
+            </mbiz_imagecrop>
+        </helpers>
+        <models>
+            <mbiz_imagecrop>
+                <class>Mbiz_ImageCrop_Model</class>
+            </mbiz_imagecrop>
+        </models>
+    </global>
+    <adminhtml>
+        <events>
+            <clean_catalog_images_cache_after>
+                <observers>
+                    <mbiz_imagecrop>
+                        <class>mbiz_imagecrop/observer</class>
+                        <method>cleanImageCache</method>
+                    </mbiz_imagecrop>
+                </observers>
+            </clean_catalog_images_cache_after>
+        </events>
+    </adminhtml>
+</config>
