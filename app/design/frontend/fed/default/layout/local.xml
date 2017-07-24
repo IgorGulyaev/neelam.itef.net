@@ -75,7 +75,7 @@
             <block type="core/template" name="home.newsletter.wrapper" template="page/template/block.phtml">
                 <action method="setElementClass"><value>home-newsletter-wrapper</value></action>
                 <block type="core/template" name="home.newsletter.container" template="page/template/block.phtml">
-                    <action method="setElementClass"><value>container</value></action>
+                    <action method="setElementClass"><value>inner</value></action>
                     <block type="newsletter/subscribe" name="home.newsletter" template="newsletter/subscribe.phtml"/>
                 </block>
             </block>
