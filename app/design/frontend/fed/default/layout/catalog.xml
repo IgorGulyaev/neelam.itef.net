@@ -24,6 +24,7 @@ Default layout, loads most of the pages
         <!-- Mage_Catalog -->
             <reference name="top.menu">
             <block type="catalog/navigation" name="catalog.topnav" template="catalog/navigation/top.phtml">
+                <block type="page/template_links" name="top.links.mob" as="topLinkMob"/>
             </block>
 
         </reference>

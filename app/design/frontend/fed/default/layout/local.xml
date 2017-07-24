@@ -7,10 +7,12 @@
                 <!--<action method="addItem" name="jquery" as="jquery"><name>js/jquery/jquery-1.11.3.min.js</name></action>-->
                 <!--<action method="addItem"><type>skin_js</type><name>js/jquery-1.11.3.min.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/noconflict.js</name></action>-->
+                <!--<action method="addItem"><type>skin_js</type><name>js/npm.js</name></action>-->
                 <action method="addItem"><type>skin_js</type><name>js/bootstrap.min.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/html5shiv.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/wow.min.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/minicart.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>js/jq.js</name></action>
                 <action method="addItem"><type>skin_css</type><name>qtyswitcher/css/qtyswitcher.css</name></action>
 
                 <action method="addCss"><stylesheet>less/style.less</stylesheet></action>
@@ -22,6 +24,15 @@
         </reference>
 
         <reference name="top.links">
+            <action method="addLink" translate="label title" module="customer">
+                <label>Доставка и оплата</label>
+                <url>shipping</url>
+                <title>Доставка и оплата</title><prepare>true</prepare>
+                <urlParams/>
+                <position>5</position>
+            </action>
+        </reference>
+        <reference name="top.links.mob">
             <action method="addLink" translate="label title" module="customer">
                 <label>Доставка и оплата</label>
                 <url>shipping</url>
