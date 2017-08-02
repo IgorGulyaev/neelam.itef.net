@@ -6,6 +6,11 @@
   display: flex;
 }
 
+.not-active {
+  pointer-events: none !important;
+  cursor: default !important;
+}
+
 html {
   &.nav-open {
     height: 100%;
@@ -573,6 +578,37 @@ a {
     color: #650a08;
     font-size: 14px;
     font-weight: normal;
+  }
+}
+
+.pager {
+  margin: 0;
+  ol {
+    padding: 0;
+    margin: 0;
+    li {
+      color: #000;
+      font-size: 14px;
+      &> a,
+      &> span {
+        display: inline-block;
+        padding: 3px 8px;
+        background-color: #f3ecd4;
+        border: none;
+        border-radius: 0;
+        font-size: 14px;
+        color: #000;
+      }
+      &> span {
+        background: none;
+      }
+    }
+  }
+}
+
+.toolbar {
+  *:not(.glyphicon) {
+    font-family: Arial, sans-serif !important;
   }
 }
 

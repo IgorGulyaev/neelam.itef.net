@@ -42,7 +42,7 @@ function Minicart(options) {
     };
 
     if (options.selectors) {
-        $j.extend(this.selectors, options.selectors);
+        jQuery.extend(this.selectors, options.selectors);
     }
 }
 
@@ -53,24 +53,24 @@ Minicart.prototype = {
         var cart = this;
 
         // bind remove event
-        $j(this.selectors.itemRemove).unbind('click.minicart').bind('click.minicart', function(e) {
+        jQuery(this.selectors.itemRemove).unbind('click.minicart').bind('click.minicart', function(e) {
             e.preventDefault();
-            cart.removeItem($j(this));
+            cart.removeItem(jQuery(this));
         });
 
         // bind update qty event
-        $j(this.selectors.inputQty)
+        jQuery(this.selectors.inputQty)
             .unbind('blur.minicart')
             .unbind('focus.minicart')
             .bind('focus.minicart', function() {
-                cart.previousVal = $j(this).val();
-                cart.displayQuantityButton($j(this));
+                cart.previousVal = jQuery(this).val();
+                cart.displayQuantityButton(jQuery(this));
             })
             .bind('blur.minicart', function() {
                 cart.revertInvalidValue(this);
             });
 
-        $j(this.selectors.quantityButtonClass)
+        jQuery(this.selectors.quantityButtonClass)
             .unbind('click.quantity')
             .bind('click.quantity', function() {
                 cart.processUpdateQuantity(this);
@@ -89,7 +89,7 @@ Minicart.prototype = {
         if (confirm(el.data('confirm'))) {
             cart.hideMessage();
             cart.showOverlay();
-            $j.ajax({
+            jQuery.ajax({
                 type: 'POST',
                 dataType: 'json',
                 data: {form_key: cart.formKey},
@@ -115,24 +115,24 @@ Minicart.prototype = {
     },
 
     revertInvalidValue: function(el) {
-        if (!this.isValidQty($j(el).val()) || $j(el).val() == this.previousVal) {
-            $j(el).val(this.previousVal);
+        if (!this.isValidQty(jQuery(el).val()) || jQuery(el).val() == this.previousVal) {
+            jQuery(el).val(this.previousVal);
             this.hideQuantityButton(el);
         }
     },
 
     displayQuantityButton: function(el) {
-        var buttonId = this.selectors.quantityButtonPrefix + $j(el).data('item-id');
-        $j(buttonId).addClass('visible').attr('disabled',null);
+        var buttonId = this.selectors.quantityButtonPrefix + jQuery(el).data('item-id');
+        jQuery(buttonId).addClass('visible').attr('disabled',null);
     },
 
     hideQuantityButton: function(el) {
-        var buttonId = this.selectors.quantityButtonPrefix + $j(el).data('item-id');
-        $j(buttonId).removeClass('visible').attr('disabled','disabled');
+        var buttonId = this.selectors.quantityButtonPrefix + jQuery(el).data('item-id');
+        jQuery(buttonId).removeClass('visible').attr('disabled','disabled');
     },
 
     processUpdateQuantity: function(el) {
-        var input = $j(this.selectors.quantityInputPrefix + $j(el).data('item-id'));
+        var input = jQuery(this.selectors.quantityInputPrefix + jQuery(el).data('item-id'));
         if (this.isValidQty(input.val()) && input.val() != this.previousVal) {
             this.updateItem(el);
         } else {
@@ -142,9 +142,9 @@ Minicart.prototype = {
 
     updateItem: function(el) {
         var cart = this;
-        var input = $j(this.selectors.quantityInputPrefix + $j(el).data('item-id'));
+        var input = jQuery(this.selectors.quantityInputPrefix + jQuery(el).data('item-id'));
 
-        if (!$j.isNumeric(input.val())) {
+        if (!jQuery.isNumeric(input.val())) {
             cart.hideOverlay();
             cart.showError(cart.defaultErrorMessage);
             return false;
@@ -153,7 +153,7 @@ Minicart.prototype = {
         var quantity = input.val();
         cart.hideMessage();
         cart.showOverlay();
-        $j.ajax({
+        jQuery.ajax({
             type: 'POST',
             dataType: 'json',
             url: input.data('link'),
@@ -180,20 +180,20 @@ Minicart.prototype = {
     updateContentOnRemove: function(result, el) {
         var cart = this;
         el.hide('slow', function() {
-            $j(cart.selectors.container).html(result.content);
+            jQuery(cart.selectors.container).html(result.content);
             cart.showMessage(result);
 
         });
     },
 
     updateContentOnUpdate: function(result) {
-        $j(this.selectors.container).html(result.content);
+        jQuery(this.selectors.container).html(result.content);
         this.showMessage(result);
     },
 
     updateCartQty: function(qty) {
         if (typeof qty != 'undefined') {
-            $j(this.selectors.qty).text(qty);
+            jQuery(this.selectors.qty).text(qty);
         }
     },
 
@@ -202,11 +202,11 @@ Minicart.prototype = {
     },
 
     showOverlay: function() {
-        $j(this.selectors.overlay).addClass('loading');
+        jQuery(this.selectors.overlay).addClass('loading');
     },
 
     hideOverlay: function() {
-        $j(this.selectors.overlay).removeClass('loading');
+        jQuery(this.selectors.overlay).removeClass('loading');
     },
 
     showMessage: function(result) {
@@ -220,15 +220,15 @@ Minicart.prototype = {
     },
 
     hideMessage: function() {
-        $j(this.selectors.error).fadeOut('slow');
-        $j(this.selectors.success).fadeOut('slow');
+        jQuery(this.selectors.error).fadeOut('slow');
+        jQuery(this.selectors.success).fadeOut('slow');
     },
 
     showError: function(message) {
-        $j(this.selectors.error).text(message).fadeIn('slow');
+        jQuery(this.selectors.error).text(message).fadeIn('slow');
     },
 
     showSuccess: function(message) {
-        $j(this.selectors.success).text(message).fadeIn('slow');
+        jQuery(this.selectors.success).text(message).fadeIn('slow');
     }
 };

@@ -28,7 +28,7 @@
 <?php if ($this->getCollection()->getSize()): ?>
     <div class="toolbar">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-sm-4">
                 <div class="sort-by" style="float:left">
                     <label><?php echo $this->__('Sort By') ?></label>
                     <select onchange="setLocation(this.value)">
@@ -65,22 +65,30 @@
                     </div>
                 <?php endif; ?>
             </div>
-            <div class="col-md-6 show_box">
+            <div class="col-sm-4">
+                <div class="pager">
+                    <?php echo $this->getPagerHtml() ?>
+                </div>
+            </div>
+            <div class="col-sm-4 show_box">
                 <div class="pull-right">
-                    <div class="limiter">
-                        <label><?php echo $this->__('Show') ?></label>
-                        <select onchange="setLocation(this.value)">
-                            <?php foreach ($this->getAvailableLimit() as $_key => $_limit): ?>
-                                <option value="<?php echo $this->getLimitUrl($_key) ?>"<?php if ($this->isLimitCurrent($_key)): ?> selected="selected"<?php endif ?>>
-                                    <?php echo $_limit ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select> <?php echo $this->__('per page') ?>
+                    <div class="count-container">
+
+                        <div class="limiter">
+                            <label><?php echo $this->__('Show') ?></label>
+                            <select onchange="setLocation(this.value)" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Results per page')); ?>">
+                                <?php foreach ($this->getAvailableLimit() as  $_key=>$_limit): ?>
+                                    <option value="<?php echo $this->getLimitUrl($_key) ?>"<?php if($this->isLimitCurrent($_key)): ?> selected="selected"<?php endif ?>>
+                                        <?php echo $_limit ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
                     </div>
-                </div
+
+                </div>
             </div>
         </div>
-        <?php echo $this->getPagerHtml() ?>
     </div>
     </div>
 <?php endif ?>
