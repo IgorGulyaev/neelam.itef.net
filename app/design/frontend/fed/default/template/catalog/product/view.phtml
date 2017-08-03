@@ -128,8 +128,12 @@
                                                                     <?php else : $qty=$this->getMinimalQty($_product);?>
                                                                     <?php endif; ?>
                                                                     <div class="table">
+                                                                        <?php
+                                                                        $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product);
+                                                                        $maxQty = (int)$stock->getQty();
+                                                                        ?>
                                                                         <div class="input-box">
-                                                                            <input type="text" name="qty" id="qty" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text clone-qty qty"  />
+                                                                            <input type="text" name="qty" id="qty" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text clone-qty qty" data-maxval="<?php echo $maxQty; ?>" />
                                                                         </div>
                                                                         <div class="input-box">
                                                                             <a id="qtyswitcher-onemore-<?php echo $_product->getId() ?>" class='qtyswitcher btn fa fa-caret-up' onclick="qtyUp()"></a>
@@ -245,12 +249,13 @@
     function qtyDown(){
         var qty_el = document.getElementById('qty');
         var qty = qty_el.value;
+
         if( qty == 2) {
             jQuery('.quantity_box_button_down').css({
                 'visibility' : 'hidden'
             });
         }
-        if( !isNaN( qty ) && qty > 0 ){
+        if( !isNaN( qty ) && qty > 1 ){
             qty_el.value--;
         }
         return false;
@@ -258,12 +263,15 @@
     function qtyUp(){
         var qty_el = document.getElementById('qty');
         var qty = qty_el.value;
-        if( !isNaN( qty )) {
-            qty_el.value++;
+        if(qty == jQuery('#qty').attr('data-maxval')) {
+        } else {
+            if( !isNaN( qty )) {
+                qty_el.value++;
+            }
+            jQuery('.quantity_box_button_down').css({
+                'visibility' : 'visible'
+            });
         }
-        jQuery('.quantity_box_button_down').css({
-            'visibility' : 'visible'
-        });
         return false;
     }
 </script>
