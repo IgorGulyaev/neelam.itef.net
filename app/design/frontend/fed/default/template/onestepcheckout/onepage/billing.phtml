@@ -33,7 +33,7 @@ $has_addr	= $this->customerHasAddresses();
 ?>
 <div class="onestepcheckout_block">
 	<div class="op_block_title" id="name">
-		<?php	echo $this->__('1. Êîíòàêòíàÿ èíôîðìàöèÿ');	?>
+		<?php	echo $this->__('1. ÐšÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð½Ð°Ñ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ñ');	?>
 	</div>
 	<div class="form_fields">
 		<?php if ($has_addr){ ?>
@@ -95,10 +95,10 @@ $has_addr	= $this->customerHasAddresses();
 				</div>
 				<div class="short">
 					<label for="billing:region_id" class="required">
-						<?php echo $this->__('Øòàò / Îáëàñòü') ?>
+						<?php echo $this->__('Ð¨Ñ‚Ð°Ñ‚ / ÐžÐ±Ð»Ð°ÑÑ‚ÑŒ') ?>
 					</label>
 					<div class="data_area">
-						<select id="billing:region_id" name="billing[region_id]" title="<?php echo $this->__('Øòàò / Îáëàñòü') ?>" class="validate-select required-entry" style="display:none;">
+						<select id="billing:region_id" name="billing[region_id]" title="<?php echo $this->__('Ð¨Ñ‚Ð°Ñ‚ / ÐžÐ±Ð»Ð°ÑÑ‚ÑŒ') ?>" class="validate-select required-entry" style="display:none;">
 							<option value=""><?php echo $this->__('Select One') ?></option>
 						</select>
 						<script type="text/javascript">
@@ -114,11 +114,11 @@ $has_addr	= $this->customerHasAddresses();
 			<div class="two_fields">
 				<div class="short">
 					<label for="billing:postcode" class="required">
-						<?php echo $this->__('Èíäåêñ') ?>
+						<?php echo $this->__('Ð˜Ð½Ð´ÐµÐºÑ') ?>
 					</label>
 
 					<div class="data_area">
-						<input type="text" title="<?php echo $this->__('Èíäåêñ') ?>" name="billing[postcode]" id="billing:postcode" value="<?php echo $this->htmlEscape($this->getBillAddress()->getPostcode()) ?>" class="t1 validate-zip-international required-entry ?>" maxlength="20" />
+						<input type="text" title="<?php echo $this->__('Ð˜Ð½Ð´ÐµÐºÑ') ?>" name="billing[postcode]" id="billing:postcode" value="<?php echo $this->htmlEscape($this->getBillAddress()->getPostcode()) ?>" class="t1 validate-zip-international required-entry ?>" maxlength="20" />
 					</div>
 				</div>
 				<div class="short">
@@ -183,9 +183,9 @@ $has_addr	= $this->customerHasAddresses();
 					?>
 					<ul>
 						<li class="options">
-							<input type="checkbox" name="billing[register_account]" value="1" title="<?php echo $this->__('Çàðåãèñòðèðîâàòüñÿ') ?>" id="billing:register_account" onclick="if(window.billing) billing.setCreateAccount(this.checked);"<?php if ($this->getBillAddress()->getRegisterAccount()):?> checked="checked"<?php endif;?> class="checkbox" />
+							<input type="checkbox" name="billing[register_account]" value="1" title="<?php echo $this->__('Ð—Ð°Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒÑÑ') ?>" id="billing:register_account" onclick="if(window.billing) billing.setCreateAccount(this.checked);"<?php if ($this->getBillAddress()->getRegisterAccount()):?> checked="checked"<?php endif;?> class="checkbox" />
 							<label for="billing:register_account">
-								<?php echo $this->__('Çàðåãèñòðèðîâàòüñÿ') ?>
+								<?php echo $this->__('Ð—Ð°Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒÑÑ') ?>
 							</label>
 						</li>
 					</ul>
