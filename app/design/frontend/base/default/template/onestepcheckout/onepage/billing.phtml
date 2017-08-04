@@ -62,15 +62,6 @@ $has_addr	= $this->customerHasAddresses();
 					</div>
 				</div>
 			<?php endif;?>
-				<div class="full">
-					<label for="billing:company" >
-						<?php echo $this->__('Company') ?>
-					</label>
-					
-					<div class="data_area">
-						<input type="text" id="billing:company" name="billing[company]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getCompany()) ?>" title="<?php echo $this->__('Company') ?>" class="t1" />
-					</div>
-				</div>			
             	<div class="full">
 					<label for="billing:street1" class="required">
 						<?php echo $this->__('Address') ?>
@@ -148,17 +139,6 @@ $has_addr	= $this->customerHasAddresses();
 	        	</label>
 	        	<div class="data_area">
 					<?php echo $this->getBillingCountriesSelectBox() ?>
-				</div>
-			</div>
-			<div lang="two_fields">
-				<div class="short">
-					<label for="billing:fax">
-						<?php echo $this->__('Fax') ?>
-					</label>
-					
-					<div class="data_area">
-						<input type="text" name="billing[fax]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getFax()) ?>" title="<?php echo $this->__('Fax') ?>" class="t1" id="billing:fax" />
-					</div>
 				</div>
 			</div>
 			<div class='clr'></div>
