@@ -34,7 +34,7 @@ $has_addr	= $this->customerHasAddresses();
 if (!$this->getQuote()->isVirtual() && Mage::helper('onestepcheckout')->isShippingAddressAllowed()) 
 { 
 ?>
-<ul>
+<ul class="hidden">
     <li class="options">
         <input type="checkbox" class="checkbox" name="shipping[same_as_billing]" id="shipping:same_as_billing" value="1"<?php if($this->getShipAddress()->getSameAsBilling()){echo ' checked="checked" ';} ?> title="<?php echo $this->__('Ship to this address') ?>" onclick="shipping.setSameAsBilling(this.checked)" />
         <label>
