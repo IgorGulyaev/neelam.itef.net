@@ -71,18 +71,6 @@ $has_addr	= $this->customerHasAddresses();
 					<input type="text" title="<?php echo $this->__('Street Address') ?>" name="billing[street][]" id="billing:street1" value="<?php echo $this->htmlEscape($this->getBillAddress()->getStreet(1)) ?>" class="t1 input-text  required-entry" />
 				</div>
 			</div>
-			<?php
-			$csl	= $this->helper('customer/address')->getStreetLines();
-			for ($i = 2; $i <= $csl; $i++){
-				?>
-				<div class="full">
-					<div class="data_area">
-						<input type="text" name="billing[street][]" id="billing:street<?php echo $i?>" title="<?php echo $this->__('Street Address %s', $i) ?>" value="<?php echo $this->htmlEscape($this->getBillAddress()->getStreet($i)) ?>" class="t1" />
-					</div>
-				</div>
-				<?php
-			}
-			?>
 			<div class="two_fields">
 
 				<div class="short">
@@ -90,7 +78,7 @@ $has_addr	= $this->customerHasAddresses();
 						<?php echo $this->__('City') ?>
 					</label>
 					<div class="data_area">
-						<input type="text" name="billing[city]" id="billing:city" title="<?php echo $this->__('City') ?>" value="<?php echo $this->htmlEscape($this->getBillAddress()->getCity()) ?>" class="validate-alpha t1 required-entry" maxlength="20"  />
+						<input type="text" name="billing[city]" id="billing:city" title="<?php echo $this->__('City') ?>" value="<?php echo $this->htmlEscape($this->getBillAddress()->getCity()) ?>" class="validate-alphanum-with-spaces t1 required-entry" maxlength="20"  />
 					</div>
 				</div>
 				<div class="short">
