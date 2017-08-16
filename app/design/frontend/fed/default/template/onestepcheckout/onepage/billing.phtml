@@ -82,6 +82,15 @@ $has_addr	= $this->customerHasAddresses();
 					</div>
 				</div>
 				<div class="short">
+					<label for="billing:telephone" class="required">
+						<?php echo $this->__('Telephone') ?>
+					</label>
+
+					<div class="data_area">
+						<input type="text" name="billing[telephone]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getTelephone()) ?>" title="<?php echo $this->__('Telephone') ?>" class="t1 required-entry validate-number" id="billing:telephone" maxlength="20" />
+					</div>
+				</div>
+				<div class="short">
 					<label for="billing:region_id" class="required">
 						<?php echo $this->__('Штат / Область') ?>
 					</label>
@@ -97,28 +106,6 @@ $has_addr	= $this->customerHasAddresses();
 						<input type="text" id="billing:region" name="billing[region]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getRegion()) ?>"  title="<?php echo $this->__('State/Province') ?>" class="validate-alpha t1" maxlength="20" style="display:none;" />
 					</div>
 				</div>
-			</div>
-			<div class='clr'></div>
-			<div class="two_fields">
-				<div class="short">
-					<label for="billing:postcode" class="required">
-						<?php echo $this->__('Индекс') ?>
-					</label>
-
-					<div class="data_area">
-						<input type="text" title="<?php echo $this->__('Индекс') ?>" name="billing[postcode]" id="billing:postcode" value="<?php echo $this->htmlEscape($this->getBillAddress()->getPostcode()) ?>" class="t1 validate-zip-international required-entry ?>" maxlength="20" />
-					</div>
-				</div>
-				<div class="short">
-					<label for="billing:telephone" class="required">
-						<?php echo $this->__('Telephone') ?>
-					</label>
-
-					<div class="data_area">
-						<input type="text" name="billing[telephone]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getTelephone()) ?>" title="<?php echo $this->__('Telephone') ?>" class="t1 required-entry validate-number" id="billing:telephone" maxlength="20" />
-					</div>
-				</div>
-
 			</div>
 			<div class='clr'></div>
 			<div class="full">
@@ -169,7 +156,7 @@ $has_addr	= $this->customerHasAddresses();
 				if ($agc)
 				{
 					?>
-					<ul>
+					<ul class="hidden">
 						<li class="options">
 							<input type="checkbox" name="billing[register_account]" value="1" title="<?php echo $this->__('Зарегистрироваться') ?>" id="billing:register_account" onclick="if(window.billing) billing.setCreateAccount(this.checked);"<?php if ($this->getBillAddress()->getRegisterAccount()):?> checked="checked"<?php endif;?> class="checkbox" />
 							<label for="billing:register_account">
@@ -209,7 +196,7 @@ $has_addr	= $this->customerHasAddresses();
 				<?php
 			endif;
 			?>
-			<ul>
+			<ul class="hidden">
 				<?php
 				if ($logged && $has_addr){
 					?>
