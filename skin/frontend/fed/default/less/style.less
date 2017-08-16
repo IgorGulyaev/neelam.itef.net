@@ -604,6 +604,12 @@ a {
   }
 }
 
+#checkout-review-table-wrapper {
+  .product-name {
+    font-size: 14px;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .subcategory-list {
     .subcategory-grid {
@@ -614,6 +620,35 @@ a {
         img {
           height: 150px;
         }
+      }
+    }
+  }
+}
+
+.order-products-table {
+  td, th {
+    &:first-child {
+      width: 80px;
+    }
+    &.last {
+      width: 20%;
+    }
+  }
+}
+
+#review-buttons-container {
+  text-align: center;
+}
+
+.onestepcheckout-index-index {
+  #onestepcheckout_orderform {
+    button {
+      &.btn-checkout {
+        border: none !important;
+        background: #a94442 !important;
+        height: 42px !important;
+        font-size: 20px !important;
+        line-height: 42px !important;
       }
     }
   }

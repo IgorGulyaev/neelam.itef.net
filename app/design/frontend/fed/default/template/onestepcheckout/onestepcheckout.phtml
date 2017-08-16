@@ -57,36 +57,35 @@ $seq_http	= (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS']==='on');
 
 <form action="" id="onestepcheckout_orderform">
 <div class="col3-set onestepcheckout_datafields">
-    <div class="col-1" style="float:left">
-        <?php echo $this->getChildHtml('billing.address') ?>
-        <?php echo $this->getChildHtml('shipping.address') ?>
-    </div>
-
-    <div class="col-2" style="float:left">
-        <?php echo $this->getChildHtml('shipping.method') ?>
-        <?php echo $this->getChildHtml('payment.method') ?>
-         <div id="checkout-coupon-discount-load">
-            <?php echo $this->getChildHtml('coupon') ?>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-1">
+            <?php echo $this->getChildHtml('billing.address') ?>
+            <?php echo $this->getChildHtml('shipping.address') ?>
         </div>
 
-        <?php if (Mage::getStoreConfig('onestepcheckout/general/comment')) : ?>
-		<div class="op_block_title">
-	    	<?php echo $this->helper('sales')->__('Comment') ?>
-	    </div>        
-        <div class="form_fields">
-            <div class="full">
-                <div class="data_area" id='comment-block'>
-                    <textarea name="order-comment" id="order-comment"><?php echo trim(Mage::getSingleton('customer/session')->getOrderCustomerComment()) ?></textarea>
-                </div>
+        <div class="col-xs-12 col-sm-6 col-2">
+            <?php echo $this->getChildHtml('shipping.method') ?>
+            <?php echo $this->getChildHtml('payment.method') ?>
+            <div id="checkout-coupon-discount-load">
+                <?php echo $this->getChildHtml('coupon') ?>
             </div>
-        </div>
-        <?php endif; ?>	
-        <?php echo $this->getChildHtml('review') ?>   
-    </div>
 
-   <!--  <div class="col-3" style="clear:both"> 
-        
-    </div> -->
+            <?php if (Mage::getStoreConfig('onestepcheckout/general/comment')) : ?>
+                <div class="op_block_title">
+                    <?php echo $this->helper('sales')->__('Comment') ?>
+                </div>
+                <div class="form_fields">
+                    <div class="full">
+                        <div class="data_area" id='comment-block'>
+                            <textarea name="order-comment" id="order-comment"><?php echo trim(Mage::getSingleton('customer/session')->getOrderCustomerComment()) ?></textarea>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+        </div>
+
+        <div class="col-xs-12 col-3"><?php echo $this->getChildHtml('review') ?></div>
+    </div>
 </div>
  
 </form>
