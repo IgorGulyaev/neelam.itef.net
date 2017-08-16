@@ -195,12 +195,12 @@ novaposhta.onChangeCity = function(){
 	// this event will be call on price update and recollect shipping methods
 	if($('s_method_sy_novaposhta_type_WarehouseDoors') != undefined && 
 		$('s_method_sy_novaposhta_type_WarehouseDoors').checked){
-		$('s_method_sy_novaposhta_type_WarehouseDoors').dispatchEvent(new Event('click'));
+		//$('s_method_sy_novaposhta_type_WarehouseDoors').dispatchEvent(new Event('click'));
 		$('s_method_sy_novaposhta_type_WarehouseDoors').dispatchEvent(new Event('change'));
 	}
 	if($('s_method_sy_novaposhta_type_WarehouseWarehouse') != undefined && 
 		$('s_method_sy_novaposhta_type_WarehouseWarehouse').checked){
-		$('s_method_sy_novaposhta_type_WarehouseWarehouse').dispatchEvent(new Event('click'));
+		//$('s_method_sy_novaposhta_type_WarehouseWarehouse').dispatchEvent(new Event('click'));
 		$('s_method_sy_novaposhta_type_WarehouseWarehouse').dispatchEvent(new Event('change'));
 	}
 }
