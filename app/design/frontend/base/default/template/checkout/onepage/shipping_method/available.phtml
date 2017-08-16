@@ -75,6 +75,8 @@
     <?php if (!empty($shippingCodePrice)): ?>
         var shippingCodePrice = {<?php echo implode(',',$shippingCodePrice); ?>};
     <?php endif; ?>
+    var quoteBaseGrandTotal = <?php echo (float)$this->getQuoteBaseGrandTotal(); ?>;
+    var checkQuoteBaseGrandTotal = quoteBaseGrandTotal;
 
     $$('input[type="radio"][name="shipping_method"]').each(function(el){
         Event.observe(el, 'click', function(){
