@@ -924,3 +924,7 @@ footer {
         margin-left: -15px !important;
     }
 }
+
+.block-poll .label {
+    color: #000 !important;
+}
