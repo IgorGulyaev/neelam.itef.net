@@ -1,0 +1,10 @@
+#layerslider5{
+    width: 960px;
+    height: 540px;
+}
+.ls-layer{
+    slidedirection: top; slidedelay: 4000; durationin: 1500; durationout: 1500; easingin: easeInOutQuint; easingout: easeInOutQuint; delayin: 0; delayout: 0;
+}
+.ls-s0{
+    durationin : 1500; durationout : 1500; easingin : easeInOutQuint; easingout : easeInOutQuint; delayin : 0; delayout : 0;
+}

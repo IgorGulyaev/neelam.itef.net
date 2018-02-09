@@ -1,0 +1,27 @@
+.ls-layer,
+.ls-layer * {
+    font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', Helvetica, Arial, Serif;
+    text-shadow: none;
+    font-weight: normal;
+}
+
+.sh {
+    height: 36px;
+    line-height: 36px;
+    color: #333;
+    font-size: 25px;
+    white-space: nowrap;
+}
+
+.sp {
+    line-height: auto;
+    color: #555;
+    font-size: 15px;
+    width: 280px;
+    text-align: justify;
+}
+
+.si {
+    border: 1px solid #ddd;
+    padding: 5px;
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <!-- update layout for all frontend page -->
+        <!--<reference name="head">-->
+            <!--<action method="addJs"><script>mageplaza/bannerslider/jquery-2.1.4.min.js</script></action>-->
+        <!--</reference>-->
+    </default>
+    <cms_index_index>
+        <reference name="content">
+            <block type="bannerslider/simpleslider" name="simple.slider" template="mageplaza/bannerslider/simpleslider.phtml">
+                <action method="setSimpleSliderId"><simple_slider_id>1</simple_slider_id></action>
+            </block>
+        </reference>
+    </cms_index_index>
+</layout>

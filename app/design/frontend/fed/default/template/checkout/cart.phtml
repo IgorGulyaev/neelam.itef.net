@@ -1,0 +1,40 @@
+<h3><?php echo $this->__('Shopping Cart') ?></h3>
+<hr/>
+
+<form action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post">
+    <div class="row">
+        <div class="product-cart col-xs-12 col-sm-8">
+            <?php foreach ($this->getItems() as $_item): ?>
+                <?php echo $this->getItemHtml($_item) ?>
+            <?php endforeach ?>
+            <div class="actions">
+                <?php if ($this->getContinueShoppingUrl()): ?>
+                    <button type="button" title="<?php echo $this->__('Вернуться') ?>"
+                            class="btn btn-sm btn-continue"
+                            onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')">
+                        <span><span><?php echo $this->__('Вернуться') ?></span></span></button>
+                <?php endif; ?>
+                <button type="submit" name="update_cart_action" data-cart-empty value="empty_cart" title="<?php echo $this->quoteEscape($this->__('Empty Cart')); ?>" class="btn btn-sm btn-empty" id="empty_cart_button"><span><span><?php echo $this->__('Empty Cart'); ?></span></span></button>
+                <button type="submit" title="<?php echo $this->__('Update Shopping Cart') ?>"
+                        class="btn btn-sm btn-update">
+                    <span><span><?php echo $this->__('Update Shopping Cart') ?></span></span></button>
+            </div>
+        </div>
+        <div class="cart-total-bottom col-xs-12 col-sm-4">
+            <div class="inner">
+                <?php echo $this->getChildHtml('totals'); ?>
+                <div class="">
+                    <?php if (!$this->hasError()): ?>
+                        <ul class="checkout-types list-unstyled">
+                            <?php foreach ($this->getMethods('methods') as $method): ?>
+                                <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
+                                    <li><?php echo $methodHtml; ?></li>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

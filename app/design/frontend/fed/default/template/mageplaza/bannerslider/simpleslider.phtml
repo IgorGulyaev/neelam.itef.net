@@ -1,0 +1,19 @@
+<?php
+$result  = $this->getSimpleData();
+$simpleSlider   = $result['simple_slider'];
+$banners = $result['banners'];
+
+?>
+<?php if (count($banners) && count($simpleSlider->getData())): ?>
+    <?php if ($simpleSlider->getPosition() == 'pop-up'): ?>
+        <?php echo $this->getSliderTemplate(Mageplaza_BannerSlider_Model_Simpleslider::TYPE_POPUP, $result) ?>
+        <?php
+        ?>
+    <?php else: ?>
+        <div class="mageplaza-simpleslider">
+            <div class="mageplaza-simpleslider-standard">
+                <?php echo $this->getSliderTemplate($simpleSlider->getSimpleSliderType(), $result) ?>
+            </div>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>

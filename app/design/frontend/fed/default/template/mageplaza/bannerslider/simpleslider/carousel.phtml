@@ -1,0 +1,116 @@
+<?php
+$data         = $this->getSimpleSliderData();
+$simpleSlider = $data['simple_slider'];
+$banners      = $data['banners'];
+$deviceConfig = Mage::helper('core')->jsonDecode($simpleSlider->getDeviceConfig());
+$column_1     = $deviceConfig['device_1200'];
+$column_2     = $deviceConfig['device_992'];
+$column_3     = $deviceConfig['device_768'];
+$column_4     = $deviceConfig['device_481'];
+$column_5     = $deviceConfig['device_less_480'];
+$sliderConfig = Mage::helper('core')->jsonDecode($simpleSlider->getSliderConfig());
+$effect       = $sliderConfig['effect'];
+?>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/carousel/owl.carousel.js') ?>"></script>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/carousel/owl.carousel.min.js') ?>"></script>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/trafficbanner.js') ?>"></script>
+<link rel="stylesheet" type="text/css"
+      href="<?php echo $this->getSkinUrl('css/mageplaza/bannerslider/owl.carousel.css') ?>" media="all"/>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/mageplaza/bannerslider/owl.theme.css') ?>"
+      media="all"/>
+<link rel="stylesheet" type="text/css"
+      href="<?php echo $this->getSkinUrl('css/mageplaza/bannerslider/owl.transitions.css') ?>" media="all"/>
+<style>
+    #bannerslider-carousel .item img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+</style>
+
+<script type="text/javascript">
+    var js1 = jQuery.noConflict();
+    js1(document).ready(function () {
+        js1("#bannerslider-carousel").owlCarousel({
+
+            <?php if($column_1 == $column_2 && $column_2 == $column_3 && $column_3 == $column_4 && $column_4 == $column_5 && $column_5 == 1) { ?>
+            singleItem: true,
+            <?php if($effect != 'slide'){?>
+            transitionStyle: "<?php echo $effect?>",
+            <?php } ?>
+            <?php } else { ?>
+            itemsCustom: [
+                [0, <?php echo $column_5;?>],
+                [480, <?php echo $column_4;?>],
+                [768, <?php echo $column_3;?>],
+                [992, <?php echo $column_2;?>],
+                [1200, <?php echo $column_1;?>]
+            ],
+            <?php } ?>
+
+            <?php if($sliderConfig['navigation']){?>
+            navigation: true,
+            <?php } else { ?>
+            navigation: false,
+            <?php } ?>
+            <?php if($sliderConfig['autoPlay'] == 1){?>
+            autoPlay: 3000,
+            <?php } ?>
+            <?php if($sliderConfig['stopOnHover'] == 1){?>
+            stopOnHover: true,
+            <?php } else { ?>
+            stopOnHover: false,
+            <?php } ?>
+
+            <?php if($sliderConfig['pagination'] == 1){?>
+            pagination: true,
+            <?php } else { ?>
+            pagination: false,
+            <?php } ?>
+            slideSpeed: <?php echo $sliderConfig['slideSpeed'] ?>,
+            <?php if($sliderConfig['autoHeight'] == 1){?>
+            autoHeight: true,
+            <?php } else { ?>
+            autoHeight: false,
+            <?php } ?>
+
+            <?php if($sliderConfig['mouseDrag'] == 1){?>
+            mouseDrag: true,
+            <?php } else { ?>
+            mouseDrag: false,
+            <?php } ?>
+            <?php if($sliderConfig['touchDrag'] == 1){?>
+            touchDrag: true,
+            <?php } else { ?>
+            touchDrag: false,
+            <?php } ?>
+
+            <?php if($sliderConfig['lazyLoad'] == 1){?>
+            lazyLoad: true,
+            <?php } else { ?>
+            lazyLoad: false,
+            <?php } ?>
+            <?php if($sliderConfig['addClassActive'] == 1){?>
+            addClassActive: true,
+            <?php } else { ?>
+            addClassActive: false,
+            <?php } ?>
+//            singleItem:true
+        });
+
+
+    });
+</script>
+<div id='bannerslider-carousel' class="owl-carousel owl-theme">
+    <?php foreach ($banners as $banner): ?>
+        <div class="item">
+            <a href="<?php echo $banner['link'] ?>" target="_blank" class="mageplaza-banner-link"
+               title="<?php echo $banner['title'] ?>"
+               storeurl="<?php echo $this->getUrl('bannerslider/banner/traffic', array('banner_id' => $banner['banner_id'])) ?>"
+               style="display:block">
+                <img alt="mageplaza_bannerslider" src="<?php echo $this->getBannerImage($banner['source_file']); ?>"/>
+            </a>
+        </div>
+    <?php endforeach; ?>
+</div>
+

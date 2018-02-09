@@ -1,0 +1,85 @@
+<?php
+$data         = $this->getSimpleSliderData();
+$simpleSlider = $data['simple_slider'];
+$banners      = $data['banners'];
+$sliderConfig = Mage::helper('core')->jsonDecode($simpleSlider->getSliderConfig());
+?>
+
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/flex/jquery.flexslider.js') ?>"></script>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/trafficbanner.js') ?>"></script>
+<link rel="stylesheet" type="text/css"
+      href="<?php echo $this->getSkinUrl('css/mageplaza/bannerslider/flexslider.css') ?>" media="all"/>
+<script type="text/javascript">
+    var jf = jQuery.noConflict();
+    jf(document).ready(function () {
+        jf('.flexslider').flexslider({
+            <?php foreach($sliderConfig as $key=>$value){
+           echo "$key : $value,";
+           }
+           ?>
+            controlsContainer: jf(".custom-controls-container"),
+            customDirectionNav: jf(".custom-navigation a")
+        });
+
+//		jf('#flexslider').flexslider({
+//			animation: "slide",
+//			controlNav: false,
+//			animationLoop: false,
+//			slideshow: false,
+//			itemWidth: 210,
+//			itemMargin: 5,
+//			asNavFor: '#slider'
+//		});
+
+    });
+</script>
+
+<style>
+    .flexslider {
+        margin-bottom: 10px;
+    }
+
+    .flex-control-nav {
+        position: relative;
+        bottom: auto;
+    }
+
+    .custom-navigation {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .custom-navigation > * {
+        display: table-cell;
+    }
+
+    .custom-navigation > a {
+        width: 50px;
+    }
+
+    .custom-navigation .flex-next {
+        text-align: right;
+    }
+</style>
+
+<section class="slider">
+    <div class="flexslider">
+        <ul class="slides">
+            <?php foreach ($banners as $banner): ?>
+                <li data-thumb="<?php echo $this->getBannerImage($banner['source_file']); ?>">
+                    <a href="<?php echo $banner['link'] ?>" target="_blank" class="mageplaza-banner-link"
+                       title="<?php echo $banner['title'] ?>"
+                       storeurl="<?php echo $this->getUrl('bannerslider/banner/traffic', array('banner_id' => $banner['banner_id'])) ?>"
+                       style="display:block"><img alt="mageplaza_bannerslider"
+                                                  src="<?php echo $this->getBannerImage($banner['source_file']); ?>"/></a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</section>
+<!--<div class="custom-navigation">-->
+<!--  <a href="#" class="flex-prev">Prev</a>-->
+<!--  <div class="custom-controls-container"></div>-->
+<!--  <a href="#" class="flex-next">Next</a>-->
+<!--</div>-->

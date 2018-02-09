@@ -1,0 +1,66 @@
+<?php $_product = $this->getProduct(); ?>
+<?php $buttonTitle = $this->__('Add to Cart'); ?>
+<?php if($_product->isSaleable()): ?>
+
+    <div class="qtyswitcher-add-to-cart-box table">
+        <div id="qtyswitcher-btn-picto-<?php echo $_product->getId() ?>" class="table-cell">
+            <button type="button" title="<?php echo $buttonTitle ?>" class="btn btn-success" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
+        </div>
+        <div class="qtyswitcher-qty table-cell">
+            <?php if(!$_product->isGrouped()): ?>
+            <?php if(!is_numeric($this->getMinimalQty($_product))) : $qty= 1; ?>
+            <?php else : $qty=$this->getMinimalQty($_product);?>
+            <?php endif; ?>
+            <div class="table">
+                <div class="input-box">
+                    <input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text clone-qty qty" />
+                </div>
+                <div class="input-box">
+                    <a class="quantity_box_button_up qtyswitcher btn" onclick="qtyUp()"><i class="fa fa-caret-up"></i></a>
+                    <a class="quantity_box_button_down qtyswitcher btn" onclick="qtyDown()"><i class="fa fa-caret-down"></i></a>
+                </div>
+            </div>
+        </div>
+        <?php else :?>
+            <script language="javascript">qtyswitcher.groupedInit("<?php //echo $this->__("Quantity"); ?>")</script>
+        <?php endif; ?>
+    </div>
+
+<?php endif; ?>
+
+<script type="text/javascript">
+
+    var qty_el = document.getElementById('qty'); 
+    var qty = qty_el.value; 
+    if(qty < 2){
+        jQuery('.quantity_box_button_down').css({
+            'visibility' : 'hidden'
+        });
+    }
+    function qtyDown(){
+        var qty_el = document.getElementById('qty'); 
+        var qty = qty_el.value; 
+        if( qty == 2) {
+            jQuery('.quantity_box_button_down').css({
+                'visibility' : 'hidden'
+            });
+        }
+        if( !isNaN( qty ) && qty > 0 ){
+            qty_el.value--;
+        }         
+        return false;
+    }
+    
+    function qtyUp(){
+        var qty_el = document.getElementById('qty'); 
+        var qty = qty_el.value; 
+        if( !isNaN( qty )) {
+            qty_el.value++;
+        }
+        jQuery('.quantity_box_button_down').css({
+            'visibility' : 'visible'
+        });
+        return false;
+    }
+
+</script>

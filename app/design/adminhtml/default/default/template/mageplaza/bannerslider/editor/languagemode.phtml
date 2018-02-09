@@ -1,0 +1,61 @@
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/editor/selection/selection-pointer.js') ?>"></script>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/editor/mode/xml/xml.js') ?>"></script>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/editor/mode/javascript.js') ?>"></script>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/editor/mode/css/css.js') ?>"></script>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/editor/mode/vbscript/vbscript.js') ?>"></script>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/editor/mode/htmlmixed/htmlmixed.js') ?>"></script>
+<style>.CodeMirror {
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+    }</style>
+<script>
+    var editorQueue = {};
+    var cntQueue = 0;
+    var mixedMode = {
+        name: "htmlmixed",
+        scriptTypes: [{
+            matches: /\/x-handlebars-template|\/x-mustache/i,
+            mode: null
+        },
+            {
+                matches: /(text|application)\/(x-)?vb(a|script)/i,
+                mode: "vbscript"
+            }]
+    };
+
+</script>
+
+<script>
+    var editorQueue = {};
+    var cntQueue = 0;
+    document.observe('dom:loaded', function () {
+        var prefix = $("prefix");
+        addEditor(prefix);
+        var suffix = $("suffix");
+        addEditor(suffix);
+        var htmlText = $("html_text");
+        addEditor(htmlText);
+
+    });
+    function refreshEditor(editor) {
+        editor.refresh();
+        editor.save();
+    }
+    function addEditor(el) {
+        var edt = CodeMirror.fromTextArea(el, {
+            mode: mixedMode,
+            selectionPointer: true
+        });
+        editorQueue[el.id] = edt;
+        cntQueue++;
+        setTimeout(function () {
+            refreshEditor(edt);
+        }, 200)
+    }
+    function processEditorQueue(){
+        for(index in editorQueue){
+            refreshEditor(editorQueue[index]);
+        }
+
+    }
+</script>

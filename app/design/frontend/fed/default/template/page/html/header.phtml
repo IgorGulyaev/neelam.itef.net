@@ -1,0 +1,68 @@
+<link href='http://fonts.googleapis.com/css?family=Alegreya+Sans' rel='stylesheet' type='text/css'>
+
+<div class="head-top">
+	<div class="topbar">
+		<div class="container">
+			<div class="row">
+                <div class="col-sm-6 hidden-xs">
+                    <div class="banner">
+                        <?php echo $this->getChildHtml('topLinks')?>
+                    </div>
+                </div>
+                <div class="col-xs-7 col-sm-4">
+					<?php echo $this->getChildHtml('topSearch') ?>
+				</div>
+                <div class="col-xs-5 col-sm-2">
+                    <?php echo $this->getChildHtml('topSocial') ?>
+                </div>
+			</div>
+		</div>
+	</div>
+
+	<div class="brand">
+		<div class="row">
+			<div class="container">
+				<div class="logo-head">
+					<div class="col-xs-12 col-sm-4 col-md-5 mob-top">
+                        <?php echo $this->getChildHtml('header_store_info') ?>
+					</div>
+                    <div class="col-xs-12 col-sm-8 col-md-7 mob-panel">
+                        <div class="row">
+                            <div class="col-xs-3 navbar-header visible-xs">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <div class="col-xs-6 col-sm-5">
+                                <div class="logo">
+                                    <a href="<?php echo $this->getUrl(''); ?>">
+                                        <img src="<?php echo $this->getLogoSrc(); ?>"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xs-3 col-sm-7 no-padding">
+                                <div class="account-cart-wrapper">
+                                    <div class="header-minicart">
+                                        <?php echo $this->getChildHtml('minicart_head'); ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--Menu Section -->
+<div class="main-menu">
+	<div class="row">
+		<div class="container">
+			<?php echo $this->getChildHtml('topMenu'); ?>
+		</div>
+	</div>
+</div>

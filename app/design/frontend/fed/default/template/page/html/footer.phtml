@@ -1,0 +1,25 @@
+<footer class="footer row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12 footer_first hidden-xs">
+                <div class="container">
+                    <div class="newsletter foot_pipe <!--col-md-3-->">
+                        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_links')->toHtml() ?>
+                    </div>
+                </div>
+            </div>
+            <div class="footer_second col-md-12">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-sm-push-6 copyright">
+                            <span style="color:#b6aa8a"><?php echo $this->getCopyright() ?></span>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-sm-pull-6 itef">
+                            <span style="color:#b6aa8a"><?php echo $this->__('Designed by') ?><a href="http://itef.biz" target="_blank"> <?php echo '<b>' . $this->__('ITEF') . '</b>' ?></a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

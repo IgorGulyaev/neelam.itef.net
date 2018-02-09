@@ -1,0 +1,17 @@
+<?php
+$storeId = Mage::app()->getStore()->getStoreId();
+$storePhone = Mage::getStoreConfig('general/store_information/phone', $storeId);
+$storeAddress = Mage::getStoreConfig('general/store_information/address', $storeId);
+
+?>
+
+<div class="store-info">
+    <div class="store-phone">
+        <i class="icon-phone"></i>
+        <span><?php echo $storePhone; ?></span>
+    </div>
+    <div class="store-address">
+        <i class="icon-location"></i>
+        <span><?php echo nl2br($storeAddress); ?></span>
+    </div>
+</div>

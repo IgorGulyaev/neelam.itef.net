@@ -1,0 +1,267 @@
+<?php
+
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_modern
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+?>
+
+<?php
+
+/**
+ * Product list template
+ *
+ * @see Mage_Catalog_Block_Product_List
+ */
+
+?>
+
+<?php
+$_productCollection = $this->getLoadedProductCollection();
+$_helper = $this->helper('catalog/output');
+?>
+
+<?php if (!$_productCollection->count()): ?>
+    <div class="alert alert-danger"><span
+            class="glyphicon .glyphicon-ban-circle"></span> <?php echo $this->__('There are no products matching the selection.') ?>
+    </div>
+<?php else: ?>
+    <div class="category-products" style="font-family: 'Alegreya Sans', sans-serif;">
+        <?php echo $this->getToolbarHtml() ?>
+        <br/><br/>
+
+        <?php
+        if (Mage::getSingleton('cms/page')->getIdentifier() == 'home' &&
+            Mage::app()->getFrontController()->getRequest()->getRouteName() == 'cms'
+        ) { /* if is home page */ ?>
+            <div style="border-bottom: 4px solid #ca2728; width: 100%">
+                <img src="<?= $this->getSkinUrl('images/latest.jpg'); ?>"/>
+            </div>
+        <?php } ?>
+
+        <?php // List mode ?>
+        <?php if ($this->getMode() != 'grid'): ?>
+            <?php $_iterator = 0; ?>
+            <ol class="products-list list-unstyled" id="products-list">
+                <?php foreach ($_productCollection as $_product): ?>
+                    <li class="item<?php if (++$_iterator == sizeof($_productCollection)): ?> last<?php endif; ?>">
+
+                        <div class="row">
+                            <div class="col-md-2">
+                                <?php // Product Image ?>
+                                <a href="<?php echo $_product->getProductUrl() ?>"
+                                   title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
+                                   class="product-image"><img
+                                        src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->keepFrame(false)->resize(170); ?>"
+                                        width="170" height="170"
+                                        alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
+                                        class="img-thumbnail"/></a>
+                            </div>
+                            <div class="col-md-10">
+                                <?php // Product description ?>
+                                <div class="product-shop">
+                                    <div class="f-fix">
+                                        <?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
+                                        <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name'); ?></a>
+                                        </h2>
+                                        <?php if ($_product->getRatingSummary()): ?>
+                                            <?php echo $this->getReviewsSummaryHtml($_product) ?>
+                                        <?php endif; ?>
+                                        <div class="desc std">
+                                            <?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
+                                            <a href="<?php echo $_product->getProductUrl() ?>"
+                                               title="<?php echo $_productNameStripped ?>" class="link-learn">
+                                                <small><?php echo $this->__('Read More') ?></small>
+                                            </a>
+                                        </div>
+                                        <div class="text-danger lead"><?php echo $this->getPriceHtml($_product, true) ?></div>
+                                        <?php if ($_product->isSaleable()): ?>
+                                            <form action="<?php echo $this->getAddToCartUrl($_product) ?>" method="post" class="add-to-cart-form" id="product_addtocart_form_<?php echo $_product->getId()?>"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?> data-qty="<?php echo $_product->getId() ?>" >
+                                                <?php if($_product->isSaleable()): ?>
+                                                    <fieldset class="qtyswitcher-add-to-cart-box table">
+                                                        <div id="qtyswitcher-btn-picto-<?php echo $_product->getId() ?>" class="table-cell">
+                                                            <button type="button" class="btn btn-success" onclick="this.form.submit()"><?php echo $this->__('Add to Cart') ?></button>
+                                                        </div>
+                                                        <div class="qtyswitcher-qty table-cell">
+                                                            <?php if(!$_product->isGrouped()): ?>
+                                                            <?php if(!is_numeric($this->getMinimalQty($_product))) : $qty= 1; ?>
+                                                            <?php else : $qty=$this->getMinimalQty($_product);?>
+                                                            <?php endif; ?>
+
+                                                            <div class="table">
+                                                                <?php
+                                                                $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product);
+                                                                $maxQty = (int)$stock->getQty();
+                                                                ?>
+                                                                <div class="input-box">
+                                                                    <input type="text" class="input-text clone-qty" id="qtyswitcher-clone-qty-<?php echo $_product->getId() ?>" maxlength="12" value="<?php echo $qty;?>" disabled='true' />
+                                                                    <input type="hidden"  name="qty" id="qtyswitcher-qty-<?php echo $_product->getId() ?>" value="<?php echo $qty;?>"/>
+                                                                </div>
+                                                                <div class="input-box">
+                                                                    <input type='button' id="qtyswitcher-onemore-<?php echo $_product->getId() ?>" class='qtyswitcher btn' value="▲" onclick="qtyswitcher.addOne('qtyswitcher-qty-<?php echo $_product->getId() ?>','qtyswitcher-clone-qty-<?php echo $_product->getId() ?>');"/>
+                                                                    <input type='button' id="qtyswitcher-oneless-<?php echo $_product->getId() ?>" class='qtyswitcher btn' value="▼" onclick="qtyswitcher.removeOne('qtyswitcher-qty-<?php echo $_product->getId() ?>','qtyswitcher-clone-qty-<?php echo $_product->getId() ?>')"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <?php else :?>
+
+                                                            <script language="javascript">qtyswitcher.groupedInit("<?php //echo $this->__("Quantity"); ?>")</script>
+                                                        <?php endif; ?>
+                                                    </fieldset>
+                                                <?php endif; ?>
+                                            </form>
+                                        <?php else: ?>
+                                            <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
+            </ol>
+            <script type="text/javascript">decorateList('products-list', 'none-recursive')</script>
+        <?php else: ?>
+        <?php // Grid Mode ?>
+        <?php $_collectionSize = $_productCollection->count() ?>
+        <?php $_columnCount = $this->getColumnCount(); ?>
+            <ul class="products-grid row">
+        <?php $i = 0;
+        foreach ($_productCollection as $_product): ?>
+            <li class="col-xs-6 col-sm-4 item<?php if (($i - 1) % $_columnCount == 0): ?> first<?php elseif ($i % $_columnCount == 0): ?> last<?php endif; ?>">
+                <div class="top-box">
+                    <a href="<?php echo $_product->getProductUrl() ?>"
+                       title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
+                       class="product-image"><img
+                                src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(220, 300); ?>"
+                                alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"/></a>
+                    <div class="title-product"><a href="<?php echo $_product->getProductUrl() ?>" class="text-danger"
+                                                  title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a>
+                    </div>
+                    <div class="price-product">
+                        <?php echo $this->getPriceHtml($_product, true) ?>
+                    </div>
+                </div>
+                <div class="actions-box">
+                    <?php if($_product->isSaleable()): ?>
+                        <form action="<?php echo $this->getAddToCartUrl($_product) ?>" method="post" class="add-to-cart-form" id="product_addtocart_form_<?php echo $_product->getId()?>"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?> data-qty="<?php echo $_product->getId() ?>" >
+                            <fieldset class="qtyswitcher-add-to-cart-box table">
+                                <div id="qtyswitcher-btn-picto-<?php echo $_product->getId() ?>" class="table-cell">
+                                    <button type="button" class="btn btn-success" onclick="this.form.submit()"><?php echo $this->__('Add to Cart') ?></button>
+                                </div>
+                                <div class="qtyswitcher-qty table-cell">
+                                    <?php if(!$_product->isGrouped()): ?>
+                                    <?php if(!is_numeric($this->getMinimalQty($_product))) : $qty= 1; ?>
+                                    <?php else : $qty=$this->getMinimalQty($_product);?>
+                                    <?php endif; ?>
+
+                                    <div class="table">
+                                        <?php
+                                        $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product);
+                                        $maxQty = (int)$stock->getQty();
+                                        ?>
+                                        <div class="input-box">
+                                            <input type="text" class="input-text clone-qty" id="qtyswitcher-clone-qty-<?php echo $_product->getId() ?>" maxlength="12" data-maxval="<?php echo $maxQty; ?>" value="<?php echo $qty;?>" disabled='true' />
+                                            <input type="hidden"  name="qty" id="qtyswitcher-qty-<?php echo $_product->getId() ?>" value="<?php echo $qty;?>"/>
+                                        </div>
+                                        <div class="input-box">
+                                            <a id="qtyswitcher-onemore-<?php echo $_product->getId() ?>" class='qtyswitcher btn fa fa-caret-up' onclick="qtyswitcher.addOne('qtyswitcher-qty-<?php echo $_product->getId() ?>','qtyswitcher-clone-qty-<?php echo $_product->getId() ?>');"></a>
+                                            <a id="qtyswitcher-oneless-<?php echo $_product->getId() ?>" class='qtyswitcher btn fa fa-caret-down' onclick="qtyswitcher.removeOne('qtyswitcher-qty-<?php echo $_product->getId() ?>','qtyswitcher-clone-qty-<?php echo $_product->getId() ?>')"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php else :?>
+
+                                    <script language="javascript">qtyswitcher.groupedInit("<?php //echo $this->__("Quantity"); ?>")</script>
+                                <?php endif; ?>
+                            </fieldset>
+                        </form>
+                    <?php endif; ?>
+                </div>
+            </li>
+        <?php endforeach ?>
+            </ul>
+            <script
+                type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd', 'even', 'first', 'last'])</script>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>
+<script type="text/javascript">
+
+    document.observe("dom:loaded", function() {
+        qtyswitcher.init();
+
+    });
+
+    qtyswitcher={
+        groupedInit: function(quantity){
+
+            $$('.qty').each(function(e){
+                qty=e.value;
+                name=e.name;
+                idVal = jQuery(this).parents('form').attr('data-qty');
+                html ="<div class='qtyswitcher-qty"+idVal+"'>";
+                html+="<div class='table'>";
+                html+="<div class='input-box'>";
+                html+="<input type='hidden'  name='"+name+"' id='"+name+"' value='"+qty+"'/>";
+                html+="<input type='text' class='input-text clone-qty' id='"+name+"-clone-qty' maxlength='12' value='"+qty+"' disabled='true' />";
+                html+="</div>";
+                html+="<div class='input-box'>";
+                html+="<input type='button' id='qtyswitcher-onemore"+idVal+"' class='qtyswitcher btn' onclick='qtyswitcher.addOne(\""+name+"\",\""+name+"-clone-qty\");'/>";
+                html+="<input type='button' id='qtyswitcher-oneless"+idVal+"' class='qtyswitcher btn' onclick='qtyswitcher.removeOne(\""+name+"\",\""+name+"-clone-qty\")'/>";
+                html+="</div>";
+                //html+="<input type='image' id='qtyswitcher-form-btn-products"+idVal+"' src='' >"
+                html+="</div>";
+                e.replace(html);
+
+            })
+
+        },
+        init:function(){
+
+        },
+        addOne: function(id,idClone){
+            count=Math.round($(id).value)+1;
+            var inp = jQuery('#'+idClone+'');
+            if(inp.val() == inp.attr('data-maxval')) {
+            } else {
+                $(id).writeAttribute('value',count);
+                var formAct = jQuery(this).parents('form').attr('action');
+                var formActNew = formAct+'&qty=['+count+']';
+                jQuery(this).parents('form').attr('action', formActNew);
+                $(idClone).writeAttribute('value',count);		if(count<1) jQuery(this).parents('fieldset').find('.btn-success').disabled=true;		else jQuery(this).parents('fieldset').find('.btn-success').disabled=false;
+            }
+        },
+        removeOne: function(id,idClone){
+            count=Math.round($(id).value)-1;
+            if(count<1)count=1;
+            $(id).writeAttribute('value',count);
+            var formAct = jQuery(this).parents('form').attr('action');
+            var formActNew = formAct+'&qty=['+count+']';
+            jQuery(this).parents('form').attr('action', formActNew);
+            $(idClone).writeAttribute('value',count);		if(count<1) jQuery(this).parents('fieldset').find('.btn-success').disabled=true;		else jQuery(this).parents('fieldset').find('.btn-success').disabled=false;
+        }
+
+    };
+</script>

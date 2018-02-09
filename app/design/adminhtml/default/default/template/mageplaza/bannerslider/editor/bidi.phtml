@@ -1,0 +1,37 @@
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/editor/mode/xml/xml.js') ?>"></script>
+<script>
+    var editorQueue = {};
+    var cntQueue = 0;
+    document.observe('dom:loaded', function () {
+        var prefix = $("prefix");
+        addEditor(prefix);
+        var suffix = $("suffix");
+        addEditor(suffix);
+        var htmlText = $("html_text");
+        addEditor(htmlText);
+
+    });
+
+    function refreshEditor(editor) {
+        editor.refresh();
+        editor.save();
+    }
+    function addEditor(el) {
+        var edt = CodeMirror.fromTextArea(el, {
+            mode: "text/html",
+            lineNumbers: true
+        });
+        editorQueue[el.id] = edt;
+        cntQueue++;
+        setTimeout(function () {
+            refreshEditor(edt);
+        }, 200)
+    }
+    function processEditorQueue(){
+        for(index in editorQueue){
+            refreshEditor(editorQueue[index]);
+        }
+
+    }
+
+</script>

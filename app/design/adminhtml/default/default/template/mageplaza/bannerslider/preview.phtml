@@ -1,0 +1,255 @@
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/jquery-2.1.4.min.js') ?>"></script>
+<?php
+$sliderType = $this->getSliderType();
+
+if ($sliderType != 'advance') {
+    $simpleSlider       = $this->getSliderData();
+    $banners      = $this->getBannerData();
+    $sliderConfig = Mage::helper('core')->jsonDecode($simpleSlider->getSliderConfig());
+    $deviceConfig = $simpleSlider->getDeviceConfig();
+    if ($deviceConfig) {
+        $deviceConfig = Mage::helper('core')->jsonDecode($simpleSlider->getDeviceConfig());
+        $column_1     = $deviceConfig['device_1200'];
+        $column_2     = $deviceConfig['device_992'];
+        $column_3     = $deviceConfig['device_768'];
+        $column_4     = $deviceConfig['device_481'];
+        $column_5     = $deviceConfig['device_less_480'];
+
+    }
+    ?>
+    <?php if ($sliderType == 'carousel') : ?>
+        <?php $effect = $sliderConfig['effect'];
+        ?>
+        <!--<script type="text/javascript"-->
+        <!--        src="--><?php //echo $this->getJsUrl('mageplaza/bannerslider/jquery-2.1.4.min.js') ?><!--"></script>-->
+        <script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/carousel/owl.carousel.js') ?>"></script>
+        <script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/carousel/owl.carousel.min.js') ?>"></script>
+        <link rel="stylesheet" type="text/css"
+              href="<?php echo $this->getSkinUrl('css/mageplaza/bannerslider/owl.carousel.css') ?>" media="all"/>
+        <link rel="stylesheet" type="text/css"
+              href="<?php echo $this->getSkinUrl('css/mageplaza/bannerslider/owl.theme.css') ?>" media="all"/>
+        <link rel="stylesheet" type="text/css"
+              href="<?php echo $this->getSkinUrl('css/mageplaza/bannerslider/owl.transitions.css') ?>" media="all"/>
+        <style>
+            #bannerslider-carousel .item img {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+        </style>
+        <script type="text/javascript">
+            var js1 = jQuery.noConflict();
+            js1(document).ready(function () {
+                js1("#bannerslider-carousel").owlCarousel({
+                    <?php if($column_1 == $column_2 && $column_2 == $column_3 && $column_3 == $column_4 && $column_4 == $column_5 && $column_5 == 1) { ?>
+                    singleItem: true,
+                    <?php if($effect != 'slide'){?>
+                    transitionStyle: "<?php echo $effect?>",
+                    <?php } ?>
+                    <?php } else { ?>
+                    itemsCustom: [
+                        [0, <?php echo $column_5;?>],
+                        [480, <?php echo $column_4;?>],
+                        [768, <?php echo $column_3;?>],
+                        [992, <?php echo $column_2;?>],
+                        [1200, <?php echo $column_1;?>]
+                    ],
+                    <?php } ?>
+
+                    <?php if($sliderConfig['navigation']){?>
+                    navigation: true,
+                    <?php } else { ?>
+                    navigation: false,
+                    <?php } ?>
+                    <?php if($sliderConfig['autoPlay'] == 1){?>
+                    autoPlay: 3000,
+                    <?php } ?>
+                    <?php if($sliderConfig['stopOnHover'] == 1){?>
+                    stopOnHover: true,
+                    <?php } else { ?>
+                    stopOnHover: false,
+                    <?php } ?>
+
+                    <?php if($sliderConfig['pagination'] == 1){?>
+                    pagination: true,
+                    <?php } else { ?>
+                    pagination: false,
+                    <?php } ?>
+                    slideSpeed: <?php echo $sliderConfig['slideSpeed'] ?>,
+                    <?php if($sliderConfig['autoHeight'] == 1){?>
+                    autoHeight: true,
+                    <?php } else { ?>
+                    autoHeight: false,
+                    <?php } ?>
+
+                    <?php if($sliderConfig['mouseDrag'] == 1){?>
+                    mouseDrag: true,
+                    <?php } else { ?>
+                    mouseDrag: false,
+                    <?php } ?>
+                    <?php if($sliderConfig['touchDrag'] == 1){?>
+                    touchDrag: true,
+                    <?php } else { ?>
+                    touchDrag: false,
+                    <?php } ?>
+
+                    <?php if($sliderConfig['lazyLoad'] == 1){?>
+                    lazyLoad: true,
+                    <?php } else { ?>
+                    lazyLoad: false,
+                    <?php } ?>
+                    <?php if($sliderConfig['addClassActive'] == 1){?>
+                    addClassActive: true,
+                    <?php } else { ?>
+                    addClassActive: false,
+                    <?php } ?>
+//                singleItem:true
+                });
+            });
+        </script>
+        <div class="wraper-carousel-slider" style="margin: 0 auto;width: 70%;height: 70%;">
+            <div id='bannerslider-carousel' class="owl-carousel owl-theme">
+                <?php foreach ($banners as $banner): ?>
+                    <div class="item">
+                        <a href="<?php echo $banner['link'] ?>" style="display:block" target="_blank">
+                            <img
+                                src="<?php echo Mage::helper('bannerslider')->getBannerImage($banner['source_file']); ?>"/>
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+
+    <?php elseif ($sliderType == 'popup'): ?>
+        <script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/popupslider/jquery.fancybox.js') ?>"></script>
+        <script
+            src="<?php echo $this->getJsUrl('mageplaza/bannerslider/popupslider/jquery.fancybox.pack.js') ?>"></script>
+        <script
+            src="<?php echo $this->getJsUrl('mageplaza/bannerslider/popupslider/jquery.fancybox-buttons.js') ?>"></script>
+        <script
+            src="<?php echo $this->getJsUrl('mageplaza/bannerslider/popupslider/jquery.fancybox-thumbs.js') ?>"></script>
+        <link rel="stylesheet" type="text/css"
+              href="<?php echo $this->getSkinUrl('css/mageplaza/bannerslider/jquery.fancybox.css') ?>" media="all"/>
+        <link rel="stylesheet" type="text/css"
+              href="<?php echo $this->getSkinUrl('css/mageplaza/bannerslider/jquery.fancybox-buttons.css') ?>"
+              media="all"/>
+        <script type="text/javascript">
+            var js = jQuery.noConflict();
+            js(document).ready(function () {
+                //js('.fancybox').fancybox().trigger('click');
+                js('.fancybox').fancybox({
+                    <?php foreach($sliderConfig as $key=>$value){
+                    echo "$key : $value,";
+                    }
+                    ?>
+                    <?php if($sliderConfig['showNavigation']) {echo " helpers: {buttons: {}}," ;}?>
+                    closeBtn: false,
+
+
+
+
+                afterLoad: function () {
+                    <?php if($sliderConfig['showNavigation']):?>
+                    this.title = 'Image ' + (this.index + 1) + ' of ' + this.group.length + (this.title ? ' - ' + this.title : '');
+                    <?php endif?>
+                }
+            }).trigger('click');
+
+            });
+        </script>
+        <?php foreach ($banners as $banner): ?>
+            <div class="fancybox" data-fancybox-group="gallery">
+                <a href="<?php echo $banner['link'] ?>" style="display:block" target="_blank"><img
+                        src="<?php echo $this->getBannerImage($banner['source_file']); ?>"/></a>
+            </div>
+        <?php endforeach; ?>
+
+    <?php
+    elseif ($sliderType == 'flex'): ?>
+        <script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/flex/jquery.flexslider.js') ?>"></script>
+        <link rel="stylesheet" type="text/css"
+              href="<?php echo $this->getSkinUrl('css/mageplaza/bannerslider/flexslider.css') ?>" media="all"/>
+        <script type="text/javascript">
+            var jf = jQuery.noConflict();
+            jf(document).ready(function () {
+                jf('.flexslider').flexslider({
+                    <?php foreach($sliderConfig as $key=>$value){
+                   echo "$key : $value,";
+                   }
+                   ?>
+                    controlsContainer: jf(".custom-controls-container"),
+                    customDirectionNav: jf(".custom-navigation a")
+                });
+            });
+        </script>
+        <style>
+            .flexslider {
+                margin-bottom: 10px;
+            }
+
+            .flex-control-nav {
+                position: relative;
+                bottom: auto;
+            }
+
+            .custom-navigation {
+                display: table;
+                width: 100%;
+                table-layout: fixed;
+            }
+
+            .custom-navigation > * {
+                display: table-cell;
+            }
+
+            .custom-navigation > a {
+                width: 50px;
+            }
+
+            .custom-navigation .flex-next {
+                text-align: right;
+            }
+        </style>
+        <div class="wraper-flex-slider" style="margin: 0 auto;width: 70%;height: 70%">
+            <div class="flexslider">
+                <ul class="slides">
+                    <?php foreach ($banners as $banner): ?>
+                        <li data-thumb="<?php echo $this->getBannerImage($banner['source_file']); ?>">
+                            <!--						<a href="-->
+                            <?php //echo $banner['link'] ?><!--" target="_blank"><img  src="-->
+                            <?php //echo $this->getBannerImage($banner['source_file']); ?><!--"/></a>-->
+                            <img src="<?php echo $this->getBannerImage($banner['source_file']); ?>"/>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+
+        </div>
+
+    <?php endif ?>
+<?php } else { ?>
+    <?php
+    $advanceSlider = $this->getAdvanceData();
+    if ($advanceSlider) {
+        $jsTexts     = explode("\r\n", $advanceSlider->getJsText());
+        $cssTexts    = explode("\r\n", $advanceSlider->getCssText());
+        $bannerHtmls = Mage::helper('core')->jsonDecode($advanceSlider['banner_html']);
+        ?>
+        <?php foreach ($jsTexts as $jsText) { ?>
+            <script src="<?php echo Mage::getBaseUrl('js') . $jsText ?>"></script>
+        <?php } ?>
+        <?php foreach ($cssTexts as $cssText) { ?>
+            <link rel="stylesheet" type="text/css"
+                  href="<?php echo Mage::getBaseUrl('skin') . 'frontend/base/default/css/' . $cssText ?>" media="all"/>
+        <?php } ?>
+        <div class="wraper-advance-slider" style="margin: 0 auto;width: 70%;height: 70%;">
+            <?php echo $advanceSlider->getPrefix() ?>
+            <?php foreach ($bannerHtmls as $bannerHtml) { ?>
+                <?php echo $bannerHtml ?>
+            <?php } ?>
+            <?php echo $advanceSlider->getSuffix() ?>
+            <?php echo $advanceSlider->getHtmlText() ?>
+        </div>
+    <?php
+    }
+} ?>

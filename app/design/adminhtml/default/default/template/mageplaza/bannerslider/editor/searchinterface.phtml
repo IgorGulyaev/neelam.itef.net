@@ -1,0 +1,57 @@
+<link rel="stylesheet" type="text/css"
+      href="<?php echo $this->getSkinUrl('css/mageplaza/bannerslider/editor/dialog/dialog.css') ?>" media="all"/>
+<link rel="stylesheet" type="text/css"
+      href="<?php echo $this->getSkinUrl('css/mageplaza/bannerslider/editor/search/matchesonscrollbar.css') ?>"
+      media="all"/>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/editor/mode/xml/xml.js') ?>"></script>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/editor/dialog/dialog.js') ?>"></script>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/editor/search/searchcursor.js') ?>"></script>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/editor/search/search.js') ?>"></script>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/editor/scroll/annotatescrollbar.js') ?>"></script>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/editor/search/matchesonscrollbar.js') ?>"></script>
+<style type="text/css">
+    .CodeMirror {
+        border-top: 1px solid transparent;
+        border-bottom: 1px solid transparent;
+    }
+
+    dt {
+        font-family: monospace;
+        color: #d96708;
+    }
+</style>
+<script>
+    var editorQueue = {};
+    var cntQueue = 0;
+    document.observe('dom:loaded', function () {
+        var prefix = $("prefix");
+        addEditor(prefix);
+        var suffix = $("suffix");
+        addEditor(suffix);
+        var htmlText = $("html_text");
+        addEditor(htmlText);
+
+    });
+    function refreshEditor(editor) {
+        editor.refresh();
+        editor.save();
+    }
+    function addEditor(el) {
+        var edt = CodeMirror.fromTextArea(el, {
+            mode: "text/html",
+            lineNumbers: true,
+            extraKeys: {"Alt-F": "findPersistent"}
+        });
+        editorQueue[el.id] = edt;
+        cntQueue++;
+        setTimeout(function () {
+            refreshEditor(edt);
+        }, 200)
+    }
+    function processEditorQueue(){
+        for(index in editorQueue){
+            refreshEditor(editorQueue[index]);
+        }
+
+    }
+</script>

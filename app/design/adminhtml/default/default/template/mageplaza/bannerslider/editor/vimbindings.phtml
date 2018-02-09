@@ -1,0 +1,69 @@
+<link rel="stylesheet" type="text/css"
+      href="<?php echo $this->getSkinUrl('css/mageplaza/bannerslider/editor/dialog/dialog.css') ?>" media="all"/>
+<link rel="stylesheet" type="text/css"
+      href="<?php echo $this->getSkinUrl('css/mageplaza/bannerslider/editor/theme/midnight.css') ?>" media="all"/>
+<link rel="stylesheet" type="text/css"
+      href="<?php echo $this->getSkinUrl('css/mageplaza/bannerslider/editor/theme/solarized.css') ?>" media="all"/>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/editor/dialog/dialog.js') ?>"></script>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/editor/search/searchcursor.js') ?>"></script>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/editor/mode/clike/clike.js') ?>"></script>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/editor/edit/matchbrackets.js') ?>"></script>
+<script src="<?php echo $this->getJsUrl('mageplaza/bannerslider/editor/keymap/vim.js') ?>"></script>
+<style type="text/css">
+    .CodeMirror {
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+    }
+</style>
+<script>
+    CodeMirror.commands.save = function () {
+        alert("Saving");
+    };
+</script>
+
+<script>
+    var editorQueue = {};
+    var cntQueue = 0;
+    document.observe('dom:loaded', function () {
+        var prefix = $("prefix");
+        addEditor(prefix);
+        var suffix = $("suffix");
+        addEditor(suffix);
+        var htmlText = $("html_text");
+        addEditor(htmlText);
+    });
+    function refreshEditor(editor) {
+        editor.refresh();
+        editor.save();
+    }
+    function addEditor(el) {
+        var bannerEditor = CodeMirror.fromTextArea(el, {
+            lineNumbers: true,
+            mode: "text/x-csrc",
+            keyMap: "vim",
+            matchBrackets: true,
+            showCursorWhenSelecting: true
+        });
+        var bannerDisplay = document.fromTextArea(el);
+        var keys = '';
+        CodeMirror.on(bannerEditor, 'vim-keypress', function (key) {
+            keys = keys + key;
+            bannerDisplay.innerHTML = keys;
+        });
+        CodeMirror.on(bannerEditor, 'vim-command-done', function (e) {
+            keys = '';
+            bannerDisplay.innerHTML = keys;
+        });
+        editorQueue[el.id] = edt;
+        cntQueue++;
+        setTimeout(function () {
+            refreshEditor(edt);
+        }, 200)
+    }
+    function processEditorQueue(){
+        for(index in editorQueue){
+            refreshEditor(editorQueue[index]);
+        }
+
+    }
+</script>
