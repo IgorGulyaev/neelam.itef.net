@@ -789,7 +789,54 @@ a {
       &+ .input-box {
         border-left: 1px solid #dfce94;
       }
+      .spinner {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        height: 44px;
+        #qty {
+          -webkit-box-flex: 1;
+          -ms-flex: 1;
+          flex: 1;
+        }
+        .spinner-controls {
+          border-left: 1px solid #dfce94;
+          a {
+            display: block;
+            padding: 2px;
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            border-radius: 0;
+            background-color: #dfce94;
+            color: #360e04;
+            height: 22px;
+            width: 19px;
+            font: normal normal normal 14px/1 FontAwesome;
+            line-height: 18px;
+            text-align: center;
+            text-decoration: none !important;
+            &[data-spin="up"] {
+              &:before {
+                content: "\f0d8";
+              }
+            }
+            &[data-spin="down"] {
+              &:before {
+                content: "\f0d7";
+              }
+            }
+          }
+        }
+      }
     }
+  }
+}
+
+.qtyswitcher-qty {
+  .clone-qty {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
   }
 }
 

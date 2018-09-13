@@ -68,12 +68,6 @@
 
 <?php $_product = $this->getProduct(); ?>
 
-<script type="text/javascript">
-
-    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
-
-</script>
-
 <div id="alert alert-success"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
 
 <div class="product-view">
@@ -87,7 +81,7 @@
 
             <div class="row">
                 <div class="col-xs-12 col-sm-7 col-md-6 col-lg-5 product-img-wrapper">
-                     <div class="product-img-box">
+                    <div class="product-img-box">
                         <?php echo $this->getChildHtml('media') ?>
                     </div>
                     <div class="clearer"></div>
@@ -103,57 +97,9 @@
                                 <div class="product-info">
                                     <?php echo $_helper->productAttribute($_product, $_product->getDescription(), 'description'); ?>
                                 </div>
-                                <?php /*echo $this->getReviewsSummaryHtml($_product, false, true)*/?><!--
-                                <?php /*echo $this->getChildHtml('alert_urls') */?>
-                                --><?php /*echo $this->getChildHtml('product_type_data') */?>
-                                <?php /*echo $this->getChildHtml('product_attributes_main') */?>
                                 <?php echo $this->getChildHtml('extrahint') ?>
                                 <?php echo $this->getChildHtml('additional') ?>
-                                <?php if (!$this->hasOptions()):?>
-                                    <div class="add-to-box">
-                                        <?php if($_product->isSaleable()): ?>
-                                        <?php $buttonTitle = $this->__('Add to Cart'); ?>
-                                        <div class="add-to-cart">
-                                            <?php if(!$_product->isGrouped()): ?>
-                                                <div class="actions-box">
-                                                    <?php if($_product->isSaleable()): ?>
-                                                        <form action="<?php echo $this->getAddToCartUrl($_product) ?>" method="post" class="add-to-cart-form" id="product_addtocart_form_<?php echo $_product->getId()?>"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?> data-qty="<?php echo $_product->getId() ?>" >
-                                                            <fieldset class="qtyswitcher-add-to-cart-box table">
-                                                                <div id="qtyswitcher-btn-picto-<?php echo $_product->getId() ?>" class="table-cell">
-                                                                    <button type="button" class="btn btn-success" onclick="this.form.submit()"><?php echo $this->__('Add to Cart') ?></button>
-                                                                </div>
-                                                                <div class="qtyswitcher-qty table-cell">
-                                                                    <?php if(!$_product->isGrouped()): ?>
-                                                                    <?php if(!is_numeric($this->getMinimalQty($_product))) : $qty= 1; ?>
-                                                                    <?php else : $qty=$this->getMinimalQty($_product);?>
-                                                                    <?php endif; ?>
-                                                                    <div class="table">
-                                                                        <?php
-                                                                        $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product);
-                                                                        $maxQty = (int)$stock->getQty();
-                                                                        ?>
-                                                                        <div class="input-box">
-                                                                            <input type="text" name="qty" id="qty" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text clone-qty qty" data-maxval="<?php echo $maxQty; ?>" />
-                                                                        </div>
-                                                                        <div class="input-box">
-                                                                            <a id="qtyswitcher-onemore-<?php echo $_product->getId() ?>" class='qtyswitcher btn fa fa-caret-up' onclick="qtyUp()"></a>
-                                                                            <a id="qtyswitcher-oneless-<?php echo $_product->getId() ?>" class='qtyswitcher btn fa fa-caret-down' onclick="qtyDown()"></a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <?php else :?>
-                                                                    <script language="javascript">qtyswitcher.groupedInit("<?php //echo $this->__("Quantity"); ?>")</script>
-                                                                <?php endif; ?>
-                                                            </fieldset>
-                                                        </form>
-                                                    <?php endif; ?>
-                                                </div>
-                                            <?php endif; ?>
-                                        </div>
-                                <?php endif; ?>
-                                <?php /*echo $this->getChildHtml('addto') */?>
-                                    </div>
-                                <?php endif; ?>
+                                <?php echo $this->getChildHtml('addtocart') ?>
                                 <?php echo $this->getChildHtml('other');?>
                                 <?php if ($_product->isSaleable() && $this->hasOptions()):?>
                                     <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
@@ -179,58 +125,58 @@
             <?php endif;?>
         </form>
 
-    <script type="text/javascript">
+        <script type="text/javascript">
 
-    //<![CDATA[
-        var productAddToCartForm = new VarienForm('product_addtocart_form');
-        productAddToCartForm.submit = function(button, url) {
-            if (this.validator.validate()) {
-                var form = this.form;
-                var oldUrl = form.action;
-                if (url) {
-                   form.action = url;
-                }
-                var e = null;
-                try {
-                    this.form.submit();
-                } catch (e) {
-                }
-                this.form.action = oldUrl;
-                if (e) {
-                    throw e;
-                }
-                if (button && button != 'undefined') {
-                    button.disabled = true;
-                }
-            }
-        }.bind(productAddToCartForm);
-
-        productAddToCartForm.submitLight = function(button, url){
-            if(this.validator) {
-                var nv = Validation.methods;
-                delete Validation.methods['required-entry'];
-                delete Validation.methods['validate-one-required'];
-                delete Validation.methods['validate-one-required-by-name'];
-                // Remove custom datetime validators
-                for (var methodName in Validation.methods) {
-                    if (methodName.match(/^validate-datetime-.*/i)) {
-                        delete Validation.methods[methodName];
-                    }
-                }
-
+            //<![CDATA[
+            var productAddToCartForm = new VarienForm('product_addtocart_form');
+            productAddToCartForm.submit = function(button, url) {
                 if (this.validator.validate()) {
+                    var form = this.form;
+                    var oldUrl = form.action;
                     if (url) {
-                        this.form.action = url;
+                        form.action = url;
                     }
-                    this.form.submit();
+                    var e = null;
+                    try {
+                        this.form.submit();
+                    } catch (e) {
+                    }
+                    this.form.action = oldUrl;
+                    if (e) {
+                        throw e;
+                    }
+                    if (button && button != 'undefined') {
+                        button.disabled = true;
+                    }
                 }
-                Object.extend(Validation.methods, nv);
-            }
-        }.bind(productAddToCartForm);
-    //]]>
-    </script>
-        </div>
+            }.bind(productAddToCartForm);
+
+            productAddToCartForm.submitLight = function(button, url){
+                if(this.validator) {
+                    var nv = Validation.methods;
+                    delete Validation.methods['required-entry'];
+                    delete Validation.methods['validate-one-required'];
+                    delete Validation.methods['validate-one-required-by-name'];
+                    // Remove custom datetime validators
+                    for (var methodName in Validation.methods) {
+                        if (methodName.match(/^validate-datetime-.*/i)) {
+                            delete Validation.methods[methodName];
+                        }
+                    }
+
+                    if (this.validator.validate()) {
+                        if (url) {
+                            this.form.action = url;
+                        }
+                        this.form.submit();
+                    }
+                    Object.extend(Validation.methods, nv);
+                }
+            }.bind(productAddToCartForm);
+            //]]>
+        </script>
     </div>
+</div>
 
 <!--<div class="product-collateral" style="border: 5px solid #ccc; padding: 15px; margin-top:20px">
         <?php /*echo $this->getChildHtml('info_tabs') */?>

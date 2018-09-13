@@ -4,6 +4,8 @@ jQuery(document).ready(function ($) {
         $('html').toggleClass('nav-open');
     });
 
+    $('[data-trigger="spinner"]').spinner();
+
     $(document).on('change', '#s_method_sy_novaposhta_type_WarehouseWarehouse', function () {
         if ($(this).is(':checked')) {
             $('#billing:street1').removeClass('required-entry').prop('disabled', true);

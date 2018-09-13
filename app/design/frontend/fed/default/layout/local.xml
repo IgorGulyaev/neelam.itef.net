@@ -8,6 +8,7 @@
                 <!--<action method="addItem"><type>skin_js</type><name>js/jquery-1.11.3.min.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/noconflict.js</name></action>-->
                 <!--<action method="addItem"><type>skin_js</type><name>js/npm.js</name></action>-->
+                <action method="addItem"><type>skin_js</type><name>js/jquery.spinner.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/bootstrap.min.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/html5shiv.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/wow.min.js</name></action>

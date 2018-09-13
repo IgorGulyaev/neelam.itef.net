@@ -13,11 +13,13 @@
             <?php endif; ?>
             <div class="table">
                 <div class="input-box">
-                    <input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text clone-qty qty" />
-                </div>
-                <div class="input-box">
-                    <a class="quantity_box_button_up qtyswitcher btn" onclick="qtyUp()"><i class="fa fa-caret-up"></i></a>
-                    <a class="quantity_box_button_down qtyswitcher btn" onclick="qtyDown()"><i class="fa fa-caret-down"></i></a>
+                    <div class="spinner" data-trigger="spinner" id="spinner">
+                        <input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text clone-qty qty" data-rule="quantity">
+                        <div class="spinner-controls">
+                            <a href="javascript:;" data-spin="up"></a>
+                            <a href="javascript:;" data-spin="down"></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -27,40 +29,3 @@
     </div>
 
 <?php endif; ?>
-
-<script type="text/javascript">
-
-    var qty_el = document.getElementById('qty'); 
-    var qty = qty_el.value; 
-    if(qty < 2){
-        jQuery('.quantity_box_button_down').css({
-            'visibility' : 'hidden'
-        });
-    }
-    function qtyDown(){
-        var qty_el = document.getElementById('qty'); 
-        var qty = qty_el.value; 
-        if( qty == 2) {
-            jQuery('.quantity_box_button_down').css({
-                'visibility' : 'hidden'
-            });
-        }
-        if( !isNaN( qty ) && qty > 0 ){
-            qty_el.value--;
-        }         
-        return false;
-    }
-    
-    function qtyUp(){
-        var qty_el = document.getElementById('qty'); 
-        var qty = qty_el.value; 
-        if( !isNaN( qty )) {
-            qty_el.value++;
-        }
-        jQuery('.quantity_box_button_down').css({
-            'visibility' : 'visible'
-        });
-        return false;
-    }
-
-</script>
